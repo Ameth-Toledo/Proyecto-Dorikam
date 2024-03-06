@@ -15,7 +15,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Stage stageRoot = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
         Parent root = fxmlLoader.load();
         HelloController menuController = fxmlLoader.getController();
         menuController.init(stageRoot);
