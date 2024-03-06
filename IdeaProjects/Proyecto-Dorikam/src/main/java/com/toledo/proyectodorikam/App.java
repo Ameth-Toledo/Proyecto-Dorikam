@@ -13,22 +13,25 @@ import java.io.IOException;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-            Parent root = fxmlLoader.load();
-            HelloController helloController = fxmlLoader.getController();
-            helloController.init(stage);
+    public void start(Stage stage) throws IOException {
+        Stage stageRoot = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
+        Parent root = fxmlLoader.load();
+        HelloController menuController = fxmlLoader.getController();
+        menuController.init(stageRoot);
 
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            stage.setTitle("Dorikam - Home");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        stage.setTitle("Dorikam - Home");
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
+    private static Parent loadFXML(String fxml) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

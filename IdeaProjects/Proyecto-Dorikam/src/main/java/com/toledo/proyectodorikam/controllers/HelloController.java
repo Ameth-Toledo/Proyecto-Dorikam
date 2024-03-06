@@ -22,7 +22,15 @@ public class HelloController {
     private Button AdministradorButton;
 
     @FXML
+    private Button ExitButton;
+
+    @FXML
     void OnMouseClickedAdministradorButton(MouseEvent event) {
+
+    }
+
+    @FXML
+    void OnMouseClickedExitButton(MouseEvent event) {
 
     }
 
@@ -35,8 +43,10 @@ public class HelloController {
     void initialize() {
         assert GerenteButton != null : "fx:id=\"GerenteButton\" was not injected: check your FXML file 'hello-view.fxml'.";
         assert AdministradorButton != null : "fx:id=\"AdministradorButton\" was not injected: check your FXML file 'hello-view.fxml'.";
+        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'hello-view.fxml'.";
 
     }
+
 
 public void init(Stage stageRoot) {
     }

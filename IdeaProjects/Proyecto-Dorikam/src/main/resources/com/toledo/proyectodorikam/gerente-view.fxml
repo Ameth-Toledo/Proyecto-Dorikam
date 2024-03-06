@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1334.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.HelloController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1334.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.GerenteController">
    <children>
       <ImageView fitHeight="398.0" fitWidth="326.0" layoutX="1008.0" layoutY="432.0">
          <image>
@@ -26,36 +26,46 @@
             <Image url="@Imagenes/Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="728.0" layoutY="341.0" text="Contraseña" textFill="WHITE">
+      <Label layoutX="723.0" layoutY="432.0" text="Contraseña" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="40.0" />
          </font></Label>
-      <Label layoutX="728.0" layoutY="133.0" prefHeight="66.0" prefWidth="221.0" text="Usuario" textFill="WHITE">
+      <Label layoutX="728.0" layoutY="236.0" prefHeight="66.0" prefWidth="221.0" text="Usuario" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="40.0" />
          </font>
       </Label>
-      <TextField layoutX="728.0" layoutY="212.0" prefHeight="66.0" prefWidth="543.0" />
-      <PasswordField layoutX="728.0" layoutY="415.0" prefHeight="66.0" prefWidth="543.0" />
-      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="685.0" layoutY="608.0">
+      <TextField layoutX="728.0" layoutY="332.0" prefHeight="66.0" prefWidth="543.0" />
+      <PasswordField layoutX="728.0" layoutY="526.0" prefHeight="66.0" prefWidth="543.0" />
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="686.0" layoutY="672.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="77.0" fitWidth="199.0" layoutX="937.0" layoutY="606.0">
+      <ImageView fitHeight="77.0" fitWidth="199.0" layoutX="933.0" layoutY="668.0">
          <image>
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="EntrarButton" layoutX="685.0" layoutY="608.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntrarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Entrar" textFill="WHITE">
+      <Button fx:id="EntrarButton" layoutX="686.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntrarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Entrar" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="ExitButton" layoutX="937.0" layoutY="606.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Regresar" textFill="WHITE">
+      <Button fx:id="ExitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Regresar" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="24.0" />
          </font>
       </Button>
+      <Label layoutX="892.0" layoutY="43.0" prefHeight="77.0" prefWidth="339.0" text="Gerente" textFill="WHITE">
+         <font>
+            <Font name="Rockwell Italic" size="73.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="119.0" fitWidth="119.0" layoutX="1185.0" layoutY="28.0">
+         <image>
+            <Image url="@Imagenes/Gerente.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
