@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class AdministradorController {
 
@@ -35,7 +36,8 @@ public class AdministradorController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.MenuGerenteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.MenuAdministradorController">
    <children>
       <ImageView fitHeight="398.0" fitWidth="326.0" layoutX="954.0" layoutY="402.0">
          <image>
@@ -17,11 +17,6 @@
       <ImageView fitHeight="398.0" fitWidth="326.0">
          <image>
             <Image url="@Imagenes/Izq-Arriba.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="933.0" layoutY="14.0">
-         <image>
-            <Image url="@Imagenes/Gerente.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="77.0" fitWidth="199.0" layoutX="989.0" layoutY="632.0">
@@ -34,7 +29,7 @@
             <Font name="CoolveticaRg-Regular" size="35.0" />
          </font>
       </Button>
-      <Label layoutX="339.0" layoutY="42.0" text="Bienvenido Gerente" textFill="WHITE">
+      <Label layoutX="255.0" layoutY="42.0" text="Bienvenido Administrador" textFill="WHITE">
          <font>
             <Font name="Rockwell Italic" size="60.0" />
          </font>
@@ -44,7 +39,7 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="56.0" layoutY="420.0">
+      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="852.0" layoutY="265.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
@@ -52,11 +47,6 @@
       <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="450.0" layoutY="265.0">
          <image>
             <Image url="@Imagenes/Amarillo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="840.0" layoutY="265.0">
-         <image>
-            <Image url="@Imagenes/Rojo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="56.0" layoutY="580.0">
@@ -79,12 +69,12 @@
             <Font name="CoolveticaRg-Regular" size="45.0" />
          </font>
       </Label>
-      <Button fx:id="AgregarButton" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAgregarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Agregar Productos" textFill="WHITE">
+      <Button fx:id="RealizarButton" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedRealizarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Realizar Venta" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
-      <Button fx:id="VerProductos" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVerProductos" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ver Productos" textFill="WHITE">
+      <Button fx:id="VerProductos" layoutX="852.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVerProductos" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ver Productos" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
@@ -94,12 +84,12 @@
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
-      <Button fx:id="EditarButton" layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEditarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Editar Productos" textFill="WHITE">
+      <Button fx:id="CancelarButton" layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedCancelarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Cancelar Venta" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
-      <Button fx:id="VentasButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVentasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Ventas" textFill="WHITE">
+      <Button fx:id="ReportesButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedReportesButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Generar Reportes" textFill="WHITE">
          <font>
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
@@ -109,17 +99,12 @@
             <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
-      <Button fx:id="EliminarButton" layoutX="841.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEliminarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Eliminar Productos" textFill="WHITE">
-         <font>
-            <Font name="CoolveticaRg-Regular" size="28.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="682.0" layoutY="427.0">
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="272.0">
          <image>
             <Image url="@Imagenes/Ventas.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="427.0">
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="1106.0" layoutY="272.0">
          <image>
             <Image url="@Imagenes/Producto.png" />
          </image>
@@ -134,19 +119,33 @@
             <Image url="@Imagenes/Contar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="272.0">
+      <ImageView fitHeight="116.0" fitWidth="116.0" layoutX="973.0" layoutY="21.0">
          <image>
-            <Image url="@Imagenes/Add.png" />
+            <Image url="@Imagenes/Administrador.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="706.0" layoutY="272.0">
          <image>
-            <Image url="@Imagenes/edit.png" />
+            <Image url="@Imagenes/CancelarVenta.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="1094.0" layoutY="272.0">
+      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="57.0" layoutY="420.0">
          <image>
-            <Image url="@Imagenes/remove.png" />
+            <Image url="@Imagenes/Entrar.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="EntregasButton" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntregasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Entregas" textFill="WHITE">
+         <font>
+            <Font name="CoolveticaRg-Regular" size="28.0" />
+         </font></Button>
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="427.0">
+         <image>
+            <Image url="@Imagenes/Entregas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="88.0" layoutX="709.0" layoutY="427.0">
+         <image>
+            <Image url="@Imagenes/Reporte.png" />
          </image>
       </ImageView>
    </children>

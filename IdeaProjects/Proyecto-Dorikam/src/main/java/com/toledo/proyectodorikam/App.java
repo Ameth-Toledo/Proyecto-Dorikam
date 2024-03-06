@@ -1,6 +1,6 @@
 package com.toledo.proyectodorikam;
 
-import com.toledo.proyectodorikam.controllers.HelloController;
+import com.toledo.proyectodorikam.controllers.HomeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +17,7 @@ public class App extends Application {
         Stage stageRoot = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
         Parent root = fxmlLoader.load();
-        HelloController menuController = fxmlLoader.getController();
+        HomeController menuController = fxmlLoader.getController();
         menuController.init(stageRoot);
 
         Scene scene = new Scene(root);
