@@ -82,14 +82,5 @@ public class MenuGerenteController{
 
     @FXML
     void initialize() {
-        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert AgregarButton != null : "fx:id=\"AgregarButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert VerProductos != null : "fx:id=\"VerProductos\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert UbicarButton != null : "fx:id=\"UbicarButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert EditarButton != null : "fx:id=\"EditarButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert VentasButton != null : "fx:id=\"VentasButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert ContarButton != null : "fx:id=\"ContarButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-        assert EliminarButton != null : "fx:id=\"EliminarButton\" was not injected: check your FXML file 'menu-gerente-view.fxml'.";
-
     }
 }
