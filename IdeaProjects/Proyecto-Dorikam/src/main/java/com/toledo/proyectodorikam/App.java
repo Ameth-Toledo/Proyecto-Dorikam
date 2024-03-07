@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -21,7 +20,6 @@ public class App extends Application {
         menuController.init(stageRoot);
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Dorikam - Home");
         stage.setScene(scene);
         stage.centerOnScreen();
