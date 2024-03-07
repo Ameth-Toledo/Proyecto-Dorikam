@@ -1,8 +1,13 @@
 package com.toledo.proyectodorikam.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.toledo.proyectodorikam.App;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -74,10 +79,14 @@ public class MenuAdministradorController {
     void OnMouseClickedUbicarButton(MouseEvent event) {
 
     }
-
+    Stage callVer = new Stage();
     @FXML
-    void OnMouseClickedVerProductos(MouseEvent event) {
-
+    void OnMouseClickedVerProductos(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callVer.setTitle("Menu: \"Ver Productos\"");
+        callVer.setScene(scene);
+        callVer.show();
     }
 
     @FXML
