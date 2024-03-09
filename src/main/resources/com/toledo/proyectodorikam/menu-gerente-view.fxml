@@ -32,6 +32,7 @@
       <Button fx:id="ExitButton" layoutX="989.0" layoutY="632.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="37.0" />
+            <Font name="CoolveticaRg-Regular" size="35.0" />
          </font>
       </Button>
       <Label layoutX="339.0" layoutY="42.0" text="Bienvenido Gerente" textFill="WHITE">
@@ -82,36 +83,43 @@
       <Button fx:id="AgregarButton" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAgregarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Agregar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="VerProductos" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVerProductos" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ver Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="32.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="UbicarButton" layoutX="57.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedUbicarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ubicar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="27.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="EditarButton" layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEditarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Editar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="28.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="VentasButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVentasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Ventas" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="32.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="ContarButton" layoutX="450.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedContarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGHT;" text="Contar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="27.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="EliminarButton" layoutX="841.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEliminarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Eliminar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="682.0" layoutY="427.0">

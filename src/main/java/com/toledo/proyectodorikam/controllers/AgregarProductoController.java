@@ -27,8 +27,6 @@ public class AgregarProductoController {
 
     @FXML
     void initialize() {
-        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'agregar-productos-view.fxml'.";
-
     }
 
 }

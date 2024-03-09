@@ -17,7 +17,6 @@ public class App extends Application {
         Parent root = fxmlLoader.load();
         HomeController menuController = fxmlLoader.getController();
         menuController.init(stage);
-
         Scene scene = new Scene(root);
         stage.setTitle("Dorikam - Home");
         stage.setScene(scene);

@@ -27,6 +27,7 @@
       <Button fx:id="ExitButton" layoutX="989.0" layoutY="632.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="38.0" />
+            <Font name="CoolveticaRg-Regular" size="35.0" />
          </font>
       </Button>
       <Label layoutX="255.0" layoutY="42.0" text="Bienvenido Administrador" textFill="WHITE">
@@ -67,36 +68,43 @@
       <Label layoutX="56.0" layoutY="185.0" text="Que deseas hacer..." textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="40.0" />
+            <Font name="CoolveticaRg-Regular" size="45.0" />
          </font>
       </Label>
       <Button fx:id="RealizarButton" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedRealizarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Realizar Venta" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="31.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="VerProductos" layoutX="852.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVerProductos" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ver Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="32.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="UbicarButton" layoutX="57.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedUbicarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ubicar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="27.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="CancelarButton" layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedCancelarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Cancelar Venta" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="31.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="ReportesButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedReportesButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Generar Reportes" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="28.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <Button fx:id="ContarButton" layoutX="450.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedContarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGHT;" text="Contar Productos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="27.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font>
       </Button>
       <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="272.0">
@@ -137,6 +145,7 @@
       <Button fx:id="EntregasButton" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntregasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Entregas" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="32.0" />
+            <Font name="CoolveticaRg-Regular" size="28.0" />
          </font></Button>
       <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="308.0" layoutY="427.0">
          <image>

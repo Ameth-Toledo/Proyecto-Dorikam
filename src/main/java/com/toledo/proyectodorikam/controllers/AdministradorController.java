@@ -70,7 +70,6 @@ public class AdministradorController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
     @FXML
     void initialize() {
     }

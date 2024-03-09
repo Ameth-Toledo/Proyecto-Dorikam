@@ -31,7 +31,7 @@
       </ImageView>
       <Button fx:id="GerenteButton" layoutX="180.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedGerenteButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Gerente" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="40.0" />
+            <Font name="CoolveticaRg-Regular" size="38.0" />
          </font></Button>
       <ImageView fitHeight="195.0" fitWidth="404.0" layoutX="649.0" layoutY="583.0">
          <image>
@@ -40,7 +40,7 @@
       </ImageView>
       <Button fx:id="AdministradorButton" layoutX="649.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAdministradorButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Administrador" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="32.0" />
+            <Font name="CoolveticaRg-Regular" size="37.0" />
          </font></Button>
       <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="415.0" layoutY="617.0">
          <image>
@@ -52,14 +52,14 @@
             <Image url="@Imagenes/Administrador.png" />
          </image>
       </ImageView>
-      <Label layoutX="121.0" layoutY="235.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
+      <Label layoutX="128.0" layoutY="224.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="95.0" />
+            <Font name="CoolveticaRg-Regular" size="96.0" />
          </font>
       </Label>
       <Label layoutX="163.0" layoutY="472.0" text="Selecciona una opcion porfavor..." textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="37.0" />
+            <Font name="CoolveticaRg-Regular" size="37.0" />
          </font>
       </Label>
       <ImageView fitHeight="309.0" fitWidth="269.0" layoutX="992.0" layoutY="32.0">
@@ -74,7 +74,7 @@
       </ImageView>
       <Button fx:id="ExitButton" layoutX="39.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="40.0" />
+            <Font name="CoolveticaRg-Regular" size="35.0" />
          </font>
       </Button>
    </children>

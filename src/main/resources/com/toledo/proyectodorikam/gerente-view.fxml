@@ -33,6 +33,11 @@
       <Label layoutX="728.0" layoutY="236.0" prefHeight="66.0" prefWidth="221.0" text="Usuario" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="40.0" />
+            <Font name="CoolveticaRg-Regular" size="40.0" />
+         </font></Label>
+      <Label layoutX="728.0" layoutY="236.0" prefHeight="66.0" prefWidth="221.0" text="Usuario" textFill="WHITE">
+         <font>
+            <Font name="CoolveticaRg-Regular" size="40.0" />
          </font>
       </Label>
       <TextField fx:id="UsuarioText" layoutX="728.0" layoutY="332.0" prefHeight="66.0" prefWidth="543.0" />
@@ -50,11 +55,13 @@
       <Button fx:id="EntrarButton" layoutX="686.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntrarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Entrar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
+            <Font name="CoolveticaRg-Regular" size="24.0" />
          </font>
       </Button>
       <Button fx:id="ExitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Regresar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
+            <Font name="CoolveticaRg-Regular" size="24.0" />
          </font>
       </Button>
       <Label layoutX="892.0" layoutY="43.0" prefHeight="77.0" prefWidth="339.0" text="Gerente" textFill="WHITE">
