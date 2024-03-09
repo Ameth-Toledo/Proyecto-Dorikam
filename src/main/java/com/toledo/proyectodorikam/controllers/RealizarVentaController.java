@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class RealizarVentaController {
 
@@ -23,7 +24,8 @@ public class RealizarVentaController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
