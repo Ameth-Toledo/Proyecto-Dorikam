@@ -77,7 +77,7 @@
       </ImageView>
       <Label layoutX="56.0" layoutY="185.0" text="Que deseas hacer..." textFill="WHITE">
          <font>
-            <Font name="CoolveticaRg-Regular" size="45.0" />
+            <Font name="Tahoma Bold" size="45.0" />
          </font>
       </Label>
       <Button fx:id="AgregarButton" layoutX="56.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAgregarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Agregar Productos" textFill="WHITE">
@@ -100,8 +100,7 @@
       </Button>
       <Button fx:id="EditarButton" layoutX="450.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEditarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Editar Productos" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="28.0" />
-            <Font name="CoolveticaRg-Regular" size="28.0" />
+            <Font name="Tahoma Bold" size="27.0" />
          </font>
       </Button>
       <Button fx:id="VentasButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVentasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Ventas" textFill="WHITE">
@@ -112,8 +111,7 @@
       </Button>
       <Button fx:id="ContarButton" layoutX="450.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedContarButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGHT;" text="Contar Productos" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="27.0" />
-            <Font name="CoolveticaRg-Regular" size="28.0" />
+            <Font name="Tahoma Bold" size="26.0" />
          </font>
       </Button>
       <Button fx:id="EliminarButton" layoutX="841.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEliminarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Eliminar Productos" textFill="WHITE">
