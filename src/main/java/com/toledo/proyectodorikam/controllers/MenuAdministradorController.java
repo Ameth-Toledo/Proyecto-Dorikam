@@ -64,10 +64,14 @@ public class MenuAdministradorController {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
-
+    Stage callRealizarVenta = new Stage();
     @FXML
-    void OnMouseClickedRealizarButton(MouseEvent event) {
-
+    void OnMouseClickedRealizarButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRealizarVenta.setTitle("Realizar: \"Administrador\"");
+        callRealizarVenta.setScene(scene);
+        callRealizarVenta.show();
     }
 
     @FXML

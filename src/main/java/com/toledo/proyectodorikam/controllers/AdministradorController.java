@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -72,5 +73,31 @@ public class AdministradorController {
     }
     @FXML
     void initialize() {
+        UsuarioText.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                ContraseñaText.requestFocus();
+            }
+        });
+        ContraseñaText.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                String Magally = UsuarioText.getText();
+                String Magally2024 = ContraseñaText.getText();
+
+                if (Magally.equals(admin.getUsser1()) && Magally2024.equals(admin.getPassword1())) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        Stage newStage = new Stage();
+                        newStage.setTitle("Inicio de Sesión: \"Administrador\"");
+                        newStage.setScene(scene);
+                        newStage.show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    MostraAlerta("Error", "Verifica tus datos");
+                }
+            }
+        });
     }
 }

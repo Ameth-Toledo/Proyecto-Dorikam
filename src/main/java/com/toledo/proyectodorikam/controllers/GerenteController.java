@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -75,5 +76,31 @@ public class GerenteController {
 
     @FXML
     void initialize() {
+        UsuarioText.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                ContraseñaText.requestFocus();
+            }
+        });
+        ContraseñaText.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                String Brenda = UsuarioText.getText();
+                String Brenda2024 = ContraseñaText.getText();
+
+                if (Brenda.equals(admin.getUsser()) && Brenda2024.equals(admin.getPassword())) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        Stage newStage = new Stage();
+                        newStage.setTitle("Inicio de Sesión: \"Administrador\"");
+                        newStage.setScene(scene);
+                        newStage.show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    MostrarAlerta("Error", "Verifica tus datos");
+                }
+            }
+        });
     }
 }
