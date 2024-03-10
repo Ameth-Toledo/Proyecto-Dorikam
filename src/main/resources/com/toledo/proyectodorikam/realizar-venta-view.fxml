@@ -86,7 +86,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <ComboBox fx:id="pago" layoutX="82.0" layoutY="701.0" prefHeight="59.0" prefWidth="517.0" />
+      <ComboBox fx:id="pago" layoutX="82.0" layoutY="701.0" prefHeight="59.0" prefWidth="517.0" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="701.0" />
       <Label layoutX="90.0" layoutY="666.0" text="Metodo de Pago:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />

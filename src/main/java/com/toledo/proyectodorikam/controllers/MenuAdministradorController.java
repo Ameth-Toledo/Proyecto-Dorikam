@@ -73,7 +73,6 @@ public class MenuAdministradorController {
         callRealizarVenta.setScene(scene);
         callRealizarVenta.show();
     }
-
     @FXML
     void OnMouseClickedReportesButton(MouseEvent event) {
 
