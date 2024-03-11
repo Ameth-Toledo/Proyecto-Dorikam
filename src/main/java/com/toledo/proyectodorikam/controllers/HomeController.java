@@ -38,7 +38,6 @@ public class HomeController {
         callAdmin.setScene(scene);
         callAdmin.show();
     }
-
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
@@ -54,13 +53,9 @@ public class HomeController {
         callGerente.setScene(scene);
         callGerente.show();
     }
-
-
     @FXML
     void initialize() {
     }
-
-
-public void init(Stage stageRoot) {
+    public void init(Stage stageRoot) {
     }
 }

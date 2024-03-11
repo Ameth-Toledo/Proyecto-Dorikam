@@ -20,6 +20,7 @@ public class RealizarVentaController {
     static {
         listaProductos.add(new Producto("Arete-manzana", 20.0, "2022-01-01", "Churrumino", "Tuxtla", "Gjjhj", 10));
         listaProductos.add(new Producto("Arete-rostro", 30.0, "2022-02-01", "Chililo", "Tuxtla", "gt67767", 15));
+        listaProductos.add(new Producto("", 33.5, "", ""," ", "", 80));
     }
     @FXML
     private Button ExitButton;
