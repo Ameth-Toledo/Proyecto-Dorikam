@@ -73,9 +73,14 @@ public class MenuAdministradorController {
         callRealizarVenta.setScene(scene);
         callRealizarVenta.show();
     }
+    Stage callReportes = new Stage();
     @FXML
-    void OnMouseClickedReportesButton(MouseEvent event) {
-
+    void OnMouseClickedReportesButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("generar-reportes-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callReportes.setTitle("Incio de Sesion: \"Gerente\"");
+        callReportes.setScene(scene);
+        callReportes.show();
     }
 
     @FXML
@@ -94,14 +99,5 @@ public class MenuAdministradorController {
 
     @FXML
     void initialize() {
-        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert RealizarButton != null : "fx:id=\"RealizarButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert VerProductos != null : "fx:id=\"VerProductos\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert UbicarButton != null : "fx:id=\"UbicarButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert CancelarButton != null : "fx:id=\"CancelarButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert ReportesButton != null : "fx:id=\"ReportesButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert ContarButton != null : "fx:id=\"ContarButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-        assert EntregasButton != null : "fx:id=\"EntregasButton\" was not injected: check your FXML file 'menu-administrador-view.fxml'.";
-
     }
 }

@@ -88,7 +88,7 @@ public class GerenteController {
 
                 if (Brenda.equals(admin.getUsser()) && Brenda2024.equals(admin.getPassword())) {
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
                         Scene scene = new Scene(fxmlLoader.load());
                         Stage newStage = new Stage();
                         newStage.setTitle("Inicio de Sesión: \"Administrador\"");

@@ -94,7 +94,6 @@ public class RealizarVentaController {
         producto.setStock(producto.getStock() - cantidad);
         actualizarStockEnLista(producto);
     }
-
     private double calcularTotalVenta(int cantidad, double precioUnitario) {
         return cantidad * precioUnitario;
     }

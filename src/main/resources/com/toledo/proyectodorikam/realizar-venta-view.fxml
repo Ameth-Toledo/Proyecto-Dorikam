@@ -97,5 +97,10 @@
             <Image url="@Imagenes/Ventas.png" />
          </image>
       </ImageView>
+      <Label layoutX="696.0" layoutY="740.0" text="⚠ Presione doble enter para confirmar o presione el boton" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
