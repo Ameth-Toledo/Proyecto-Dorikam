@@ -82,7 +82,7 @@ public class MenuGerenteController{
     Stage callVer = new Stage();
     @FXML
     void OnMouseClickedVerProductos(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("tipo-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);

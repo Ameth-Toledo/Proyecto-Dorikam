@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class VerProductoZapato {
 
@@ -87,7 +88,8 @@ public class VerProductoZapato {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
