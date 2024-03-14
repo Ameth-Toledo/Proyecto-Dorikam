@@ -41,8 +41,8 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="tituloReport" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="fechaReport" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
       <Label layoutX="90.0" layoutY="178.0" text="Titulo del Reporte:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />
@@ -63,11 +63,11 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button layoutX="736.0" layoutY="657.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
+      <Button fx:id="ConfirmarButton" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextArea layoutX="88.0" layoutY="386.0" prefHeight="244.0" prefWidth="1128.0" />
+      <TextArea fx:id="detallesReport" layoutX="88.0" layoutY="386.0" prefHeight="244.0" prefWidth="1128.0" />
    </children>
 </AnchorPane>

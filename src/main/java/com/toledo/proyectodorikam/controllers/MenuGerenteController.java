@@ -43,7 +43,8 @@ public class MenuGerenteController{
 
     @FXML
     private Button EliminarButton;
-
+    @FXML
+    private Button VerReportesButton;
     @FXML
     void OnMouseClickedAgregarButton(MouseEvent event) {
 
@@ -82,11 +83,20 @@ public class MenuGerenteController{
     Stage callVer = new Stage();
     @FXML
     void OnMouseClickedVerProductos(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("tipo-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
         callVer.show();
+    }
+    @FXML
+    void OnMouseClickedVerReportesButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-reportes-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Ver Reportes");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
