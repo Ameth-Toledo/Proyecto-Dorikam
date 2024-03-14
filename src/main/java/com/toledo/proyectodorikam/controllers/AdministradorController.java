@@ -59,10 +59,18 @@ public class AdministradorController {
             MostraAlerta("Error","verifica tus datos");
         }
     }
+
+    Stage callRegresar = new Stage();
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Dorikam - Home");
+        callRegresar.setScene(scene);
+        callRegresar.show();
+
+        salirAdministrador();
     }
     private void MostraAlerta(String title, String content){
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,6 +78,10 @@ public class AdministradorController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    private void salirAdministrador(){
+        ((Stage) ExitButton.getScene().getWindow()).close();
     }
     @FXML
     void initialize() {

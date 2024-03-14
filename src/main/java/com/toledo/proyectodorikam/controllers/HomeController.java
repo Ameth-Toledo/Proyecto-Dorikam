@@ -38,10 +38,11 @@ public class HomeController {
         callAdmin.setTitle("Inicio de Sesion: \"Administrador\"");
         callAdmin.setScene(scene);
         callAdmin.show();
-    }
 
+        salirReporte();
+    }
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
@@ -55,10 +56,15 @@ public class HomeController {
         callGerente.setTitle("Incio de Sesion: \"Gerente\"");
         callGerente.setScene(scene);
         callGerente.show();
+
+        salirReporte();
     }
 
     @FXML
     void initialize() {
+    }
+    private void salirReporte(){
+        ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
     public void init(Stage stageRoot) {

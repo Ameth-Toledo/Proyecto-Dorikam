@@ -61,10 +61,17 @@ public class GerenteController {
         }
     }
 
+    Stage callRegresar = new Stage();
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Dorikam - Home");
+        callRegresar.setScene(scene);
+        callRegresar.show();
+
+        salirGerente();
     }
     private void MostrarAlerta(String title, String contenido){
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,7 +80,9 @@ public class GerenteController {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
-
+    private void salirGerente(){
+        ((Stage) ExitButton.getScene().getWindow()).close();
+    }
     @FXML
     void initialize() {
         UsuarioText.setOnKeyPressed(event -> {

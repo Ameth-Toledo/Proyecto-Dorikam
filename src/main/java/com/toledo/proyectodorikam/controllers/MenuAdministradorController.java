@@ -78,9 +78,9 @@ public class MenuAdministradorController {
     void OnMouseClickedReportesButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("generar-reportes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callReportes.setTitle("Incio de Sesion: \"Gerente\"");
-        callReportes.setScene(scene);
-        callReportes.show();
+        callVer.setTitle("Generar Reportes");
+        callVer.setScene(scene);
+        callVer.show();
     }
 
     @FXML
