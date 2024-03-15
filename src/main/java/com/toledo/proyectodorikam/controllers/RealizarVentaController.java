@@ -152,6 +152,7 @@ public class RealizarVentaController {
             } else if (event.getSource() == NombreClienteTextField) {
                 ConfirmarButton.requestFocus();
             } else if (event.getSource() == ConfirmarButton) {
+
                 OnMouseClickedConfirmarButton(null);
 
             if (event.getTarget() instanceof TextField){

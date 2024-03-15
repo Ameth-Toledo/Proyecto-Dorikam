@@ -54,37 +54,38 @@ public class MenuGerenteController{
         callAgregar.setTitle("Agregar productos");
         callAgregar.setScene(scene);
         callAgregar.show();
+
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedContarButton(MouseEvent event) {
-
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedEditarButton(MouseEvent event) {
-
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedEliminarButton(MouseEvent event) {
-
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedUbicarButton(MouseEvent event) {
-
+        salirMenuGerente();
     }
 
     @FXML
     void OnMouseClickedVentasButton(MouseEvent event) {
-
+        salirMenuGerente();
     }
     Stage callVer = new Stage();
     @FXML
@@ -94,6 +95,8 @@ public class MenuGerenteController{
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
         callVer.show();
+
+        salirMenuGerente();
     }
     @FXML
     void OnMouseClickedVerReportesButton(MouseEvent event) throws IOException {
@@ -103,6 +106,11 @@ public class MenuGerenteController{
         stage.setTitle("Ver Reportes");
         stage.setScene(scene);
         stage.show();
+
+        salirMenuGerente();
+    }
+    private void salirMenuGerente() {
+        ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
     @FXML

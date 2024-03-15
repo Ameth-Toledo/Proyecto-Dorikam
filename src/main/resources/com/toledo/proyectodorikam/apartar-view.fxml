@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.ApartarProductosController">
    <children>
       <ImageView fitHeight="91.0" fitWidth="236.0" layoutX="978.0" layoutY="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="33.0">
@@ -41,12 +40,12 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="NombreProducto" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="MontoAbonado" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="Categoria" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="Ubicacion" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="IngresaFecha" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="IdProducto" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />
@@ -82,12 +81,12 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button layoutX="736.0" layoutY="657.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
+      <Button fx:id="confirmar" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedconfirmar" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField layoutX="83.0" layoutY="677.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="MontoRestante" layoutX="83.0" layoutY="677.0" prefHeight="74.0" prefWidth="517.0" />
       <Label layoutX="86.0" layoutY="640.0" text="Monto Restante:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />

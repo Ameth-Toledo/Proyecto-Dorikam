@@ -5,10 +5,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.toledo.proyectodorikam.App;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -33,14 +35,9 @@ public class HomeController {
 
     @FXML
     void OnMouseClickedAdministradorButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("administrador-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callAdmin.setTitle("Inicio de Sesion: \"Administrador\"");
-        callAdmin.setScene(scene);
-        callAdmin.show();
-
-        salirReporte();
+        abrirAdministradorView();
     }
+
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
@@ -51,22 +48,58 @@ public class HomeController {
 
     @FXML
     void OnMouseClickedGerenteButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("gerente-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callGerente.setTitle("Incio de Sesion: \"Gerente\"");
-        callGerente.setScene(scene);
-        callGerente.show();
-
-        salirReporte();
+        abrirGerenteView();
     }
 
     @FXML
     void initialize() {
     }
-    private void salirReporte(){
+
+    private void salirReporte() {
         ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
+    private void abrirGerenteView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callGerente.setTitle("Inicio de Sesion: \"Gerente\"");
+        callGerente.setScene(scene);
+        callGerente.show();
+
+        salirReporte();
+    }
+    private void abrirAdministradorView() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("administrador-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callAdmin.setTitle("Inicio de Sesion: \"Administrador\"");
+        callAdmin.setScene(scene);
+        callAdmin.show();
+
+        salirReporte();
+    }
     public void init(Stage stageRoot) {
+        stageRoot.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            switch (event.getCode()) {
+                case F1:
+                    try {
+                        abrirGerenteView();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case F2:
+                    try {
+                        abrirAdministradorView();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case ESCAPE:
+                    Platform.exit();
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 }

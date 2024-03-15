@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 public class MenuAdministradorController {
 
     @FXML
+    private Button Apartado;
+
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -44,25 +47,26 @@ public class MenuAdministradorController {
     @FXML
     private Button EntregasButton;
 
+
+
     @FXML
     void OnMouseClickedCancelarButton(MouseEvent event) {
-
+        salirMenuAdministrador();
     }
 
     @FXML
     void OnMouseClickedContarButton(MouseEvent event) {
-
+        salirMenuAdministrador();
     }
 
     @FXML
     void OnMouseClickedEntregasButton(MouseEvent event) {
-
+        salirMenuAdministrador();
     }
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+        salirMenuAdministrador();
     }
     Stage callRealizarVenta = new Stage();
     @FXML
@@ -72,31 +76,49 @@ public class MenuAdministradorController {
         callRealizarVenta.setTitle("Realizar: \"Administrador\"");
         callRealizarVenta.setScene(scene);
         callRealizarVenta.show();
+
+        salirMenuAdministrador();
     }
-    Stage callReportes = new Stage();
     @FXML
     void OnMouseClickedReportesButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("generar-reportes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callVer.setTitle("Generar Reportes");
-        callVer.setScene(scene);
-        callVer.show();
+        callRealizarVenta.setTitle("Realizar: \"Administrador\"");
+        callRealizarVenta.setScene(scene);
+        callRealizarVenta.show();
+
+        salirMenuAdministrador();
     }
 
     @FXML
     void OnMouseClickedUbicarButton(MouseEvent event) {
-
+        salirMenuAdministrador();
     }
     Stage callVer = new Stage();
     @FXML
     void OnMouseClickedVerProductos(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("tipo-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
         callVer.show();
+
+        salirMenuAdministrador();
     }
 
+    @FXML
+    void onMouseClickedApartado(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("apartar-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callVer.setTitle("Menu: \"Ver productos apartados\"");
+        callVer.setScene(scene);
+        callVer.show();
+
+        salirMenuAdministrador();
+    }
+    private void salirMenuAdministrador() {
+        ((Stage) ExitButton.getScene().getWindow()).close();
+    }
     @FXML
     void initialize() {
     }

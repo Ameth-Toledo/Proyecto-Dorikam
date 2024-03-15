@@ -52,6 +52,7 @@ public class AdministradorController {
                 callEntrar.setTitle("Incio de Sesion: \"Administrador\"");
                 callEntrar.setScene(scene);
                 callEntrar.show();
+
             }catch (IOException e){
                 throw new RuntimeException(e);
             }

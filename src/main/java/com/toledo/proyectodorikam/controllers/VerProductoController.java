@@ -43,10 +43,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteMoñoButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-moño" + "      ---";
-        String ID = "---" + " ID:" + " 8F2342H2" + "                   ---";
-        String Precio = "---" + " Precio:" + " $98.50" + "                  ---";
-        String Apartado = "---" + "    •" +" 3 Pares" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-moño" + "      ---";
+        String ID           = "---" + " ID:" + " 8F2342H2" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $98.50" + "                  ---";
+        String Apartado     = "---" + "    •" +" 3 Pares" + "                       ---";
         String FechaEntrega = "---" + " 30 / 11 / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -56,10 +56,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteCorsalButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-corsal" + "      ---";
-        String ID = "---" + " ID:" + " 9G2323Z3" + "                   ---";
-        String Precio = "---" + " Precio:" + " $198.50" + "                 ---";
-        String Apartado = "---" + "    •" +" 2 Pares" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-corsal" + "      ---";
+        String ID           = "---" + " ID:" + " 9G2323Z3" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $198.50" + "                 ---";
+        String Apartado     = "---" + "    •" +" 2 Pares" + "                       ---";
         String FechaEntrega = "---" + " 30 / 02 / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -69,10 +69,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteHongoButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-Hongo" + "      ---";
-        String ID = "---" + " ID:" + " xxxx" + "                   ---";
-        String Precio = "---" + " Precio:" + " $xxx.50" + "                 ---";
-        String Apartado = "---" + "    •" +" 0 xxx" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-Hongo" + "      ---";
+        String ID           = "---" + " ID:" + " xxxx" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $xxx.50" + "                 ---";
+        String Apartado     = "---" + "    •" +" 0 xxx" + "                       ---";
         String FechaEntrega = "---" + " 30 / xx / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -82,10 +82,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteManzanaButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-manzana" + "      ---";
-        String ID = "---" + " ID:" + " ====" + "                   ---";
-        String Precio = "---" + " Precio:" + " $---.-0" + "                 ---";
-        String Apartado = "---" + "    •" +" 0 ....." + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-manzana" + "      ---";
+        String ID           = "---" + " ID:" + " ====" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $---.-0" + "                 ---";
+        String Apartado     = "---" + "    •" +" 0 ....." + "                       ---";
         String FechaEntrega = "---" + " 30 / 12 / ...." + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -95,10 +95,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteMariposaButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-mariposa" + "      ---";
-        String ID = "---" + " ID:" + " ......" + "                   ---";
-        String Precio = "---" + " Precio:" + " ${{{.50" + "                 ---";
-        String Apartado = "---" + "    •" +" 0 Pares" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-mariposa" + "      ---";
+        String ID           = "---" + " ID:" + " ......" + "                   ---";
+        String Precio       = "---" + " Precio:" + " ${{{.50" + "                 ---";
+        String Apartado     = "---" + "    •" +" 0 Pares" + "                       ---";
         String FechaEntrega = "---" + " 30 / 12 / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -108,10 +108,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAretePerlaButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-perla" + "      ---";
-        String ID = "---" + " ID:" + " 000000" + "                   ---";
-        String Precio = "---" + " Precio:" + " $000.50" + "                 ---";
-        String Apartado = "---" + "    •" +" 0 ---" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-perla" + "      ---";
+        String ID           = "---" + " ID:" + " 000000" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $000.50" + "                 ---";
+        String Apartado     = "---" + "    •" +" 0 ---" + "                       ---";
         String FechaEntrega = "---" + " -- / 12 / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -121,10 +121,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAretePiñaButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-piña" + "      ---";
-        String ID = "---" + " ID:" + " ----" + "                   ---";
-        String Precio = "---" + " Precio:" + " $---.50" + "                 ---";
-        String Apartado = "---" + "    •" +" 0 --" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-piña" + "      ---";
+        String ID           = "---" + " ID:" + " ----" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $---.50" + "                 ---";
+        String Apartado     = "---" + "    •" +" 0 --" + "                       ---";
         String FechaEntrega = "---" + " 30 / 12 / ---" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);
@@ -134,10 +134,10 @@ public class VerProductoController {
     }
     @FXML
     void OnMouseClickedAreteRostroButton(MouseEvent event) {
-        String Nombre = "---" + " Nombre:" + " Arete-rostro" + "      ---";
-        String ID = "---" + " ID:" + " -----" + "                   ---";
-        String Precio = "---" + " Precio:" + " $---.00" + "                 ---";
-        String Apartado = "---" + "    •" +" 50 Pares" + "                       ---";
+        String Nombre       = "---" + " Nombre:" + " Arete-rostro" + "      ---";
+        String ID           = "---" + " ID:" + " -----" + "                   ---";
+        String Precio       = "---" + " Precio:" + " $---.00" + "                 ---";
+        String Apartado     = "---" + "    •" +" 50 Pares" + "                       ---";
         String FechaEntrega = "---" + " 30 / -- / 2024" + "                  ---";
         VerInformacionProducto.getItems().add(Nombre);
         VerInformacionProducto.getItems().add(ID);

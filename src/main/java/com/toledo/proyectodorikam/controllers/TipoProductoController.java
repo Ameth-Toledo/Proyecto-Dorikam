@@ -37,12 +37,19 @@ public class TipoProductoController {
         callArete.setTitle("Menu: \"Ver Productos\"");
         callArete.setScene(scene);
         callArete.show();
+
+        salirTipoProducto();
     }
 
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callArete.setTitle("Menu: \"Ver Productos\"");
+        callArete.setScene(scene);
+        callArete.show();
+
+        salirTipoProducto();
     }
 
     Stage callZapato = new Stage();
@@ -54,6 +61,11 @@ public class TipoProductoController {
         callZapato.setTitle("Menu: \"Ver Productos\"");
         callZapato.setScene(scene);
         callZapato.show();
+
+        salirTipoProducto();
+    }
+    private void salirTipoProducto(){
+        ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
     @FXML

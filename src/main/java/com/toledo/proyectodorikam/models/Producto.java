@@ -18,60 +18,55 @@ public class Producto {
         this.IDProducto = IDProducto;
         this.stock = stock;
     }
-
     public String getNombreProducto() {
         return NombreProducto;
     }
-
     public void setNombreProducto(String nombreProducto) {
         this.NombreProducto = nombreProducto;
     }
-
     public double getPrecioProducto() {
         return PrecioProducto;
     }
-
     public void setPrecioProducto(double precioProducto) {
         this.PrecioProducto = precioProducto;
     }
-
     public String getFechaCompra() {
         return FechaCompra;
     }
-
     public void setFechaCompra(String fechaCompra) {
         this.FechaCompra = fechaCompra;
     }
-
     public String getNombreCliente() {
         return NombreCliente;
     }
-
     public void setNombreCliente(String nombreCliente) {
         this.NombreCliente = nombreCliente;
     }
-
     public String getLugarEntrega() {
         return LugarEntrega;
     }
-
     public void setLugarEntrega(String lugarEntrega) {
         this.LugarEntrega = lugarEntrega;
     }
-
     public String getIDProducto() {
         return IDProducto;
     }
-
     public void setIDProducto(String IDProducto) {
         this.IDProducto = IDProducto;
     }
-
     public int getStock() {
         return stock;
     }
-
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    public void setMontoRestante(double montoRestante) {
+    }
+    public int getMontoAbonado() {
+        return getMontoAbonado();
+    }
+    private double MontoAbonado;
+    public void setMontoAbonado(double montoAbonado) {
+        this.MontoAbonado = montoAbonado;
     }
 }
