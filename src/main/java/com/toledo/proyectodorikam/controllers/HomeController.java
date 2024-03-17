@@ -40,8 +40,7 @@ public class HomeController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+        salirHome();
     }
 
     Stage callGerente = new Stage();
@@ -55,7 +54,7 @@ public class HomeController {
     void initialize() {
     }
 
-    private void salirReporte() {
+    private void salirHome() {
         ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
@@ -66,7 +65,7 @@ public class HomeController {
         callGerente.setScene(scene);
         callGerente.show();
 
-        salirReporte();
+        salirHome();
     }
     private void abrirAdministradorView() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("administrador-view.fxml"));
@@ -75,7 +74,7 @@ public class HomeController {
         callAdmin.setScene(scene);
         callAdmin.show();
 
-        salirReporte();
+        salirHome();
     }
     public void init(Stage stageRoot) {
         stageRoot.addEventHandler(KeyEvent.KEY_PRESSED, event -> {

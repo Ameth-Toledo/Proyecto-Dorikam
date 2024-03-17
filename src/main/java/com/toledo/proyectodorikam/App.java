@@ -1,11 +1,11 @@
 package com.toledo.proyectodorikam;
-
 import com.toledo.proyectodorikam.controllers.HomeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -18,6 +18,7 @@ public class App extends Application {
         HomeController menuController = fxmlLoader.getController();
         menuController.init(stage);
         Scene scene = new Scene(root);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Dorikam - Home");
         stage.setScene(scene);
         stage.centerOnScreen();
