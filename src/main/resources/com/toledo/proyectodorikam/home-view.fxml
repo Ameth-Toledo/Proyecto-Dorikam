@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1541.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.HomeController">
    <children>
-      <ImageView fitHeight="163.0" fitWidth="423.0" layoutX="415.0" layoutY="71.0">
+      <ImageView fitHeight="163.0" fitWidth="423.0" layoutX="612.0" layoutY="6.0">
          <image>
             <Image url="@Imagenes/DorikamName.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="398.0" fitWidth="326.0" layoutX="954.0" layoutY="402.0">
+      <ImageView fitHeight="398.0" fitWidth="326.0" layoutX="1215.0" layoutY="482.0">
          <image>
             <Image url="@Imagenes/Der-Abajo.png" />
          </image>
@@ -24,45 +24,45 @@
             <Image url="@Imagenes/Izq-Arriba.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="195.0" fitWidth="404.0" layoutX="180.0" layoutY="583.0">
+      <ImageView fx:id="gerente" fitHeight="195.0" fitWidth="404.0" layoutX="186.0" layoutY="624.0">
          <image>
             <Image url="@Imagenes/boton.png" />
          </image>
       </ImageView>
-      <Button fx:id="GerenteButton" layoutX="180.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedGerenteButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Gerente" textFill="WHITE">
+      <Button fx:id="GerenteButton" layoutX="186.0" layoutY="624.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedGerenteButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Gerente" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="50.0" />
          </font></Button>
-      <ImageView fitHeight="195.0" fitWidth="404.0" layoutX="649.0" layoutY="583.0">
+      <ImageView fx:id="admin" fitHeight="195.0" fitWidth="404.0" layoutX="650.0" layoutY="625.0">
          <image>
             <Image url="@Imagenes/boton.png" />
          </image>
       </ImageView>
-      <Button fx:id="AdministradorButton" layoutX="649.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAdministradorButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Administrador" textFill="WHITE">
+      <Button fx:id="AdministradorButton" layoutX="650.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAdministradorButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Administrador" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="34.0" />
          </font></Button>
-      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="415.0" layoutY="617.0">
+      <ImageView fx:id="gerenteimg" fitHeight="128.0" fitWidth="128.0" layoutX="421.0" layoutY="658.0">
          <image>
             <Image url="@Imagenes/Gerente.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="907.0" layoutY="610.0">
+      <ImageView fx:id="admin1" fitHeight="128.0" fitWidth="128.0" layoutX="908.0" layoutY="652.0">
          <image>
             <Image url="@Imagenes/Administrador.png" />
          </image>
       </ImageView>
-      <Label layoutX="81.0" layoutY="255.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
+      <Label layoutX="38.0" layoutY="153.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
          <font>
-            <Font name="Verdana Bold" size="96.0" />
+            <Font name="Verdana Bold" size="67.0" />
          </font>
       </Label>
-      <Label layoutX="163.0" layoutY="472.0" text="Selecciona una opcion porfavor..." textFill="WHITE">
+      <Label layoutX="21.0" layoutY="819.0" text="Selecciona una opcion porfavor..." textFill="WHITE">
          <font>
             <Font name="Tahoma" size="37.0" />
          </font>
       </Label>
-      <ImageView fitHeight="309.0" fitWidth="269.0" layoutX="992.0" layoutY="32.0">
+      <ImageView fitHeight="309.0" fitWidth="269.0" layoutX="1272.0" layoutY="-2.0">
          <image>
             <Image url="@Imagenes/Logo.png" />
          </image>

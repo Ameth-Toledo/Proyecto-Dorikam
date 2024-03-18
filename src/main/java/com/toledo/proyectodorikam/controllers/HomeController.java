@@ -64,8 +64,6 @@ public class HomeController {
         callGerente.setTitle("Inicio de Sesion: \"Gerente\"");
         callGerente.setScene(scene);
         callGerente.show();
-
-        salirHome();
     }
     private void abrirAdministradorView() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("administrador-view.fxml"));
@@ -73,8 +71,6 @@ public class HomeController {
         callAdmin.setTitle("Inicio de Sesion: \"Administrador\"");
         callAdmin.setScene(scene);
         callAdmin.show();
-
-        salirHome();
     }
     public void init(Stage stageRoot) {
         stageRoot.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
