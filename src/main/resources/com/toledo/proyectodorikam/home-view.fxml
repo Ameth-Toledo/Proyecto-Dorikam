@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1541.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.HomeController">
    <children>
-      <ImageView fitHeight="163.0" fitWidth="423.0" layoutX="612.0" layoutY="6.0">
+      <ImageView fitHeight="163.0" fitWidth="423.0" layoutX="613.0" layoutY="14.0">
          <image>
             <Image url="@Imagenes/DorikamName.png" />
          </image>
@@ -52,9 +52,9 @@
             <Image url="@Imagenes/Administrador.png" />
          </image>
       </ImageView>
-      <Label layoutX="38.0" layoutY="153.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
+      <Label layoutX="38.0" layoutY="123.0" prefHeight="128.0" prefWidth="701.0" text="¡Bienvenido!" textFill="WHITE">
          <font>
-            <Font name="Verdana Bold" size="67.0" />
+            <Font name="Verdana Bold" size="50.0" />
          </font>
       </Label>
       <Label layoutX="21.0" layoutY="819.0" text="Selecciona una opcion porfavor..." textFill="WHITE">
