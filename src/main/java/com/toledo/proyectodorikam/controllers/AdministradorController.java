@@ -1,9 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Usuario;
 import javafx.fxml.FXML;
@@ -17,8 +13,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class AdministradorController {
     private Usuario admin = new Usuario();
+    private Stage callEntrar = new Stage();
 
     @FXML
     private ResourceBundle resources;
@@ -38,40 +39,38 @@ public class AdministradorController {
     @FXML
     private Button ExitButton;
 
-    Stage callEntrar = new Stage();
-
     @FXML
     void OnMouseClickedEntrarButton(MouseEvent event) throws IOException {
         String Magally = UsuarioText.getText();
         String Magally2024 = ContraseñaText.getText();
 
         if (Magally.equals(admin.getUsser1()) && Magally2024.equals(admin.getPassword1())){
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                callEntrar.setTitle("Incio de Sesion: \"Administrador\"");
-                callEntrar.setScene(scene);
-                callEntrar.show();
-
-            }catch (IOException e){
-                throw new RuntimeException(e);
-            }
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            callEntrar.setTitle("Menu: \"Administrador\"");
+            callEntrar.setScene(scene);
+            callEntrar.show();
+            Stage stage = (Stage) EntrarButton.getScene().getWindow();
+            stage.close();
         }else {
-            MostraAlerta("Error","verifica tus datos");
+            MostrarAlerta("Error","Verifica tus datos porfavor");
         }
     }
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+    void OnMouseClickedExitButton(MouseEvent event) {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
-    private void MostraAlerta(String title, String content){
+
+    private void MostrarAlerta(String title, String contenido){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText(content);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
+
     @FXML
     void initialize() {
         UsuarioText.setOnKeyPressed(event -> {
@@ -85,18 +84,19 @@ public class AdministradorController {
                 String Magally2024 = ContraseñaText.getText();
 
                 if (Magally.equals(admin.getUsser1()) && Magally2024.equals(admin.getPassword1())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
                         Scene scene = new Scene(fxmlLoader.load());
-                        Stage newStage = new Stage();
-                        newStage.setTitle("Inicio de Sesión: \"Administrador\"");
-                        newStage.setScene(scene);
-                        newStage.show();
+                        callEntrar.setTitle("Inicio de Sesión: \"Administrador\"");
+                        callEntrar.setScene(scene);
+                        callEntrar.show();
+                        Stage stage = (Stage) ContraseñaText.getScene().getWindow();
+                        stage.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    MostraAlerta("Error", "Verifica tus datos");
+                    MostrarAlerta("Error", "Verifica tus datos");
                 }
             }
         });
