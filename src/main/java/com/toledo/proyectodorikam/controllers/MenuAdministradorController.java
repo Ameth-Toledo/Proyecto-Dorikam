@@ -92,7 +92,10 @@ public class MenuAdministradorController {
         callVer.setScene(scene);
         callVer.show();
     }
+    @FXML
+    void onMouseClickedApartado(MouseEvent event) {
 
+    }
     @FXML
     void initialize() {
 

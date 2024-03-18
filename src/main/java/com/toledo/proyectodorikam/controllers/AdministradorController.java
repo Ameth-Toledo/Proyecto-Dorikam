@@ -47,13 +47,13 @@ public class AdministradorController {
         if (Magally.equals(admin.getUsser1()) && Magally2024.equals(admin.getPassword1())){
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            callEntrar.setTitle("Incio de Sesion: \"Administrador\"");
+            callEntrar.setTitle("Menu: \"Administrador\"");
             callEntrar.setScene(scene);
             callEntrar.show();
             Stage stage = (Stage) EntrarButton.getScene().getWindow();
             stage.close();
         }else {
-            MostraAlerta("Error","verifica tus datos");
+            MostrarAlerta("Error","Verifica tus datos porfavor");
         }
     }
 
@@ -63,11 +63,11 @@ public class AdministradorController {
         stage.close();
     }
 
-    private void MostraAlerta(String title, String content){
+    private void MostrarAlerta(String title, String contenido){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText(content);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
 
@@ -96,7 +96,7 @@ public class AdministradorController {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    MostraAlerta("Error", "Verifica tus datos");
+                    MostrarAlerta("Error", "Verifica tus datos");
                 }
             }
         });

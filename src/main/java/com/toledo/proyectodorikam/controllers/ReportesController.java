@@ -51,4 +51,8 @@ public class ReportesController {
         Reporte nuevoReporte = new Reporte(titulo, fecha, detalles);
         listaReportes.add(nuevoReporte);
     }
+
+    public List<Reporte> getListaReportes() {
+        return listaReportes;
+    }
 }
