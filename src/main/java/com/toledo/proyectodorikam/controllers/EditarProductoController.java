@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class EditarProductoController {
 
@@ -19,7 +20,8 @@ public class EditarProductoController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

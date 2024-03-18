@@ -1,62 +1,62 @@
 package com.toledo.proyectodorikam.models;
 
 public class Producto {
-    private String nombreProducto;
-    private double precioProducto;
-    private String fechaCompra;
-    private String nombreCliente;
-    private String lugarEntrega;
+    private String NombreProducto;
+    private double PrecioProducto;
+    private String FechaCompra;
+    private String NombreCliente;
+    private String LugarEntrega;
     private String IDProducto;
     private int stock;
 
     public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock) {
-        this.nombreProducto = nombreProducto;
-        this.precioProducto = precioProducto;
-        this.fechaCompra = fechaCompra;
-        this.nombreCliente = nombreCliente;
-        this.lugarEntrega = lugarEntrega;
+        this.NombreProducto = nombreProducto;
+        this.PrecioProducto = precioProducto;
+        this.FechaCompra = fechaCompra;
+        this.NombreCliente = nombreCliente;
+        this.LugarEntrega = lugarEntrega;
         this.IDProducto = IDProducto;
         this.stock = stock;
     }
 
     public String getNombreProducto() {
-        return nombreProducto;
+        return NombreProducto;
     }
 
     public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+        this.NombreProducto = nombreProducto;
     }
 
     public double getPrecioProducto() {
-        return precioProducto;
+        return PrecioProducto;
     }
 
     public void setPrecioProducto(double precioProducto) {
-        this.precioProducto = precioProducto;
+        this.PrecioProducto = precioProducto;
     }
 
     public String getFechaCompra() {
-        return fechaCompra;
+        return FechaCompra;
     }
 
     public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
+        this.FechaCompra = fechaCompra;
     }
 
     public String getNombreCliente() {
-        return nombreCliente;
+        return NombreCliente;
     }
 
     public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+        this.NombreCliente = nombreCliente;
     }
 
     public String getLugarEntrega() {
-        return lugarEntrega;
+        return LugarEntrega;
     }
 
     public void setLugarEntrega(String lugarEntrega) {
-        this.lugarEntrega = lugarEntrega;
+        this.LugarEntrega = lugarEntrega;
     }
 
     public String getIDProducto() {
@@ -74,4 +74,6 @@ public class Producto {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+
 }
