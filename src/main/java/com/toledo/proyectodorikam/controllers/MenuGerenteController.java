@@ -69,7 +69,13 @@ public class MenuGerenteController{
     }
 
     @FXML
-    void OnMouseClickedEliminarButton(MouseEvent event) {
+    void OnMouseClickedEliminarButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("eliminar-producto-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callVer.setTitle("Menu: \"Ver Productos\"");
+        callVer.setScene(scene);
+        callVer.show();
+
         salirMenuGerente();
     }
 

@@ -8,7 +8,7 @@ public class Eliminar {
     private static List<Eliminar> lista = new ArrayList<>();
 
     static {
-        lista.add(new Eliminar("manzana","",1,"","","",2));
+        lista.add(new Eliminar("22234","manzana",1,"arete","tonala","22/09/2024",2));
         lista.add(new Eliminar("","",1,"","","",2));
         lista.add(new Eliminar("","",1,"","","",2));
         lista.add(new Eliminar("","",1,"","","",2));
