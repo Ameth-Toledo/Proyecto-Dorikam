@@ -8,9 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.VerReportesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.VerReportesController">
     <children>
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="554.0" layoutY="705.0">
+         <image>
+            <Image url="@Imagenes/Entrar.png" />
+         </image>
+      </ImageView>
         <ImageView fitHeight="398.0" fitWidth="326.0">
             <image>
                 <Image url="@Imagenes/Izq-Arriba.png" />
@@ -42,5 +46,10 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
+      <Button fx:id="verReportes" layoutX="554.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ver Reportes" textFill="WHITE">
+         <font>
+            <Font name="CoolveticaRg-Regular" size="23.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

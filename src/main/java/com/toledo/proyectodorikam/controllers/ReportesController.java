@@ -1,35 +1,29 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import com.toledo.proyectodorikam.models.Reporte;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReportesController {
+
     private List<Reporte> listaReportes = new ArrayList<>();
-    @FXML
-    private TextArea detallesReport;
-
-    @FXML
-    private TextField fechaReport;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button ExitButton;
 
     @FXML
     private Button ConfirmarButton;
+
+    @FXML
+    private TextArea detallesReport;
+
+    @FXML
+    private TextField fechaReport;
 
     @FXML
     private TextField tituloReport;
@@ -44,6 +38,11 @@ public class ReportesController {
     void OnMouseClickedExitButton(MouseEvent event) {
         salirReporte();
     }
+
+    private void salirReporte() {
+        ((Stage) ExitButton.getScene().getWindow()).close();
+    }
+
     private void guardarReporte() {
         String titulo = tituloReport.getText();
         String fecha = fechaReport.getText();
@@ -53,13 +52,7 @@ public class ReportesController {
         listaReportes.add(nuevoReporte);
     }
 
-
-    private void salirReporte(){
-        ((Stage) ExitButton.getScene().getWindow()).close();
-    }
-
-
-    @FXML
-    void initialize() {
+    public List<Reporte> getListaReportes() {
+        return listaReportes;
     }
 }

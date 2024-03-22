@@ -1,5 +1,7 @@
 package com.toledo.proyectodorikam.models;
 
+import java.time.LocalDate;
+
 public class Reporte {
     private String titulo;
     private String fecha;
