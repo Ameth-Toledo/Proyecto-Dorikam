@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -56,7 +57,7 @@ public class ApartarProductosController {
     private TextField Ubicacion;
 
     @FXML
-    private Button confirmar;
+    private Button Confirmar;
 
     @FXML
     private TextField NombreProducto;
@@ -68,7 +69,60 @@ public class ApartarProductosController {
     }
 
     @FXML
-    void onMouseClickedconfirmar(MouseEvent event) {
+    void onMouseClickedConfirmar(MouseEvent event) {
+        validarDatos();
+    }
+
+    @FXML
+    void initialize() {
+        setTextFieldEnterListener();
+    }
+
+    private void setTextFieldEnterListener() {
+        NombreProducto.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                IdProducto.requestFocus();
+            }
+        });
+
+        IdProducto.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                MontoAbonado.requestFocus();
+            }
+        });
+
+        MontoAbonado.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                MontoRestante.requestFocus();
+            }
+        });
+
+        MontoRestante.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                IngresaFecha.requestFocus();
+            }
+        });
+
+        IngresaFecha.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                Categoria.requestFocus();
+            }
+        });
+
+        Categoria.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                Confirmar.requestFocus();
+            }
+        });
+
+        Confirmar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                validarDatos();
+            }
+        });
+    }
+
+    private void validarDatos() {
         String nombreProducto = NombreProducto.getText();
         String idProducto = IdProducto.getText();
         String precioProductoStr = MontoAbonado.getText();
@@ -82,31 +136,22 @@ public class ApartarProductosController {
             try {
                 double precioProducto = Double.parseDouble(precioProductoStr);
                 double montoRestante = Double.parseDouble(montoRestanteStr);
-
                 ApartarProducto producto = obtenerProductoPorNombre(nombreProducto);
-
                 if (producto == null) {
                     mostrarAlertaError("Error", "El producto no está disponible en la lista.");
-                    return;
-                }
-
-                if (montoRestante > precioProducto) {
+                } else if (montoRestante > precioProducto) {
                     mostrarAlertaError("Error", "El monto restante no puede ser mayor al monto abonado.");
-                    return;
-                }
-
-                if (montoRestante <= 0) {
+                } else if (montoRestante <= 0) {
                     mostrarAlertaError("Error", "El monto restante debe ser mayor a cero.");
-                    return;
-                }
-
-                int cantidad = 1;
-
-                if (cantidad <= producto.getStock()) {
-                    realizarApartado(producto, cantidad, precioProducto, montoRestante);
-                    mostrarAlerta("Apartado realizado", "El apartado se ha realizado correctamente.");
                 } else {
-                    mostrarAlertaError("Error", "No hay suficientes productos en el stock para realizar el apartado.");
+                    int cantidad = 1;
+
+                    if (cantidad <= producto.getStock()) {
+                        realizarApartado(producto, cantidad, precioProducto, montoRestante);
+                        mostrarAlerta("Apartado realizado", "El apartado se ha realizado correctamente.");
+                    } else {
+                        mostrarAlertaError("Error", "No hay suficientes productos en el stock para realizar el apartado.");
+                    }
                 }
             } catch (NumberFormatException e) {
                 mostrarAlertaError("Error", "Ingrese valores numéricos válidos para el precio y el monto restante.");
@@ -128,11 +173,9 @@ public class ApartarProductosController {
             producto.setStock(producto.getStock() - cantidad);
             producto.setMontoAbonado(producto.getMontoAbonado() + precioUnitario);
             producto.setMontoRestante(montoRestante);
-            System.out.println("Apartado realizado con éxito");
             mostrarAlerta("Apartado realizado", "El apartado se ha realizado correctamente.");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error al realizar el apartado");
             mostrarAlertaError("Error", "Ocurrió un error al realizar el apartado.");
         }
     }
@@ -161,7 +204,4 @@ public class ApartarProductosController {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
-
-    @FXML
-    void initialize() {}
 }

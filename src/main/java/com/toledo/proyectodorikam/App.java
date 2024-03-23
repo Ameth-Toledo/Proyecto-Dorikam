@@ -29,6 +29,7 @@ public class App extends Application {
     private final Map<Button, ImageView> deleteButtonMap = new HashMap<>();
     private ImageView selectedImage;
     private HBox imagesContainer;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
@@ -43,7 +44,7 @@ public class App extends Application {
                 "/com/toledo/proyectodorikam/Imagenes/Promocion5.png"
         };
         imagesContainer = new HBox();
-        imagesContainer.setSpacing(10);
+        imagesContainer.setSpacing(0);
 
         for (String imagePath : imagePaths) {
             Image image = new Image(getClass().getResourceAsStream(imagePath));
@@ -57,21 +58,11 @@ public class App extends Application {
                 selectedImage = (ImageView) event.getSource();
                 selectedImage.setOpacity(0.5);
             });
-            Button deleteButton = new Button("Eliminar");
-            deleteButtonMap.put(deleteButton, imageView);
-            deleteButton.setOnAction(event -> {
-                if (selectedImage != null) {
-                    confirmDelete(selectedImage);
-                } else {
-                    showSelectImageAlert();
-                }
-            });
-            HBox imageBox = new HBox(imageView, deleteButton);
+            HBox imageBox = new HBox(imageView);
             imageBox.setSpacing(10);
             imagesContainer.getChildren().add(imageBox);
         }
-
-        Button uploadButton = new Button("Cargar Imagen");
+        Button uploadButton = new Button("Subir Imagen");
         uploadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Seleccionar Imagen");
@@ -82,10 +73,7 @@ public class App extends Application {
                     ImageView imageView = new ImageView(image);
                     imageView.setFitWidth(300);
                     imageView.setPreserveRatio(true);
-                    Button deleteButton = new Button("Eliminar");
-                    deleteButtonMap.put(deleteButton, imageView);
-                    deleteButton.setOnAction(e -> confirmDelete(imageView));
-                    HBox imageBox = new HBox(imageView, deleteButton);
+                    HBox imageBox = new HBox(imageView);
                     imageBox.setSpacing(10);
                     imagesContainer.getChildren().add(imageBox);
                 } catch (IOException ex) {
@@ -93,20 +81,31 @@ public class App extends Application {
                 }
             }
         });
+        Button deleteButton = new Button("Eliminar");
+        deleteButton.setOnAction(event -> {
+            if (selectedImage != null) {
+                confirmDelete(selectedImage);
+            } else {
+                showSelectImageAlert();
+            }
+        });
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(imagesContainer);
-        scrollPane.setPrefSize(1210, 370);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        HBox buttonBox = new HBox(uploadButton, deleteButton);
+        buttonBox.setSpacing(10);
 
-        VBox contentBox = new VBox(uploadButton, scrollPane);
+        VBox contentBox = new VBox(buttonBox, createScrollPane(imagesContainer));
         contentBox.setSpacing(10);
 
         AnchorPane anchorPane = (AnchorPane) root;
         anchorPane.getChildren().add(contentBox);
-        AnchorPane.setTopAnchor(contentBox, 210.0);
-        AnchorPane.setLeftAnchor(contentBox, 10.0);
+        AnchorPane.setTopAnchor(contentBox, 230.0);
+        AnchorPane.setLeftAnchor(contentBox, 20.0);
+
+        AnchorPane.setTopAnchor(buttonBox, 620.0);
+        AnchorPane.setLeftAnchor(buttonBox, 10.0);
+
+        AnchorPane.setTopAnchor(deleteButton, 620.0);
+        AnchorPane.setLeftAnchor(deleteButton, 150.0);
 
         Scene scene = new Scene(anchorPane);
         stage.setScene(scene);
@@ -114,14 +113,20 @@ public class App extends Application {
         stage.setTitle("Dorikam - Catálogo de Imágenes");
         stage.show();
     }
-
+    private ScrollPane createScrollPane(HBox content) {
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(content);
+        scrollPane.setPrefSize(1200, 350);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        return scrollPane;
+    }
     private void showSelectImageAlert() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Seleccione una imagen");
         alert.setHeaderText("Por favor, seleccione una imagen para eliminar");
         alert.showAndWait();
     }
-
     private void confirmDelete(ImageView imageView) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmar eliminación");
@@ -135,7 +140,6 @@ public class App extends Application {
             }
         });
     }
-
     public static void main(String[] args) {
         launch(args);
     }
