@@ -65,9 +65,14 @@ public class MenuAdministradorController {
         stage.close();
     }
 
+    Stage callVenta = new Stage();
     @FXML
-    void OnMouseClickedRealizarButton(MouseEvent event) {
-
+    void OnMouseClickedRealizarButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callApartar.setTitle("Menu: \"Ver Productos\"");
+        callApartar.setScene(scene);
+        callApartar.show();
     }
 
     @FXML
@@ -92,9 +97,15 @@ public class MenuAdministradorController {
         callVer.setScene(scene);
         callVer.show();
     }
-    @FXML
-    void onMouseClickedApartado(MouseEvent event) {
 
+    Stage callApartar = new Stage();
+    @FXML
+    void onMouseClickedApartado(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("apartar-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callApartar.setTitle("Menu: \"Ver Productos\"");
+        callApartar.setScene(scene);
+        callApartar.show();
     }
     @FXML
     void initialize() {

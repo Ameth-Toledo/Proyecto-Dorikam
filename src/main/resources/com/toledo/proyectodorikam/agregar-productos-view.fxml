@@ -40,12 +40,12 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="NameProduct" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="PriceProduct" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="CategoryProduct" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="UbicationProduct" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="DateProduct" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="IDProduct" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />
@@ -80,7 +80,7 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button layoutX="736.0" layoutY="657.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
+      <Button fx:id="ConfirmarButton" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
