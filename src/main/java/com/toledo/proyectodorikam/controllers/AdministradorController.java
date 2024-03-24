@@ -66,6 +66,7 @@ public class AdministradorController {
             cerrarVentana();
         }
     }
+
     private void iniciarSesion() {
         String Magally = UsuarioText.getText();
         String Magally2024 = ContraseñaText.getText();
