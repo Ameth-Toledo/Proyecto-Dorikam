@@ -5,15 +5,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,6 +58,7 @@ public class App extends Application {
             imagesContainer.getChildren().add(imageBox);
         }
         Button uploadButton = new Button("Subir Imagen");
+        uploadButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Rockwell;");
         uploadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Seleccionar Imagen");
@@ -82,6 +78,7 @@ public class App extends Application {
             }
         });
         Button deleteButton = new Button("Eliminar");
+        deleteButton.setStyle("-fx-background-color: #FF0000; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Rockwell;");
         deleteButton.setOnAction(event -> {
             if (selectedImage != null) {
                 confirmDelete(selectedImage);

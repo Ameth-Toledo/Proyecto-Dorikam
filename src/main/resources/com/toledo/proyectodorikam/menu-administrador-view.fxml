@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.MenuAdministradorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.MenuAdministradorController">
    <children>
       <ImageView fitHeight="398.0" fitWidth="326.0" layoutX="954.0" layoutY="402.0">
          <image>
@@ -76,7 +76,7 @@
       </Button>
       <Button fx:id="VerProductos" layoutX="852.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVerProductos" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ver Productos" textFill="WHITE">
          <font>
-            <Font name="Tahoma Bold" size="33.0" />
+            <Font name="Tahoma Bold" size="31.0" />
          </font>
       </Button>
       <Button fx:id="UbicarButton" layoutX="57.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedUbicarButton" prefHeight="108.0" prefWidth="359.0" style="-fx-alignment: rigth; -fx-background-color: TRANSPARENT;" text="Ubicar Productos" textFill="WHITE">
@@ -148,15 +148,20 @@
             <Image url="@Imagenes/Reporte.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="852.0" layoutY="427.0">
+      <ImageView fitHeight="108.0" fitWidth="360.0" layoutX="851.0" layoutY="420.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="Apartado" layoutX="858.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedApartado" prefHeight="100.0" prefWidth="349.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGH;" text="Apartado de producto" textFill="#fffefe">
+      <Button fx:id="Apartado" layoutX="852.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedApartado" prefHeight="108.0" prefWidth="359.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGH;" text="Apartar producto" textFill="#fffefe">
          <font>
-            <Font name="Tahoma Bold" size="25.0" />
+            <Font name="Tahoma Bold" size="28.0" />
          </font>
       </Button>
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="1106.0" layoutY="427.0">
+         <image>
+            <Image url="@Imagenes/apartar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

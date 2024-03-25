@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class HomeController {
 
@@ -96,5 +97,10 @@ public class HomeController {
                     break;
             }
         });
+        //fullScreen(stageRoot);
     }
+    //private void fullScreen(Stage stage) {
+        //stage.setFullScreen(true);
+        //stage.setFullScreenExitHint("");
+    //}
 }

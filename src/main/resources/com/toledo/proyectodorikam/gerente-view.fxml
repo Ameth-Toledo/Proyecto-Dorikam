@@ -16,6 +16,7 @@
             <Image url="@Imagenes/Der-Abajo.png" />
          </image>
       </ImageView>
+      <AnchorPane layoutX="628.0" layoutY="202.0" prefHeight="599.0" prefWidth="691.0" style="-fx-border-color: white; -fx-border-width: 15px; -fx-border-radius: 40;" />
       <ImageView fitHeight="398.0" fitWidth="326.0">
          <image>
             <Image url="@Imagenes/Izq-Arriba.png" />
@@ -51,7 +52,7 @@
             <Font name="Tahoma Bold" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="ExitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Regresar" textFill="WHITE">
+      <Button fx:id="ExitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Regresar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>

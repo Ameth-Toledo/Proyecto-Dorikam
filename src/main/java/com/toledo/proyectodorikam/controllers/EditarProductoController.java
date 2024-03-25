@@ -3,7 +3,11 @@ package com.toledo.proyectodorikam.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -19,6 +23,36 @@ public class EditarProductoController {
     private Button ExitButton;
 
     @FXML
+    private TextField NameProduct;
+
+    @FXML
+    private TextField PriceProduct;
+
+    @FXML
+    private TextField CategoriaProduct;
+
+    @FXML
+    private TextField UbicationProduct;
+
+    @FXML
+    private TextField DateProduct;
+
+    @FXML
+    private TextField IDProduct;
+
+    @FXML
+    private Button ConfirmarButton;
+
+    @FXML
+    void OnMouseClickedConfirmarButton(MouseEvent event) {
+        if (camposVacios()) {
+            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+        } else {
+            // Fredyyyy Aquí va la lógica para el botón Confirmar
+        }
+    }
+
+    @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
@@ -26,8 +60,71 @@ public class EditarProductoController {
 
     @FXML
     void initialize() {
-        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'editar-producto-view.fxml'.";
-
+        configureEnterKey();
     }
 
+    private void configureEnterKey() {
+        NameProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                IDProduct.requestFocus();
+            }
+        });
+
+        IDProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                PriceProduct.requestFocus();
+            }
+        });
+
+        PriceProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                DateProduct.requestFocus();
+            }
+        });
+
+        DateProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                CategoriaProduct.requestFocus();
+            }
+        });
+
+        CategoriaProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                UbicationProduct.requestFocus();
+            }
+        });
+
+        UbicationProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                ConfirmarButton.requestFocus();
+            }
+        });
+
+        ConfirmarButton.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                if (camposVacios()) {
+                    mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+                } else {
+                    // aquí otra ves va la lógica para el botón Confirmar
+                }
+            }
+        });
+    }
+
+    private boolean camposVacios() {
+        return NameProduct.getText().isEmpty() ||
+                IDProduct.getText().isEmpty() ||
+                PriceProduct.getText().isEmpty() ||
+                DateProduct.getText().isEmpty() ||
+                CategoriaProduct.getText().isEmpty() ||
+                UbicationProduct.getText().isEmpty();
+    }
+
+    private void mostrarAlertaError(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
 }
