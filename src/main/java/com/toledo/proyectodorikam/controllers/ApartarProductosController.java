@@ -6,10 +6,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -76,50 +78,68 @@ public class ApartarProductosController {
     @FXML
     void initialize() {
         setTextFieldEnterListener();
+        IngresaFecha.setText(LocalDate.now().toString());
     }
-
     private void setTextFieldEnterListener() {
         NombreProducto.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 IdProducto.requestFocus();
             }
         });
-
         IdProducto.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 MontoAbonado.requestFocus();
             }
         });
-
         MontoAbonado.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 MontoRestante.requestFocus();
             }
         });
-
         MontoRestante.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                IngresaFecha.requestFocus();
-            }
-        });
-
-        IngresaFecha.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 Categoria.requestFocus();
             }
         });
-
         Categoria.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                Confirmar.requestFocus();
+                Ubicacion.requestFocus();
             }
         });
-
+        Ubicacion.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                handleLastTextFieldEnterKeyPressed(event);
+            }
+        });
         Confirmar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 validarDatos();
             }
         });
+    }
+
+    @FXML
+    public void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String userInput = Ubicacion.getText().toLowerCase().trim();
+            switch (userInput) {
+                case "albania alta":
+                case "el carmen":
+                case "albania":
+                    Ubicacion.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                            "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
+                    break;
+                case "las torres":
+                case "fraccionamiento las torres":
+                case "fraccionamiento":
+                    Ubicacion.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                            "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
+                    break;
+                default:
+                    break;
+            }
+            validarDatos();
+        }
     }
 
     private void validarDatos() {
@@ -205,3 +225,4 @@ public class ApartarProductosController {
         alert.showAndWait();
     }
 }
+

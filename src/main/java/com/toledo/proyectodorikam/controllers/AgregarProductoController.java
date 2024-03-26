@@ -1,6 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class AgregarProductoController {
 
@@ -38,6 +38,7 @@ public class AgregarProductoController {
     @FXML
     private Button ConfirmarButton;
 
+
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
         confirmarProducto();
@@ -54,6 +55,7 @@ public class AgregarProductoController {
         configurarEventoEnterBotonConfirmar();
         ExitButton.setOnKeyPressed(this::handleKeyPressed);
         ConfirmarButton.setOnKeyPressed(this::handleKeyPressed);
+        DateProduct.setText(LocalDate.now().toString());
     }
 
     private void configurarEventosTextField() {
@@ -72,12 +74,33 @@ public class AgregarProductoController {
     private void handleTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             TextField textField = (TextField) event.getSource();
-            switchToNextTextField(textField);
+            if (textField == PriceProduct) {
+                CategoryProduct.requestFocus();
+            } else {
+                switchToNextTextField(textField);
+            }
         }
     }
 
     private void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
+            String userInput = UbicationProduct.getText().toLowerCase().trim();
+            switch (userInput) {
+                case "albania alta":
+                case "el carmen":
+                case "albania":
+                    UbicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                            "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
+                    break;
+                case "las torres":
+                case "fraccionamiento las torres":
+                case "fraccionamiento":
+                    UbicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                            "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
+                    break;
+                default:
+                    break;
+            }
             confirmarProducto();
         }
     }
@@ -86,6 +109,7 @@ public class AgregarProductoController {
         if (faltaRellenarCampo()) {
             mostrarAlerta("Error", "Falta rellenar un campo.");
         } else {
+            // aqui vamos la logica para confirmar el producto
         }
     }
 
