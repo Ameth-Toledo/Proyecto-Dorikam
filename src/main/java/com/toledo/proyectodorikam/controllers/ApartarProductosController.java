@@ -9,7 +9,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -149,7 +148,6 @@ public class ApartarProductosController {
         String montoRestanteStr = MontoRestante.getText();
         String fechaCompra = IngresaFecha.getText();
         String categoria = Categoria.getText();
-
         if (camposVacios(nombreProducto, idProducto, precioProductoStr, montoRestanteStr, fechaCompra, categoria)) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
@@ -225,4 +223,3 @@ public class ApartarProductosController {
         alert.showAndWait();
     }
 }
-

@@ -9,7 +9,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -48,54 +50,51 @@ public class MenuGerenteController {
     @FXML
     void OnMouseClickedAgregarButton(MouseEvent event) throws IOException {
         abrirAgregarButton();
-        salirMenuGerente();
+        cerrarVentana();
     }
 
     @FXML
     void OnMouseClickedContarButton(MouseEvent event) throws IOException {
         abrirContarButton();
-        salirMenuGerente();
+        cerrarVentana();
     }
 
     @FXML
     void OnMouseClickedEditarButton(MouseEvent event) throws IOException {
         abrirEditarButton();
-        salirMenuGerente();
+        cerrarVentana();
     }
 
     @FXML
     void OnMouseClickedEliminarButton(MouseEvent event) throws IOException {
         abrirEliminarButton();
-        salirMenuGerente();
+        cerrarVentana();
     }
 
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        salirMenuGerente();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        cerrarVentana();
     }
 
-    @FXML void OnMouseClickedUbicarButton(MouseEvent event) {
-        salirMenuGerente();
+    @FXML void OnMouseClickedUbicarButton(MouseEvent event) throws IOException {
+        cerrarVentana();
     }
 
     @FXML
-    void OnMouseClickedVentasButton(MouseEvent event) {
-        salirMenuGerente();
+    void OnMouseClickedVentasButton(MouseEvent event) throws IOException {
+        cerrarVentana();
     }
 
     @FXML
     void OnMouseClickedVerProductos(MouseEvent event) throws IOException {
         abrirVerButton();
-        salirMenuGerente();
+        cerrarVentana();
     }
 
     @FXML
     void OnMouseClickedVerReportesButton(MouseEvent event) throws IOException {
-        salirMenuGerente();
-    }
-
-    private void salirMenuGerente() {
-        ((Stage) ExitButton.getScene().getWindow()).close();
+        abrirReportesButton();
+        cerrarVentana();
     }
 
     Stage callAgregar = new Stage();
@@ -106,6 +105,7 @@ public class MenuGerenteController {
         callAgregar.setTitle("Agregar Productos");
         callAgregar.setScene(scene);
         callAgregar.show();
+        cerrarVentana();
     }
 
     Stage callContar = new Stage();
@@ -116,6 +116,7 @@ public class MenuGerenteController {
         callContar.setTitle("Inicio de Sesion: \"Gerente\"");
         callContar.setScene(scene);
         callContar.show();
+        cerrarVentana();
     }
 
     Stage callEditar = new Stage();
@@ -125,6 +126,7 @@ public class MenuGerenteController {
         callEditar.setTitle("Menu: \"Ver Productos\"");
         callEditar.setScene(scene);
         callEditar.show();
+        cerrarVentana();
     }
 
     Stage callEliminar = new Stage();
@@ -134,6 +136,7 @@ public class MenuGerenteController {
         callEliminar.setTitle("Menu: \"eliminar Productos\"");
         callEliminar.setScene(scene);
         callEliminar.show();
+        cerrarVentana();
     }
 
     Stage callVer = new Stage();
@@ -143,10 +146,11 @@ public class MenuGerenteController {
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
         callVer.show();
+        cerrarVentana();
     }
 
     private void abrirVentasButton() throws IOException {
-
+        cerrarVentana();
     }
 
     private void abrirReportesButton() throws IOException {
@@ -156,14 +160,15 @@ public class MenuGerenteController {
         stage.setTitle("Ver Reportes");
         stage.setScene(scene);
         stage.show();
+        cerrarVentana();
     }
 
     private void abrirUbicarButton() throws IOException {
-
+        cerrarVentana();
     }
 
     private void abrirContarProductos() throws IOException {
-
+        cerrarVentana();
     }
     private void cerrarVentana() throws IOException {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
@@ -232,6 +237,18 @@ public class MenuGerenteController {
                                 e.printStackTrace();
                             }
                             break;
+                        case F9:
+                            showAlert("Ayuda",
+                                    "𝑭𝟏:    𝑨𝒈𝒓𝒆𝒈𝒂𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑭𝟐:    𝑬𝒅𝒊𝒕𝒂𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑭𝟑:    𝑬𝒍𝒊𝒎𝒊𝒏𝒂𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑭𝟒:    𝑽𝒆𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑭𝟓:    𝑽𝒆𝒓 𝑽𝒆𝒏𝒕𝒂𝒔\n" +
+                                            "𝑭𝟔:    𝑽𝒆𝒓 𝑹𝒆𝒑𝒐𝒓𝒕𝒆𝒔\n" +
+                                            "𝑭𝟕:    𝑼𝒃𝒊𝒄𝒂𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑭𝟖:    𝑪𝒐𝒏𝒕𝒂𝒓 𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔\n" +
+                                            "𝑬𝑺𝑪:  𝑺𝒂𝒍𝒊𝒓");
+                            break;
                         case ESCAPE:
                             try {
                                 cerrarVentana();
@@ -245,5 +262,14 @@ public class MenuGerenteController {
                 });
             }
         });
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        alert.showAndWait();
     }
 }

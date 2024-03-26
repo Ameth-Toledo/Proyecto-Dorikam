@@ -1,9 +1,11 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -11,8 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class AgregarProductoController {
+    private HashMap<String, Producto> productosHashMap = new HashMap<>();
 
     @FXML
     private Button ExitButton;
@@ -107,12 +111,32 @@ public class AgregarProductoController {
 
     private void confirmarProducto() {
         if (faltaRellenarCampo()) {
-            mostrarAlerta("Error", "Falta rellenar un campo.");
+            mostrarAlertaError("Error", "Falta rellenar un campo.");
         } else {
-            // aqui vamos la logica para confirmar el producto
+            String nombre = NameProduct.getText();
+            String id = IDProduct.getText();
+            double precio = Double.parseDouble(PriceProduct.getText());
+            String fecha = DateProduct.getText();
+            String categoria = CategoryProduct.getText();
+            String ubicacion = UbicationProduct.getText();
+
+            Producto producto = new Producto(nombre, precio, fecha, "nulo", ubicacion, id, 0, categoria);
+
+            productosHashMap.put(id, producto);
+
+            limpiarCampos();
+
+            mostrarAlertaInformation("Exito", "Producto agregado correctamente");
         }
     }
 
+    private void limpiarCampos(){
+        NameProduct.clear();
+        IDProduct.clear();
+        PriceProduct.clear();
+        CategoryProduct.clear();
+        UbicationProduct.clear();
+    }
     private boolean faltaRellenarCampo() {
         return NameProduct.getText().isEmpty() || IDProduct.getText().isEmpty() ||
                 PriceProduct.getText().isEmpty() || DateProduct.getText().isEmpty() ||
@@ -154,11 +178,28 @@ public class AgregarProductoController {
         stage.close();
     }
 
-    private void mostrarAlerta(String title, String contenido) {
+    private void mostrarAlertaError(String title, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
+        alert.setOnShown(event ->{
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        });
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String title, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.setOnShown(event ->{
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        });
         alert.showAndWait();
     }
 }
+
