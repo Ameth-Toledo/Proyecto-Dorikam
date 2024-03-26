@@ -8,8 +8,9 @@ public class Producto {
     private String LugarEntrega;
     private String IDProducto;
     private int stock;
+    private String Categoria;
 
-    public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock) {
+    public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock, String categoria) {
         this.NombreProducto = nombreProducto;
         this.PrecioProducto = precioProducto;
         this.FechaCompra = fechaCompra;
@@ -17,6 +18,7 @@ public class Producto {
         this.LugarEntrega = lugarEntrega;
         this.IDProducto = IDProducto;
         this.stock = stock;
+        this.Categoria = categoria;
     }
 
     public String getNombreProducto() {
@@ -75,5 +77,11 @@ public class Producto {
         this.stock = stock;
     }
 
+    public String getCategoria() {
+        return Categoria;
+    }
 
+    public void setCategoria(String categoria) {
+        Categoria = categoria;
+    }
 }

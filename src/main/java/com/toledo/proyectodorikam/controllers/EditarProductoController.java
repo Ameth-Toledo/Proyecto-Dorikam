@@ -1,17 +1,22 @@
 package com.toledo.proyectodorikam.controllers;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class EditarProductoController {
+
+    private HashMap<String, Producto> productosHashMap;
 
     @FXML
     private ResourceBundle resources;
@@ -43,12 +48,42 @@ public class EditarProductoController {
     @FXML
     private Button ConfirmarButton;
 
+    public EditarProductoController() {
+        this.productosHashMap = new HashMap<>();
+    }
+
+    public void setProductosHashMap(HashMap<String, Producto> productosHashMap) {
+        this.productosHashMap = productosHashMap;
+    }
+
+    private Producto buscarProductoPorNombre(String nombre) {
+        for (Producto producto : productosHashMap.values()) {
+            if (producto.getNombreProducto().equalsIgnoreCase(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
         if (camposVacios()) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
-            // Fredyyyy Aquí va la lógica para el botón Confirmar
+            String nombreProducto = NameProduct.getText();
+            Producto producto = buscarProductoPorNombre(nombreProducto);
+
+            if (producto != null){
+                producto.setIDProducto(IDProduct.getText());
+                producto.setPrecioProducto(Double.parseDouble(PriceProduct.getText()));
+                producto.setCategoria(CategoriaProduct.getText());
+                producto.setLugarEntrega(UbicationProduct.getText());
+                producto.setFechaCompra(DateProduct.getText());
+
+                mostrarAlertaInformacion("Éxito", "Producto actualizado exitosamente.");
+            } else {
+                mostrarAlertaError("Error", "El producto no existe.");
+            }
         }
     }
 
@@ -105,7 +140,20 @@ public class EditarProductoController {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
                 } else {
-                    // aquí otra ves va la lógica para el botón Confirmar
+                    String nombreProducto = NameProduct.getText();
+                    Producto producto = buscarProductoPorNombre(nombreProducto);
+
+                    if (producto != null) {
+                        producto.setIDProducto(IDProduct.getText());
+                        producto.setPrecioProducto(Double.parseDouble(PriceProduct.getText()));
+                        producto.setCategoria(CategoriaProduct.getText());
+                        producto.setLugarEntrega(UbicationProduct.getText());
+                        producto.setFechaCompra(DateProduct.getText());
+
+                        mostrarAlertaInformacion("Éxito", "Producto actualizado exitosamente.");
+                    } else {
+                        mostrarAlertaError("Error", "El producto no existe.");
+                    }
                 }
             }
         });
@@ -120,11 +168,19 @@ public class EditarProductoController {
                 UbicationProduct.getText().isEmpty();
     }
 
-    private void mostrarAlertaError(String titulo, String contenido) {
+    private void mostrarAlertaError(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
-        alert.setContentText(contenido);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformacion(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
         alert.showAndWait();
     }
 }

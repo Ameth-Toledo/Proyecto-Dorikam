@@ -1,5 +1,6 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Eliminar;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -7,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 public class EliminarProductoController {
 
@@ -39,8 +42,13 @@ public class EliminarProductoController {
         if (camposVacios()) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
-            // fredy Aquí va la lógica para el botón Confirmar
+            eliminarProducto();
         }
+    }
+
+    private void eliminarProducto() {
+        String nombreProducto = NameProduct.getText();
+        Eliminar.eliminarProducto(nombreProducto);
     }
 
     @FXML
@@ -52,6 +60,7 @@ public class EliminarProductoController {
     @FXML
     void initialize() {
         configureEnterKey();
+        DateProduct.setText(LocalDate.now().toString());
     }
 
     private void configureEnterKey() {
@@ -69,12 +78,6 @@ public class EliminarProductoController {
 
         PriceProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                DateProduct.requestFocus();
-            }
-        });
-
-        DateProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
                 CategoryProduct.requestFocus();
             }
         });
@@ -86,8 +89,22 @@ public class EliminarProductoController {
         });
 
         UbicationProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
-                ConfirmarButton.requestFocus();
+            if (event.getCode() == KeyCode.ENTER) {
+                String userInput = UbicationProduct.getText().toLowerCase().trim();
+                switch (userInput) {
+                    case "albania alta":
+                    case "el carmen":
+                    case "albania":
+                        UbicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                                "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
+                        break;
+                    case "las torres":
+                    case "fraccionamiento las torres":
+                    case "fraccionamiento":
+                        UbicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                                "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
+                        break;
+                }
             }
         });
 
@@ -96,7 +113,7 @@ public class EliminarProductoController {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
                 } else {
-                    // Aquí igual va la lógica para el botón Confirmar
+                    eliminarProducto();
                 }
             }
         });
