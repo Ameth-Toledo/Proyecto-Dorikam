@@ -36,7 +36,7 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="1043.0" layoutY="586.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="1005.0">
+      <Button fx:id="ExitButton" layoutX="1043.0" layoutY="586.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGHT;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="1005.0">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
