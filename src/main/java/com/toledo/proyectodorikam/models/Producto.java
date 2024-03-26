@@ -8,6 +8,7 @@ public class Producto {
     private String LugarEntrega;
     private String IDProducto;
     private int stock;
+    private boolean eliminado;
 
     public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock) {
         this.NombreProducto = nombreProducto;
@@ -76,4 +77,11 @@ public class Producto {
     }
 
 
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
 }
