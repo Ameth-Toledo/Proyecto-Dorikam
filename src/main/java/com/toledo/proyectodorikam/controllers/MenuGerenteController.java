@@ -76,15 +76,17 @@ public class MenuGerenteController{
     }
 
     Stage callEliminar = new Stage();
+
     @FXML
     void OnMouseClickedEliminarButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("eliminar-producto-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callEditar.setTitle("Menu: \"Ver Productos\"");
-        callEditar.setScene(scene);
-        callEditar.show();
+        callEliminar.setTitle("Menu: \"Ver eliminar\"");
+        callEliminar.setScene(scene);
+        callEliminar.show();
         salirMenuGerente();
     }
+
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
