@@ -1,6 +1,7 @@
 package com.toledo.proyectodorikam.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -15,8 +16,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class EditarProductoController {
+    private ArrayList<Producto> listaProductos;
 
-    private HashMap<String, Producto> productosHashMap;
+    public EditarProductoController() {
+    }
 
     @FXML
     private ResourceBundle resources;
@@ -47,23 +50,6 @@ public class EditarProductoController {
 
     @FXML
     private Button ConfirmarButton;
-
-    public EditarProductoController() {
-        this.productosHashMap = new HashMap<>();
-    }
-
-    public void setProductosHashMap(HashMap<String, Producto> productosHashMap) {
-        this.productosHashMap = productosHashMap;
-    }
-
-    private Producto buscarProductoPorNombre(String nombre) {
-        for (Producto producto : productosHashMap.values()) {
-            if (producto.getNombreProducto().equalsIgnoreCase(nombre)) {
-                return producto;
-            }
-        }
-        return null;
-    }
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
@@ -166,6 +152,15 @@ public class EditarProductoController {
                 DateProduct.getText().isEmpty() ||
                 CategoriaProduct.getText().isEmpty() ||
                 UbicationProduct.getText().isEmpty();
+    }
+
+    private Producto buscarProductoPorNombre(String nombre) {
+        for (Producto producto : listaProductos) {
+            if (producto.getNombreProducto().equalsIgnoreCase(nombre)) {
+                return producto;
+            }
+        }
+        return null;
     }
 
     private void mostrarAlertaError(String titulo, String mensaje) {

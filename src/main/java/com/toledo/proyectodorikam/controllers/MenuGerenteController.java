@@ -119,15 +119,16 @@ public class MenuGerenteController {
         cerrarVentana();
     }
 
-    Stage callEditar = new Stage();
     private void abrirEditarButton() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editar-producto-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callEditar.setTitle("Menu: \"Ver Productos\"");
+        Stage callEditar = new Stage(); // Crear una nueva instancia de Stage
+        callEditar.setTitle("Editar Producto");
         callEditar.setScene(scene);
         callEditar.show();
         cerrarVentana();
     }
+
 
     Stage callEliminar = new Stage();
     private void abrirEliminarButton() throws IOException {

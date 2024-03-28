@@ -1,7 +1,10 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -13,10 +16,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class AgregarProductoController {
-    private HashMap<String, Producto> productosHashMap = new HashMap<>();
+
+    private ArrayList<Producto> listaProductos = new ArrayList<>();
 
     @FXML
     private Button ExitButton;
@@ -42,6 +46,7 @@ public class AgregarProductoController {
     @FXML
     private Button ConfirmarButton;
 
+    Stage callRegresar = new Stage();
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
@@ -50,6 +55,12 @@ public class AgregarProductoController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Menu: \"Gerente\"");
+        callRegresar.setScene(scene);
+        callRegresar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callRegresar.show();
         cerrarVentana();
     }
 
@@ -121,12 +132,11 @@ public class AgregarProductoController {
             String ubicacion = UbicationProduct.getText();
 
             Producto producto = new Producto(nombre, precio, fecha, "nulo", ubicacion, id, 0, categoria);
-
-            productosHashMap.put(id, producto);
+            listaProductos.add(producto);
 
             limpiarCampos();
 
-            mostrarAlertaInformation("Exito", "Producto agregado correctamente");
+            mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
         }
     }
 
@@ -137,6 +147,7 @@ public class AgregarProductoController {
         CategoryProduct.clear();
         UbicationProduct.clear();
     }
+
     private boolean faltaRellenarCampo() {
         return NameProduct.getText().isEmpty() || IDProduct.getText().isEmpty() ||
                 PriceProduct.getText().isEmpty() || DateProduct.getText().isEmpty() ||
@@ -201,5 +212,8 @@ public class AgregarProductoController {
         });
         alert.showAndWait();
     }
-}
 
+    public ArrayList<Producto> getListaProductos() {
+        return listaProductos;
+    }
+}
