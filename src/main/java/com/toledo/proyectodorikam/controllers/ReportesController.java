@@ -1,6 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import com.toledo.proyectodorikam.models.Reporte;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,12 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReportesController {
-
-    private List<Reporte> listaReportes = new ArrayList<>();
 
     @FXML
     private Button ExitButton;
@@ -33,7 +28,6 @@ public class ReportesController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        guardarReporte();
         salirReporte();
     }
 
@@ -71,7 +65,6 @@ public class ReportesController {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
                 } else {
-                    guardarReporte();
                     salirReporte();
                 }
             }
@@ -88,23 +81,11 @@ public class ReportesController {
         ((Stage) ExitButton.getScene().getWindow()).close();
     }
 
-    private void guardarReporte() {
-        String titulo = tituloReport.getText();
-        String fecha = fechaReport.getText();
-        String detalles = detallesReport.getText();
-
-        Reporte nuevoReporte = new Reporte(titulo, fecha, detalles);
-        listaReportes.add(nuevoReporte);
-    }
-
     private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
-    }
-    public List<Reporte> getListaReportes() {
-        return listaReportes;
     }
 }

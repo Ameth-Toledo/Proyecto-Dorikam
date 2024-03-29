@@ -1,6 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import com.toledo.proyectodorikam.models.Eliminar;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -41,14 +40,7 @@ public class EliminarProductoController {
     void OnMouseClickedConfirmarButton(MouseEvent event) {
         if (camposVacios()) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
-        } else {
-            eliminarProducto();
         }
-    }
-
-    private void eliminarProducto() {
-        String nombreProducto = NameProduct.getText();
-        Eliminar.eliminarProducto(nombreProducto);
     }
 
     @FXML
@@ -112,8 +104,6 @@ public class EliminarProductoController {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
-                } else {
-                    eliminarProducto();
                 }
             }
         });

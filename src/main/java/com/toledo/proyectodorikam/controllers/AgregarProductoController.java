@@ -1,7 +1,6 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.App;
-import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,11 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class AgregarProductoController {
-
-    private ArrayList<Producto> listaProductos = new ArrayList<>();
 
     @FXML
     private Button ExitButton;
@@ -50,7 +46,9 @@ public class AgregarProductoController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        confirmarProducto();
+        limpiarCampos();
+
+        mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
     }
 
     @FXML
@@ -99,41 +97,6 @@ public class AgregarProductoController {
 
     private void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            String userInput = UbicationProduct.getText().toLowerCase().trim();
-            switch (userInput) {
-                case "albania alta":
-                case "el carmen":
-                case "albania":
-                    UbicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
-                            "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
-                    break;
-                case "las torres":
-                case "fraccionamiento las torres":
-                case "fraccionamiento":
-                    UbicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
-                            "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
-                    break;
-                default:
-                    break;
-            }
-            confirmarProducto();
-        }
-    }
-
-    private void confirmarProducto() {
-        if (faltaRellenarCampo()) {
-            mostrarAlertaError("Error", "Falta rellenar un campo.");
-        } else {
-            String nombre = NameProduct.getText();
-            String id = IDProduct.getText();
-            double precio = Double.parseDouble(PriceProduct.getText());
-            String fecha = DateProduct.getText();
-            String categoria = CategoryProduct.getText();
-            String ubicacion = UbicationProduct.getText();
-
-            Producto producto = new Producto(nombre, precio, fecha, "nulo", ubicacion, id, 0, categoria);
-            listaProductos.add(producto);
-
             limpiarCampos();
 
             mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
@@ -146,12 +109,6 @@ public class AgregarProductoController {
         PriceProduct.clear();
         CategoryProduct.clear();
         UbicationProduct.clear();
-    }
-
-    private boolean faltaRellenarCampo() {
-        return NameProduct.getText().isEmpty() || IDProduct.getText().isEmpty() ||
-                PriceProduct.getText().isEmpty() || DateProduct.getText().isEmpty() ||
-                CategoryProduct.getText().isEmpty() || UbicationProduct.getText().isEmpty();
     }
 
     private void switchToNextTextField(TextField currentTextField) {
@@ -211,9 +168,5 @@ public class AgregarProductoController {
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         });
         alert.showAndWait();
-    }
-
-    public ArrayList<Producto> getListaProductos() {
-        return listaProductos;
     }
 }
