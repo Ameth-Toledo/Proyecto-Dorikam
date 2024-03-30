@@ -1,8 +1,14 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Producto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -37,11 +43,42 @@ public class EliminarProductoController {
     private Button ConfirmarButton;
 
     @FXML
+    private Button BuscarButton;
+
+    @FXML
+    private ListView<Producto> listaProductos;
+
+    private FilteredList<Producto> filteredData;
+
+    @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        if (camposVacios()) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+        Producto productoSeleccionado = listaProductos.getSelectionModel().getSelectedItem();
+        if (productoSeleccionado != null) {
+            listaProductos.getItems().remove(productoSeleccionado);
+            mostrarAlertaInformation("Exito", "Producto eliminado correctamente");
+        } else {
+            mostrarAlertaError("Error", "Por favor, seleccione un producto a eliminar");
         }
     }
+
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProductoBuscado = NameProduct.getText();
+        if (nombreProductoBuscado.isEmpty()) {
+            mostrarAlertaError("Error", "Por favor, ingrese el nombre del producto a buscar.");
+            return;
+        }
+
+        filteredData.setPredicate(producto -> {
+            if (nombreProductoBuscado == null || nombreProductoBuscado.isEmpty()) {
+                return true;
+            }
+            String nombreProducto = producto.getNombre().toLowerCase();
+            return nombreProducto.contains(nombreProductoBuscado.toLowerCase());
+        });
+        listaProductos.setItems(filteredData);
+    }
+
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
@@ -53,7 +90,23 @@ public class EliminarProductoController {
     void initialize() {
         configureEnterKey();
         DateProduct.setText(LocalDate.now().toString());
+
+        ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
+        FilteredList<Producto> filteredData = new FilteredList<>(listaProductosData, p -> true);
+
+        NameProduct.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(producto -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String nombreProducto = producto.getNombre().toLowerCase();
+                return nombreProducto.contains(newValue.toLowerCase());
+            });
+        });
+
+        listaProductos.setItems(filteredData);
     }
+
 
     private void configureEnterKey() {
         NameProduct.setOnKeyPressed(event -> {
@@ -120,6 +173,14 @@ public class EliminarProductoController {
 
     private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

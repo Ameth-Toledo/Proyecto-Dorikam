@@ -1,87 +1,67 @@
 package com.toledo.proyectodorikam.models;
 
 public class Producto {
-    private String NombreProducto;
-    private double PrecioProducto;
-    private String FechaCompra;
-    private String NombreCliente;
-    private String LugarEntrega;
-    private String IDProducto;
-    private int stock;
-    private String Categoria;
+    private String nombre;
+    private double precio;
+    private String categoria;
+    private String ubicacion;
+    private String fecha;
+    private String id;
 
-    public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock, String categoria) {
-        this.NombreProducto = nombreProducto;
-        this.PrecioProducto = precioProducto;
-        this.FechaCompra = fechaCompra;
-        this.NombreCliente = nombreCliente;
-        this.LugarEntrega = lugarEntrega;
-        this.IDProducto = IDProducto;
-        this.stock = stock;
-        this.Categoria = categoria;
+    public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.ubicacion = ubicacion;
+        this.fecha = fecha;
+        this.id = id;
     }
 
-    public String getNombreProducto() {
-        return NombreProducto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.NombreProducto = nombreProducto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public double getPrecioProducto() {
-        return PrecioProducto;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrecioProducto(double precioProducto) {
-        this.PrecioProducto = precioProducto;
-    }
-
-    public String getFechaCompra() {
-        return FechaCompra;
-    }
-
-    public void setFechaCompra(String fechaCompra) {
-        this.FechaCompra = fechaCompra;
-    }
-
-    public String getNombreCliente() {
-        return NombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.NombreCliente = nombreCliente;
-    }
-
-    public String getLugarEntrega() {
-        return LugarEntrega;
-    }
-
-    public void setLugarEntrega(String lugarEntrega) {
-        this.LugarEntrega = lugarEntrega;
-    }
-
-    public String getIDProducto() {
-        return IDProducto;
-    }
-
-    public void setIDProducto(String IDProducto) {
-        this.IDProducto = IDProducto;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public String getCategoria() {
-        return Categoria;
+        return categoria;
     }
 
     public void setCategoria(String categoria) {
-        Categoria = categoria;
+        this.categoria = categoria;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

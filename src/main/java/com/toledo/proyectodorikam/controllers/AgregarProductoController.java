@@ -1,6 +1,9 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.App;
+import com.toledo.proyectodorikam.models.Producto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -44,11 +47,21 @@ public class AgregarProductoController {
 
     Stage callRegresar = new Stage();
 
+    private ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
+
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        limpiarCampos();
+        String nombre = NameProduct.getText();
+        double precio = Double.parseDouble(PriceProduct.getText());
+        String categoria = CategoryProduct.getText();
+        String Ubicacion = UbicationProduct.getText();
+        String fecha = DateProduct.getText();
+        String id = IDProduct.getText();
 
-        mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
+        Producto producto = new Producto(nombre, precio, categoria, Ubicacion, fecha, id );
+        listaProductos.add(producto);
+        limpiarCampos();
+        mostrarAlertaInformation("Exito", "Producto agregado correctamente al inventario.");
     }
 
     @FXML
