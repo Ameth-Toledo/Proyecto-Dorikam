@@ -90,7 +90,7 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="BuscarButton" layoutX="82.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Buscar" textFill="WHITE">
+      <Button fx:id="BuscarButton" layoutX="82.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedBuscarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>

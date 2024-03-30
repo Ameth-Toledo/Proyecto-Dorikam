@@ -1,5 +1,6 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditarProductoController {
@@ -44,8 +46,29 @@ public class EditarProductoController {
     private Button ConfirmarButton;
 
     @FXML
+    private Button BuscarButton;
+
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            mostrarProductoEncontrado(productoEncontrado);
+        } else {
+            mostrarAlertaError("Error", "El producto no existe.");
+        }
+    }
+
+    @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        mostrarAlertaError("Error", "El producto no existe.");
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            editarProducto(productoEncontrado);
+            mostrarAlertaInformation("Exito", "Producto editado correctamente.");
+        } else {
+            mostrarAlertaError("Error", "El producto no existe.");
+        }
     }
 
     @FXML
@@ -107,6 +130,35 @@ public class EditarProductoController {
         });
     }
 
+    private Producto buscarProductoPorNombre(String nombre) {
+        List<Producto> listaProductos = Producto.getListaProductos();
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    private void editarProducto(Producto producto) {
+        // Actualizar los atributos del producto con los valores de los campos de texto
+        producto.setPrecio(Double.parseDouble(PriceProduct.getText()));
+        producto.setCategoria(CategoriaProduct.getText());
+        producto.setUbicacion(UbicationProduct.getText());
+        producto.setFecha(DateProduct.getText());
+        producto.setId(IDProduct.getText());
+    }
+
+    private void mostrarProductoEncontrado(Producto producto) {
+        // Mostrar el producto encontrado en los campos de texto
+        NameProduct.setText(producto.getNombre());
+        PriceProduct.setText(String.valueOf(producto.getPrecio()));
+        CategoriaProduct.setText(producto.getCategoria());
+        UbicationProduct.setText(producto.getUbicacion());
+        DateProduct.setText(producto.getFecha());
+        IDProduct.setText(producto.getId());
+    }
+
     private boolean camposVacios() {
         return NameProduct.getText().isEmpty() ||
                 IDProduct.getText().isEmpty() ||
@@ -121,6 +173,14 @@ public class EditarProductoController {
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
 }

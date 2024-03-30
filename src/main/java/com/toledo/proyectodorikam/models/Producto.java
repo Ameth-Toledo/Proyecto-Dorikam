@@ -1,5 +1,8 @@
 package com.toledo.proyectodorikam.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Producto {
     private String nombre;
     private double precio;
@@ -8,6 +11,8 @@ public class Producto {
     private String fecha;
     private String id;
 
+    private static List<Producto> listaProductos = new ArrayList<>();
+
     public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id) {
         this.nombre = nombre;
         this.precio = precio;
@@ -15,6 +20,30 @@ public class Producto {
         this.ubicacion = ubicacion;
         this.fecha = fecha;
         this.id = id;
+    }
+
+    public static void agregarProducto(Producto producto) {
+        listaProductos.add(producto);
+    }
+
+    public static void eliminarProducto(Producto producto) {
+        listaProductos.remove(producto);
+    }
+
+    public static List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", categoria='" + categoria + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 
     public String getNombre() {
