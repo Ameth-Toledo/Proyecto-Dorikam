@@ -9,25 +9,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import com.toledo.proyectodorikam.models.Producto;
-import com.toledo.proyectodorikam.models.Eliminar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RealizarVentaController {
-
-    private static List<Producto> listaProductos = new ArrayList<>();
-    static {
-        listaProductos.add(new Producto("Arete-manzana",  49.98,  "2022-01-01", "Churrumino", "Tuxtla",        "5B4312T1", 7));
-        listaProductos.add(new Producto("Arete-rostro",   109.88, "2022-02-01", "Chililo",    "Tuxtla",        "8F2362G1", 4));
-        listaProductos.add(new Producto("Arete-piña",     89.99,  "2022-05-23", "tapia",      "villa flores ", "BO2389D1", 8));
-        listaProductos.add(new Producto("Arete-Perla",    98.50,  "2022-03-11", "Churru",     "Tonala",        "B22089G1", 10));
-        listaProductos.add(new Producto("Arete-hongo",    120.90, "2022-02-21", "fabricio",   "tapachula",     "HV2089G1", 5));
-        listaProductos.add(new Producto("Arete-Mariposa", 50.00,  "2022-07-14", "gael",       "Huixtla",       "VO2389D2", 10));
-        listaProductos.add(new Producto("Arete-Moño",     98.50,  "2022-02-21", "ameth",      "Tuxtla",        "8F2342H2", 6));
-        listaProductos.add(new Producto("Arete-Corsal",   198.50, "2022-05-01", "sujey",      "villa flores",  "9G2323Z3", 9));
-    }
 
     @FXML
     private Button ExitButton;
@@ -61,69 +44,7 @@ public class RealizarVentaController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        String nombreProducto = NombreProductoTextField.getText();
-        String idProducto = IDProductoTextField.getText();
-        String precioProductoStr = PrecioProductoTextField11.getText();
-        String lugarEntrega = LugarEntregaTextField.getText();
-        String fechaCompra = FechaCompraTextField.getText();
-        String nombreCliente = NombreClienteTextField.getText();
-
-        if (nombreProducto.isEmpty() || idProducto.isEmpty() || precioProductoStr.isEmpty() ||
-                lugarEntrega.isEmpty() || fechaCompra.isEmpty() || nombreCliente.isEmpty()) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
-        } else {
-            try {
-                double precioProducto = Double.parseDouble(precioProductoStr);
-                int cantidad = 1;
-                Producto producto = obtenerProductoPorNombre(nombreProducto);
-                if (producto == null) {
-                    mostrarAlertaError("Error", "El producto no está disponible en la lista.");
-                    return;
-                }
-
-                // Verificar si el producto ha sido eliminado
-                if (producto.isEliminado()) {
-                    mostrarAlertaError("Error", "El producto ha sido eliminado y no se puede vender.");
-                    return;
-                }
-
-                if (cantidad <= producto.getStock()) {
-                    realizarVenta(producto, cantidad, precioProducto);
-                    mostrarAlerta("Venta realizada", "La venta se ha realizado correctamente.\nTotal: " + calcularTotalVenta(cantidad, precioProducto));
-                } else {
-                    mostrarAlerta("Error", "No hay suficientes productos en el stock para realizar la venta.");
-                }
-            } catch (NumberFormatException e) {
-                mostrarAlertaError("Error", "Ingrese un valor válido para el precio, (por ejemplo: 200.00)");
-            }
-        }
-    }
-
-    private Producto obtenerProductoPorNombre(String nombreProducto) {
-        for (Producto producto : listaProductos) {
-            if (producto.getNombreProducto().equalsIgnoreCase(nombreProducto)) {
-                return producto;
-            }
-        }
-        return null;
-    }
-
-    private void realizarVenta(Producto producto, int cantidad, double precioUnitario) {
-        producto.setStock(producto.getStock() - cantidad);
-        actualizarStockEnLista(producto);
-    }
-
-    private double calcularTotalVenta(int cantidad, double precioUnitario) {
-        return cantidad * precioUnitario;
-    }
-
-    private void actualizarStockEnLista(Producto producto) {
-        for (Producto p : listaProductos) {
-            if (p.getIDProducto().equals(producto.getIDProducto())) {
-                p.setStock(producto.getStock());
-                break;
-            }
-        }
+        mostrarAlertaError("Error", "El producto no existe.");
     }
 
     @FXML
@@ -165,26 +86,17 @@ public class RealizarVentaController {
                 NombreClienteTextField.requestFocus();
             } else if (event.getSource() == NombreClienteTextField) {
                 ConfirmarButton.requestFocus();
-            } else
-            if (event.getSource() == NombreClienteTextField) {
-                ConfirmarButton.requestFocus();
+            } else if (event.getSource() == ConfirmarButton) {
+                OnMouseClickedConfirmarButton(null);
             }
         }
     }
 
-    private void mostrarAlertaError(String titulo, String mensaje) {
+    private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
 }

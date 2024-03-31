@@ -1,16 +1,21 @@
 package com.toledo.proyectodorikam.controllers;
 
-import javafx.application.Platform;
+import com.toledo.proyectodorikam.App;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class AgregarProductoController {
 
@@ -38,13 +43,39 @@ public class AgregarProductoController {
     @FXML
     private Button ConfirmarButton;
 
+    Stage callRegresar = new Stage();
+
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        confirmarProducto();
+        String nombre = NameProduct.getText();
+        double precio = Double.parseDouble(PriceProduct.getText());
+        String categoria = CategoryProduct.getText();
+        String ubicacion = UbicationProduct.getText();
+        String fecha = DateProduct.getText();
+        String id = IDProduct.getText();
+
+        Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id);
+        Producto.agregarProducto(producto); // Agregar el producto a la lista
+
+        limpiarCampos();
+        mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
+
+        System.out.println("lista");
+        for (Producto p : Producto.getListaProductos()) {
+            System.out.println(p.toString()
+            );
+        }
     }
+
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Menu: \"Gerente\"");
+        callRegresar.setScene(scene);
+        callRegresar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callRegresar.show();
         cerrarVentana();
     }
 
@@ -54,6 +85,7 @@ public class AgregarProductoController {
         configurarEventoEnterBotonConfirmar();
         ExitButton.setOnKeyPressed(this::handleKeyPressed);
         ConfirmarButton.setOnKeyPressed(this::handleKeyPressed);
+        DateProduct.setText(LocalDate.now().toString());
     }
 
     private void configurarEventosTextField() {
@@ -72,27 +104,28 @@ public class AgregarProductoController {
     private void handleTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             TextField textField = (TextField) event.getSource();
-            switchToNextTextField(textField);
+            if (textField == PriceProduct) {
+                CategoryProduct.requestFocus();
+            } else {
+                switchToNextTextField(textField);
+            }
         }
     }
 
     private void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            confirmarProducto();
+            limpiarCampos();
+
+            mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
         }
     }
 
-    private void confirmarProducto() {
-        if (faltaRellenarCampo()) {
-            mostrarAlerta("Error", "Falta rellenar un campo.");
-        } else {
-        }
-    }
-
-    private boolean faltaRellenarCampo() {
-        return NameProduct.getText().isEmpty() || IDProduct.getText().isEmpty() ||
-                PriceProduct.getText().isEmpty() || DateProduct.getText().isEmpty() ||
-                CategoryProduct.getText().isEmpty() || UbicationProduct.getText().isEmpty();
+    private void limpiarCampos(){
+        NameProduct.clear();
+        IDProduct.clear();
+        PriceProduct.clear();
+        CategoryProduct.clear();
+        UbicationProduct.clear();
     }
 
     private void switchToNextTextField(TextField currentTextField) {
@@ -130,11 +163,27 @@ public class AgregarProductoController {
         stage.close();
     }
 
-    private void mostrarAlerta(String title, String contenido) {
+    private void mostrarAlertaError(String title, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
+        alert.setOnShown(event ->{
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        });
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String title, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.setOnShown(event ->{
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        });
         alert.showAndWait();
     }
 }

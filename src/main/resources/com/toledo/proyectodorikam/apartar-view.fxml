@@ -40,12 +40,12 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="NombreProducto" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="MontoAbonado" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="Categoria" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="Ubicacion" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="IngresaFecha" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="IdProducto" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="NombreProducto" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="MontoAbonado" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="Categoria" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="Ubicacion" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="IngresaFecha" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="IdProducto" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />
@@ -86,7 +86,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="MontoRestante" layoutX="83.0" layoutY="677.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="MontoRestante" layoutX="83.0" layoutY="677.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <Label layoutX="86.0" layoutY="640.0" text="Monto Restante:" textFill="#fff7f7">
          <font>
             <Font name="Sitka Text Bold" size="25.0" />

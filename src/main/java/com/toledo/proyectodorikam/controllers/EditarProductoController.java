@@ -1,16 +1,25 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import com.toledo.proyectodorikam.models.EditarProducto; // Importa tu clase de modelo de EditarProducto
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class EditarProductoController {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private Button ExitButton;
@@ -37,31 +46,28 @@ public class EditarProductoController {
     private Button ConfirmarButton;
 
     @FXML
-    void OnMouseClickedConfirmarButton(MouseEvent event) {
-        if (camposVacios()) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+    private Button BuscarButton;
+
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            mostrarProductoEncontrado(productoEncontrado);
         } else {
-            // Obtener los valores de los campos de texto
-            String nombre = NameProduct.getText();
-            String id = IDProduct.getText();
-            double precio = Double.parseDouble(PriceProduct.getText());
-            String fecha = DateProduct.getText();
-            String categoria = CategoriaProduct.getText();
-            String ubicacion = UbicationProduct.getText();
+            mostrarAlertaError("Error", "El producto no existe.");
+        }
+    }
 
-            // Crear un nuevo objeto EditarProducto con los valores editados
-            EditarProducto productoEditado = new EditarProducto(id, nombre, precio, categoria, ubicacion, fecha);
-
-            // Llamar al método para guardar los cambios del producto editado en el modelo
-            // Reemplaza 'guardarProductoEditado' con el método correspondiente de tu modelo
-            guardarProductoEditado(productoEditado);
-
-            // Mostrar una alerta de éxito
-            mostrarAlerta("Éxito", "Los cambios han sido guardados correctamente.");
-
-            // Cerrar la ventana de edición
-            Stage stage = (Stage) ConfirmarButton.getScene().getWindow();
-            stage.close();
+    @FXML
+    void OnMouseClickedConfirmarButton(MouseEvent event) {
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            editarProducto(productoEncontrado);
+            mostrarAlertaInformation("Exito", "Producto editado correctamente.");
+        } else {
+            mostrarAlertaError("Error", "El producto no existe.");
         }
     }
 
@@ -77,14 +83,78 @@ public class EditarProductoController {
     }
 
     private void configureEnterKey() {
-        // Configurar el comportamiento de la tecla Enter para cambiar el foco entre los campos de texto
-        // ...
+        NameProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                IDProduct.requestFocus();
+            }
+        });
+
+        IDProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                PriceProduct.requestFocus();
+            }
+        });
+
+        PriceProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                DateProduct.requestFocus();
+            }
+        });
+
+        DateProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                CategoriaProduct.requestFocus();
+            }
+        });
+
+        CategoriaProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                UbicationProduct.requestFocus();
+            }
+        });
+
+        UbicationProduct.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                ConfirmarButton.requestFocus();
+            }
+        });
 
         ConfirmarButton.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                OnMouseClickedConfirmarButton(null);
+                if (camposVacios()) {
+                    mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+                } else {
+                    mostrarAlertaError("Error", "El producto no existe.");
+                }
             }
         });
+    }
+
+    private Producto buscarProductoPorNombre(String nombre) {
+        List<Producto> listaProductos = Producto.getListaProductos();
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    private void editarProducto(Producto producto) {
+        producto.setPrecio(Double.parseDouble(PriceProduct.getText()));
+        producto.setCategoria(CategoriaProduct.getText());
+        producto.setUbicacion(UbicationProduct.getText());
+        producto.setFecha(DateProduct.getText());
+        producto.setId(IDProduct.getText());
+    }
+
+    private void mostrarProductoEncontrado(Producto producto) {
+        NameProduct.setText(producto.getNombre());
+        PriceProduct.setText(String.valueOf(producto.getPrecio()));
+        CategoriaProduct.setText(producto.getCategoria());
+        UbicationProduct.setText(producto.getUbicacion());
+        DateProduct.setText(producto.getFecha());
+        IDProduct.setText(producto.getId());
     }
 
     private boolean camposVacios() {
@@ -96,26 +166,19 @@ public class EditarProductoController {
                 UbicationProduct.getText().isEmpty();
     }
 
-    private void mostrarAlertaError(String titulo, String contenido) {
+    private void mostrarAlertaError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
-    }
-
-    private void mostrarAlerta(String titulo, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(contenido);
-        alert.showAndWait();
-    }
-
-    // Método para guardar los cambios del producto editado en el modelo
-    private void guardarProductoEditado(EditarProducto productoEditado) {
-        // Aquí debes llamar al método correspondiente en tu modelo para guardar el producto editado
-        // Por ejemplo:
-        // modelo.guardarProductoEditado(productoEditado);
     }
 }

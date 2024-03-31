@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 
-public class VerVentasControllers {
+public class VerVentasController {
 
     @FXML
     private ResourceBundle resources;

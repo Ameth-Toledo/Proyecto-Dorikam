@@ -1,151 +1,165 @@
 package com.toledo.proyectodorikam.controllers;
 
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.geometry.HPos;
+import javafx.geometry.Orientation;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.FileChooser;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.stage.Stage;
 
 public class VerProductoController {
 
     @FXML
-    private Button AreteMoñoButton;
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private Button ExitButton;
 
     @FXML
-    private Button AreteRostroButton;
-
-    @FXML
-    private Button AreteManzanaButton;
-
-    @FXML
-    private Button AretePiñaButton;
-
-    @FXML
-    private Button AreteCorsalButton;
-
-    @FXML
-    private Button AretePerlaButton;
-
-    @FXML
-    private Button AreteHongoButton;
-
-    @FXML
-    private Button AreteMariposaButton;
-    @FXML
     private ListView<String> VerInformacionProducto;
+
+    @FXML
+    private ScrollPane CatalogoAretes;
+
+    @FXML
+    private Button SubirImagenButton;
+
+    @FXML
+    private Button EliminarImagenButton;
+
+    @FXML
+    private TextField NombreProducto;
+
+    @FXML
+    private Button BuscarButton;
+
+    @FXML
+    private TableView<Producto> ProductosTable;
+
+    @FXML
+    private TableColumn<Producto, String> Nombre;
+
+    @FXML
+    private TableColumn<Producto, Double> Precio;
+
+    @FXML
+    private TableColumn<Producto, String> Categoria;
+
+    @FXML
+    private TableColumn<Producto, String> Ubicacion;
+
+    @FXML
+    private TableColumn<Producto, String> Fecha;
+
+    @FXML
+    private TableColumn<Producto, String> ID;
+
+    private FlowPane flowPane;
+
+    @FXML
+    void OnMouseClickedEliminarImagenButton(MouseEvent event) {
+        if (flowPane == null || flowPane.getChildren().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("No hay imágenes para eliminar.");
+            alert.showAndWait();
+        } else {
+            Alert selectImageAlert = new Alert(Alert.AlertType.INFORMATION);
+            selectImageAlert.setTitle("Información");
+            selectImageAlert.setHeaderText(null);
+            selectImageAlert.setContentText("Selecciona una imagen para eliminar.");
+            selectImageAlert.showAndWait();
+
+            for (Node node : flowPane.getChildren()) {
+                if (node instanceof ImageView) {
+                    ImageView imageView = (ImageView) node;
+                    imageView.setOnMouseClicked(e -> {
+                        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                        confirmation.setTitle("Confirmación");
+                        confirmation.setHeaderText(null);
+                        confirmation.setContentText("¿Estás seguro de eliminar esta imagen?");
+                        confirmation.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
+                        confirmation.showAndWait().ifPresent(response -> {
+                            if (response == ButtonType.OK) {
+                                flowPane.getChildren().remove(imageView);
+                            }
+                        });
+                    });
+                }
+            }
+        }
+    }
+
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
+
     @FXML
-    void OnMouseClickedAreteMoñoButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-moño" + "      ---";
-        String ID           = "---" + " ID:" + " 8F2342H2" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $98.50" + "                  ---";
-        String Apartado     = "---" + "    •" +" 3 Pares" + "                       ---";
-        String FechaEntrega = "---" + " 30 / 11 / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
+    void OnMouseClickedSubirImagenButton(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar imagen");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(SubirImagenButton.getScene().getWindow());
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(300);
+            imageView.setFitHeight(350);
+
+            flowPane.getChildren().add(imageView);
+        }
     }
     @FXML
-    void OnMouseClickedAreteCorsalButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-corsal" + "      ---";
-        String ID           = "---" + " ID:" + " 9G2323Z3" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $198.50" + "                 ---";
-        String Apartado     = "---" + "    •" +" 2 Pares" + "                       ---";
-        String FechaEntrega = "---" + " 30 / 02 / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProducto = NombreProducto.getText();
+        if (!nombreProducto.isEmpty()) {
+            ObservableList<Producto> productosData = FXCollections.observableArrayList();
+            for (Producto producto : Producto.getListaProductos()) {
+                if (producto.getNombre().equals(nombreProducto)) {
+                    productosData.add(producto);
+                }
+            }
+            ProductosTable.setItems(productosData);
+        } else {
+            ProductosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
+        }
     }
-    @FXML
-    void OnMouseClickedAreteHongoButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-Hongo" + "      ---";
-        String ID           = "---" + " ID:" + " xxxx" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $xxx.50" + "                 ---";
-        String Apartado     = "---" + "    •" +" 0 xxx" + "                       ---";
-        String FechaEntrega = "---" + " 30 / xx / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
-    @FXML
-    void OnMouseClickedAreteManzanaButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-manzana" + "      ---";
-        String ID           = "---" + " ID:" + " ====" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $---.-0" + "                 ---";
-        String Apartado     = "---" + "    •" +" 0 ....." + "                       ---";
-        String FechaEntrega = "---" + " 30 / 12 / ...." + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
-    @FXML
-    void OnMouseClickedAreteMariposaButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-mariposa" + "      ---";
-        String ID           = "---" + " ID:" + " ......" + "                   ---";
-        String Precio       = "---" + " Precio:" + " ${{{.50" + "                 ---";
-        String Apartado     = "---" + "    •" +" 0 Pares" + "                       ---";
-        String FechaEntrega = "---" + " 30 / 12 / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
-    @FXML
-    void OnMouseClickedAretePerlaButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-perla" + "      ---";
-        String ID           = "---" + " ID:" + " 000000" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $000.50" + "                 ---";
-        String Apartado     = "---" + "    •" +" 0 ---" + "                       ---";
-        String FechaEntrega = "---" + " -- / 12 / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
-    @FXML
-    void OnMouseClickedAretePiñaButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-piña" + "      ---";
-        String ID           = "---" + " ID:" + " ----" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $---.50" + "                 ---";
-        String Apartado     = "---" + "    •" +" 0 --" + "                       ---";
-        String FechaEntrega = "---" + " 30 / 12 / ---" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
-    @FXML
-    void OnMouseClickedAreteRostroButton(MouseEvent event) {
-        String Nombre       = "---" + " Nombre:" + " Arete-rostro" + "      ---";
-        String ID           = "---" + " ID:" + " -----" + "                   ---";
-        String Precio       = "---" + " Precio:" + " $---.00" + "                 ---";
-        String Apartado     = "---" + "    •" +" 50 Pares" + "                       ---";
-        String FechaEntrega = "---" + " 30 / -- / 2024" + "                  ---";
-        VerInformacionProducto.getItems().add(Nombre);
-        VerInformacionProducto.getItems().add(ID);
-        VerInformacionProducto.getItems().add(Precio);
-        VerInformacionProducto.getItems().add(Apartado);
-        VerInformacionProducto.getItems().add(FechaEntrega);
-    }
+
     @FXML
     void initialize() {
+        flowPane = new FlowPane();
+        flowPane.setHgap(0);
+        flowPane.setVgap(0);
+        flowPane.setOrientation(Orientation.VERTICAL);
+        flowPane.setColumnHalignment(HPos.LEFT);
+        CatalogoAretes.setContent(flowPane);
+
+        Nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        Precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        Categoria.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        Ubicacion.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        Fecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        ID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+
     }
 }

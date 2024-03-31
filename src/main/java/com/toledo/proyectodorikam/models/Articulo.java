@@ -1,5 +1,4 @@
 package com.toledo.proyectodorikam.models;
 
-public class Arete {
-
+public class Articulo {
 }

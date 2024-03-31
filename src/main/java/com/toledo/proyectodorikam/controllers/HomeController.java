@@ -10,10 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class HomeController {
 
@@ -64,6 +64,7 @@ public class HomeController {
         Scene scene = new Scene(fxmlLoader.load());
         callGerente.setTitle("Inicio de Sesion: \"Gerente\"");
         callGerente.setScene(scene);
+        callGerente.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callGerente.show();
     }
     private void abrirAdministradorView() throws IOException{
@@ -71,6 +72,7 @@ public class HomeController {
         Scene scene = new Scene(fxmlLoader.load());
         callAdmin.setTitle("Inicio de Sesion: \"Administrador\"");
         callAdmin.setScene(scene);
+        callAdmin.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callAdmin.show();
     }
     public void init(Stage stageRoot) {
