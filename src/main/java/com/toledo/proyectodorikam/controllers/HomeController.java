@@ -99,10 +99,10 @@ public class HomeController {
                     break;
             }
         });
-        //fullScreen(stageRoot);
+        fullScreen(stageRoot);
     }
-    //private void fullScreen(Stage stage) {
-        //stage.setFullScreen(true);
-        //stage.setFullScreenExitHint("");
-    //}
+    private void fullScreen(Stage stage) {
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+    }
 }

@@ -36,7 +36,6 @@ public class Producto {
         return listaProductos;
     }
 
-    // Getters y setters para cada propiedad observable
     public StringProperty nombreProperty() {
         return nombre;
     }
@@ -77,7 +76,6 @@ public class Producto {
                 '}';
     }
 
-    // Los métodos restantes, como los setters y getters originales, permanecen sin cambios
     public String getNombre() {
         return nombre.get();
     }
