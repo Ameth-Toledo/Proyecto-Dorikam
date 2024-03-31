@@ -1,3 +1,4 @@
 package com.toledo.proyectodorikam.models;
-public class Gerente {
+
+public class Articulo {
 }

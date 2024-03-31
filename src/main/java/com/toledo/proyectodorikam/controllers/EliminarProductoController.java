@@ -1,6 +1,6 @@
 package com.toledo.proyectodorikam.controllers;
 
-import com.toledo.proyectodorikam.models.Eliminar;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.util.List;
+
 
 import java.time.LocalDate;
 
@@ -38,17 +40,39 @@ public class EliminarProductoController {
     private Button ConfirmarButton;
 
     @FXML
+    private Button BuscarButton;
+
+    @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        if (camposVacios()) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+        String nombreProducto = NameProduct.getText();
+        Producto productoAEliminar = buscarProductoPorNombre(nombreProducto);
+        if (productoAEliminar != null) {
+            Producto.eliminarProducto(productoAEliminar);
+            mostrarAlertaInformation("Éxito", "Producto eliminado correctamente");
         } else {
-            eliminarProducto();
+            mostrarAlertaError("Error", "No se encontró el producto a eliminar");
         }
     }
 
-    private void eliminarProducto() {
+    private Producto buscarProductoPorNombre(String nombre) {
+        List<Producto> listaProductos = Producto.getListaProductos();
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
         String nombreProducto = NameProduct.getText();
-        Eliminar.eliminarProducto(nombreProducto);
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProducto);
+        if (productoEncontrado != null) {
+            mostrarAlertaInformation("Éxito", "Producto encontrado: " + productoEncontrado.toString());
+        } else {
+            mostrarAlertaError("Error", "No se encontró el producto");
+        }
     }
 
     @FXML
@@ -59,31 +83,31 @@ public class EliminarProductoController {
 
     @FXML
     void initialize() {
-        configureEnterKey();
         DateProduct.setText(LocalDate.now().toString());
+        configureEnterKey();
     }
 
     private void configureEnterKey() {
         NameProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
+            if (event.getCode() == KeyCode.ENTER) {
                 IDProduct.requestFocus();
             }
         });
 
         IDProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
+            if (event.getCode() == KeyCode.ENTER) {
                 PriceProduct.requestFocus();
             }
         });
 
         PriceProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
+            if (event.getCode() == KeyCode.ENTER) {
                 CategoryProduct.requestFocus();
             }
         });
 
         CategoryProduct.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
+            if (event.getCode() == KeyCode.ENTER) {
                 UbicationProduct.requestFocus();
             }
         });
@@ -109,11 +133,9 @@ public class EliminarProductoController {
         });
 
         ConfirmarButton.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
+            if (event.getCode() == KeyCode.ENTER) {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
-                } else {
-                    eliminarProducto();
                 }
             }
         });
@@ -129,6 +151,14 @@ public class EliminarProductoController {
     }
 
     private void mostrarAlertaError(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaInformation(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);

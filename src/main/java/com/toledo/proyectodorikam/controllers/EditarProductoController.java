@@ -1,22 +1,19 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class EditarProductoController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-    private HashMap<String, Producto> productosHashMap;
+public class EditarProductoController {
 
     @FXML
     private ResourceBundle resources;
@@ -48,42 +45,29 @@ public class EditarProductoController {
     @FXML
     private Button ConfirmarButton;
 
-    public EditarProductoController() {
-        this.productosHashMap = new HashMap<>();
-    }
+    @FXML
+    private Button BuscarButton;
 
-    public void setProductosHashMap(HashMap<String, Producto> productosHashMap) {
-        this.productosHashMap = productosHashMap;
-    }
-
-    private Producto buscarProductoPorNombre(String nombre) {
-        for (Producto producto : productosHashMap.values()) {
-            if (producto.getNombreProducto().equalsIgnoreCase(nombre)) {
-                return producto;
-            }
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            mostrarProductoEncontrado(productoEncontrado);
+        } else {
+            mostrarAlertaError("Error", "El producto no existe.");
         }
-        return null;
     }
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        if (camposVacios()) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+        String nombreProductoBuscado = NameProduct.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
+        if (productoEncontrado != null) {
+            editarProducto(productoEncontrado);
+            mostrarAlertaInformation("Exito", "Producto editado correctamente.");
         } else {
-            String nombreProducto = NameProduct.getText();
-            Producto producto = buscarProductoPorNombre(nombreProducto);
-
-            if (producto != null){
-                producto.setIDProducto(IDProduct.getText());
-                producto.setPrecioProducto(Double.parseDouble(PriceProduct.getText()));
-                producto.setCategoria(CategoriaProduct.getText());
-                producto.setLugarEntrega(UbicationProduct.getText());
-                producto.setFechaCompra(DateProduct.getText());
-
-                mostrarAlertaInformacion("Éxito", "Producto actualizado exitosamente.");
-            } else {
-                mostrarAlertaError("Error", "El producto no existe.");
-            }
+            mostrarAlertaError("Error", "El producto no existe.");
         }
     }
 
@@ -140,23 +124,37 @@ public class EditarProductoController {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
                 } else {
-                    String nombreProducto = NameProduct.getText();
-                    Producto producto = buscarProductoPorNombre(nombreProducto);
-
-                    if (producto != null) {
-                        producto.setIDProducto(IDProduct.getText());
-                        producto.setPrecioProducto(Double.parseDouble(PriceProduct.getText()));
-                        producto.setCategoria(CategoriaProduct.getText());
-                        producto.setLugarEntrega(UbicationProduct.getText());
-                        producto.setFechaCompra(DateProduct.getText());
-
-                        mostrarAlertaInformacion("Éxito", "Producto actualizado exitosamente.");
-                    } else {
-                        mostrarAlertaError("Error", "El producto no existe.");
-                    }
+                    mostrarAlertaError("Error", "El producto no existe.");
                 }
             }
         });
+    }
+
+    private Producto buscarProductoPorNombre(String nombre) {
+        List<Producto> listaProductos = Producto.getListaProductos();
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().equals(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    private void editarProducto(Producto producto) {
+        producto.setPrecio(Double.parseDouble(PriceProduct.getText()));
+        producto.setCategoria(CategoriaProduct.getText());
+        producto.setUbicacion(UbicationProduct.getText());
+        producto.setFecha(DateProduct.getText());
+        producto.setId(IDProduct.getText());
+    }
+
+    private void mostrarProductoEncontrado(Producto producto) {
+        NameProduct.setText(producto.getNombre());
+        PriceProduct.setText(String.valueOf(producto.getPrecio()));
+        CategoriaProduct.setText(producto.getCategoria());
+        UbicationProduct.setText(producto.getUbicacion());
+        DateProduct.setText(producto.getFecha());
+        IDProduct.setText(producto.getId());
     }
 
     private boolean camposVacios() {
@@ -176,11 +174,11 @@ public class EditarProductoController {
         alert.showAndWait();
     }
 
-    private void mostrarAlertaInformacion(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private void mostrarAlertaInformation(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
 }

@@ -1,87 +1,124 @@
 package com.toledo.proyectodorikam.models;
 
+import javafx.beans.property.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Producto {
-    private String NombreProducto;
-    private double PrecioProducto;
-    private String FechaCompra;
-    private String NombreCliente;
-    private String LugarEntrega;
-    private String IDProducto;
-    private int stock;
-    private String Categoria;
+    private final StringProperty nombre;
+    private final DoubleProperty precio;
+    private final StringProperty categoria;
+    private final StringProperty ubicacion;
+    private final StringProperty fecha;
+    private final StringProperty id;
 
-    public Producto(String nombreProducto, double precioProducto, String fechaCompra, String nombreCliente, String lugarEntrega, String IDProducto, int stock, String categoria) {
-        this.NombreProducto = nombreProducto;
-        this.PrecioProducto = precioProducto;
-        this.FechaCompra = fechaCompra;
-        this.NombreCliente = nombreCliente;
-        this.LugarEntrega = lugarEntrega;
-        this.IDProducto = IDProducto;
-        this.stock = stock;
-        this.Categoria = categoria;
+    private static List<Producto> listaProductos = new ArrayList<>();
+
+    public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id) {
+        this.nombre = new SimpleStringProperty(nombre);
+        this.precio = new SimpleDoubleProperty(precio);
+        this.categoria = new SimpleStringProperty(categoria);
+        this.ubicacion = new SimpleStringProperty(ubicacion);
+        this.fecha = new SimpleStringProperty(fecha);
+        this.id = new SimpleStringProperty(id);
     }
 
-    public String getNombreProducto() {
-        return NombreProducto;
+    public static void agregarProducto(Producto producto) {
+        listaProductos.add(producto);
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.NombreProducto = nombreProducto;
+    public static void eliminarProducto(Producto producto) {
+        listaProductos.remove(producto);
     }
 
-    public double getPrecioProducto() {
-        return PrecioProducto;
+    public static List<Producto> getListaProductos() {
+        return listaProductos;
     }
 
-    public void setPrecioProducto(double precioProducto) {
-        this.PrecioProducto = precioProducto;
+    // Getters y setters para cada propiedad observable
+    public StringProperty nombreProperty() {
+        return nombre;
     }
 
-    public String getFechaCompra() {
-        return FechaCompra;
+    public double getPrecio() {
+        return precio.get();
     }
 
-    public void setFechaCompra(String fechaCompra) {
-        this.FechaCompra = fechaCompra;
+    public DoubleProperty precioProperty() {
+        return precio;
     }
 
-    public String getNombreCliente() {
-        return NombreCliente;
+    public StringProperty categoriaProperty() {
+        return categoria;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.NombreCliente = nombreCliente;
+    public StringProperty ubicacionProperty() {
+        return ubicacion;
     }
 
-    public String getLugarEntrega() {
-        return LugarEntrega;
+    public StringProperty fechaProperty() {
+        return fecha;
     }
 
-    public void setLugarEntrega(String lugarEntrega) {
-        this.LugarEntrega = lugarEntrega;
+    public StringProperty idProperty() {
+        return id;
     }
 
-    public String getIDProducto() {
-        return IDProducto;
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre.get() + '\'' +
+                ", precio=" + precio.get() +
+                ", categoria='" + categoria.get() + '\'' +
+                ", ubicacion='" + ubicacion.get() + '\'' +
+                ", fecha='" + fecha.get() + '\'' +
+                ", id='" + id.get() + '\'' +
+                '}';
     }
 
-    public void setIDProducto(String IDProducto) {
-        this.IDProducto = IDProducto;
+    // Los métodos restantes, como los setters y getters originales, permanecen sin cambios
+    public String getNombre() {
+        return nombre.get();
     }
 
-    public int getStock() {
-        return stock;
+    public void setNombre(String nombre) {
+        this.nombre.set(nombre);
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setPrecio(double precio) {
+        this.precio.set(precio);
     }
 
     public String getCategoria() {
-        return Categoria;
+        return categoria.get();
     }
 
     public void setCategoria(String categoria) {
-        Categoria = categoria;
+        this.categoria.set(categoria);
+    }
+
+    public String getUbicacion() {
+        return ubicacion.get();
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion.set(ubicacion);
+    }
+
+    public String getFecha() {
+        return fecha.get();
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha.set(fecha);
+    }
+
+    public String getId() {
+        return id.get();
+    }
+
+    public void setId(String id) {
+        this.id.set(id);
     }
 }
