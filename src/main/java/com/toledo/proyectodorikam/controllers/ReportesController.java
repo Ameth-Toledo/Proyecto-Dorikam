@@ -1,6 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import com.toledo.proyectodorikam.models.Producto;
 import com.toledo.proyectodorikam.models.Reporte;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,10 +39,6 @@ public class ReportesController {
         Reporte.generarReporte(reporte);
 
         mostrarAlerta("Reporte Generado", "El reporte se ha generado exitosamente");
-        System.out.println("lista");
-        for (Reporte p : Reporte.getListaReporte()) {
-            System.out.println(p.toString());
-        }
     }
 
     @FXML
@@ -104,7 +99,7 @@ public class ReportesController {
         alert.showAndWait();
     }
     private void mostrarAlerta(String titulo, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
