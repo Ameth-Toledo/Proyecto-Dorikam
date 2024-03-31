@@ -1,5 +1,7 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Producto;
+import com.toledo.proyectodorikam.models.Reporte;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -28,7 +30,20 @@ public class ReportesController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        salirReporte();
+        String tituloRep = tituloReport.getText();
+        String fechaRep = fechaReport.getText();
+        String detallesRep = detallesReport.getText();
+
+        Reporte reporte;
+        reporte = new Reporte(tituloRep, fechaRep, detallesRep);
+
+        Reporte.generarReporte(reporte);
+
+        mostrarAlerta("Reporte Generado", "El reporte se ha generado exitosamente");
+        System.out.println("lista");
+        for (Reporte p : Reporte.getListaReporte()) {
+            System.out.println(p.toString());
+        }
     }
 
     @FXML
@@ -83,6 +98,13 @@ public class ReportesController {
 
     private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+    private void mostrarAlerta(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
