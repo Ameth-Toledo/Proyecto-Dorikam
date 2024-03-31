@@ -1,10 +1,10 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.models.Reporte;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -17,7 +17,16 @@ public class VerReportesController {
     private Button verReportes;
 
     @FXML
-    private ListView<Reporte> ReportList;
+    private TableView<Reporte> TableReportes;
+
+    @FXML
+    private TableColumn<Reporte, String> TituloColumn;
+
+    @FXML
+    private TableColumn<Reporte, String> FechaColumn;
+
+    @FXML
+    private TableColumn<Reporte, String> ContenidoColumn;
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
@@ -37,8 +46,10 @@ public class VerReportesController {
             mostrarReportes();
         }
     }
-    public void mostrarReportes () {
-        ReportList.getItems().addAll(Reporte.getListaReporte());
+
+    public void mostrarReportes() {
+        ObservableList<Reporte> reportes = FXCollections.observableArrayList(Reporte.getListaReporte());
+        TableReportes.setItems(reportes);
     }
 
     private void mostrarAdvertencia(String mensaje) {
@@ -47,5 +58,12 @@ public class VerReportesController {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    @FXML
+    void initialize() {
+        TituloColumn.setCellValueFactory(cellData -> cellData.getValue().tituloProperty());
+        FechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaReporteProperty());
+        ContenidoColumn.setCellValueFactory(cellData -> cellData.getValue().detallesProperty());
     }
 }

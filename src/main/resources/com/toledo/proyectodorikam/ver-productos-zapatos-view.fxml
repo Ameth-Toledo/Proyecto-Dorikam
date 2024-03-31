@@ -66,11 +66,11 @@
       </Label>
       <TableView fx:id="ProductosTable" layoutX="39.0" layoutY="559.0" prefHeight="105.0" prefWidth="801.0">
         <columns>
-          <TableColumn fx:id="Nombre" prefWidth="137.0" text="Nombre" />
-          <TableColumn fx:id="Precio" prefWidth="94.0" text="Precio" />
-            <TableColumn fx:id="Categoria" prefWidth="137.0" text="Categoria" />
-            <TableColumn fx:id="Ubicacion" prefWidth="163.0" text="Ubicacion" />
-            <TableColumn fx:id="Fecha" prefWidth="145.0" text="Fecha" />
+          <TableColumn fx:id="Nombre" prefWidth="137.0" text="NOMBRE" />
+          <TableColumn fx:id="Precio" prefWidth="94.0" text="PRECIO" />
+            <TableColumn fx:id="Categoria" prefWidth="137.0" text="CATEGORIA" />
+            <TableColumn fx:id="Ubicacion" prefWidth="163.0" text="UBICACION" />
+            <TableColumn fx:id="Fecha" prefWidth="145.0" text="FECHA" />
             <TableColumn fx:id="ID" prefWidth="124.0" text="ID" />
         </columns>
       </TableView>

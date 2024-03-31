@@ -4,10 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class VerVentasController {
+public class ReportesVentaController {
 
     @FXML
     private ResourceBundle resources;
@@ -19,25 +19,33 @@ public class VerVentasController {
     private Button ExitButton;
 
     @FXML
-    private Button VerVentasButton;
+    private TextField NombreProducto;
 
     @FXML
-    private TableColumn<?, ?> NameProductoTable;
+    private TextField MontoAbonado;
 
     @FXML
-    private TableColumn<?, ?> IDProductoTable;
+    private TextField Categoria;
 
     @FXML
-    private TableColumn<?, ?> DateProductoTable;
+    private TextField Ubicacion;
 
     @FXML
-    private TableColumn<?, ?> CantidadProductoTable;
+    private TextField IngresaFecha;
 
     @FXML
-    private TableColumn<?, ?> TotalVendidoProductoTable;
+    private TextField IdProducto;
 
     @FXML
-    private TableColumn<?, ?> UbicationProductoTable;
+    private Button Confirmar;
+
+    @FXML
+    private Button BuscarProductoButton;
+
+    @FXML
+    void OnMouseClickedBuscarProductoButton(MouseEvent event) {
+
+    }
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
@@ -45,7 +53,7 @@ public class VerVentasController {
     }
 
     @FXML
-    void onMouseClickedVerVentasButton(MouseEvent event) {
+    void onMouseClickedConfirmar(MouseEvent event) {
 
     }
 
