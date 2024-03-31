@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,10 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
-import com.toledo.proyectodorikam.models.Producto;
 import javafx.stage.Stage;
 
-public class VerProductoController {
+public class VerProductoZapatoController {
 
     @FXML
     private ResourceBundle resources;
@@ -144,6 +144,7 @@ public class VerProductoController {
             ProductosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
         }
     }
+
 
     @FXML
     void initialize() {
