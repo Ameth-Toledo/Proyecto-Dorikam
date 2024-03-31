@@ -141,7 +141,6 @@ public class EditarProductoController {
     }
 
     private void editarProducto(Producto producto) {
-        // Actualizar los atributos del producto con los valores de los campos de texto
         producto.setPrecio(Double.parseDouble(PriceProduct.getText()));
         producto.setCategoria(CategoriaProduct.getText());
         producto.setUbicacion(UbicationProduct.getText());
@@ -150,7 +149,6 @@ public class EditarProductoController {
     }
 
     private void mostrarProductoEncontrado(Producto producto) {
-        // Mostrar el producto encontrado en los campos de texto
         NameProduct.setText(producto.getNombre());
         PriceProduct.setText(String.valueOf(producto.getPrecio()));
         CategoriaProduct.setText(producto.getCategoria());

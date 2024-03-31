@@ -47,7 +47,7 @@ public class EliminarProductoController {
         String nombreProducto = NameProduct.getText();
         Producto productoAEliminar = buscarProductoPorNombre(nombreProducto);
         if (productoAEliminar != null) {
-            Producto.eliminarProducto(productoAEliminar); // Llama al método estático de la clase Producto para eliminar el producto
+            Producto.eliminarProducto(productoAEliminar);
             mostrarAlertaInformation("Éxito", "Producto eliminado correctamente");
         } else {
             mostrarAlertaError("Error", "No se encontró el producto a eliminar");
@@ -55,7 +55,7 @@ public class EliminarProductoController {
     }
 
     private Producto buscarProductoPorNombre(String nombre) {
-        List<Producto> listaProductos = Producto.getListaProductos(); // Obtiene la lista de productos desde la clase Producto
+        List<Producto> listaProductos = Producto.getListaProductos();
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equals(nombre)) {
                 return producto;
