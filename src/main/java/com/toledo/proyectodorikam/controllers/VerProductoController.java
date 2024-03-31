@@ -3,6 +3,9 @@ package com.toledo.proyectodorikam.controllers;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Orientation;
@@ -13,7 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
+import com.toledo.proyectodorikam.models.Producto;
+import javafx.stage.Stage;
 
 public class VerProductoController {
 
@@ -27,7 +31,7 @@ public class VerProductoController {
     private Button ExitButton;
 
     @FXML
-    private ListView<?> VerInformacionProducto;
+    private ListView<String> VerInformacionProducto;
 
     @FXML
     private ScrollPane CatalogoAretes;
@@ -43,6 +47,27 @@ public class VerProductoController {
 
     @FXML
     private Button BuscarButton;
+
+    @FXML
+    private TableView<Producto> ProductosTable;
+
+    @FXML
+    private TableColumn<Producto, String> Nombre;
+
+    @FXML
+    private TableColumn<Producto, Double> Precio;
+
+    @FXML
+    private TableColumn<Producto, String> Categoria;
+
+    @FXML
+    private TableColumn<Producto, String> Ubicacion;
+
+    @FXML
+    private TableColumn<Producto, String> Fecha;
+
+    @FXML
+    private TableColumn<Producto, String> ID;
 
     private FlowPane flowPane;
 
@@ -83,7 +108,8 @@ public class VerProductoController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-        // Implementa aquí la lógica para cerrar la ventana si es necesario
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -91,30 +117,49 @@ public class VerProductoController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen");
         fileChooser.getExtensionFilters().addAll(
-                new ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
+                new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
         );
         File selectedFile = fileChooser.showOpenDialog(SubirImagenButton.getScene().getWindow());
         if (selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);
-            imageView.setFitHeight(300);
+            imageView.setFitHeight(350);
+
             flowPane.getChildren().add(imageView);
         }
     }
-
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
-
+        String nombreProducto = NombreProducto.getText();
+        if (!nombreProducto.isEmpty()) {
+            ObservableList<Producto> productosData = FXCollections.observableArrayList();
+            for (Producto producto : Producto.getListaProductos()) {
+                if (producto.getNombre().equals(nombreProducto)) {
+                    productosData.add(producto);
+                }
+            }
+            ProductosTable.setItems(productosData);
+        } else {
+            ProductosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
+        }
     }
 
     @FXML
     void initialize() {
         flowPane = new FlowPane();
-        flowPane.setHgap(10);
-        flowPane.setVgap(10);
+        flowPane.setHgap(0);
+        flowPane.setVgap(0);
         flowPane.setOrientation(Orientation.VERTICAL);
         flowPane.setColumnHalignment(HPos.LEFT);
         CatalogoAretes.setContent(flowPane);
+
+        Nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        Precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        Categoria.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        Ubicacion.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        Fecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        ID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+
     }
 }
