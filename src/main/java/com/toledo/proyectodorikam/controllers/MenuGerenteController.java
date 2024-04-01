@@ -82,6 +82,11 @@ public class MenuGerenteController {
 
     @FXML
     void OnMouseClickedVentasButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-ventas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callAgregar.setTitle("Ver Ventas");
+        callAgregar.setScene(scene);
+        callAgregar.show();
         cerrarVentana();
     }
 

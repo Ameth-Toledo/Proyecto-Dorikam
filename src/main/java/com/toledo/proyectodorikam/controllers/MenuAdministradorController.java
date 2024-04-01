@@ -54,8 +54,13 @@ public class MenuAdministradorController {
 
     @FXML
     void OnMouseClickedContarButton(MouseEvent event) throws IOException {
-        abrirContar();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("reporte-ventas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callCancelar.setTitle("Menu\"reporte de ventas\"");
+        callCancelar.setScene(scene);
+        callCancelar.show();
         cerrarVentana();
+
     }
 
     @FXML
@@ -83,8 +88,13 @@ public class MenuAdministradorController {
 
     @FXML
     void OnMouseClickedUbicarButton(MouseEvent event) throws IOException {
-        abrirUbicar();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callCancelar.setTitle("Menu\"Ubicar Productos\"");
+        callCancelar.setScene(scene);
+        callCancelar.show();
         cerrarVentana();
+
     }
 
     @FXML
