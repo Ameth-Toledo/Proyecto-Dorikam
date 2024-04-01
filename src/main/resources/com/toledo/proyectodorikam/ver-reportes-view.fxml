@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.VerReportesController">
     <children>
-      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="554.0" layoutY="705.0">
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="444.0" layoutY="705.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
@@ -46,7 +46,7 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
-      <Button fx:id="verReportes" layoutX="554.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ver Reportes" textFill="WHITE">
+      <Button fx:id="verReportes" layoutX="444.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ver Reportes" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -63,5 +63,9 @@
             <TableColumn fx:id="ContenidoColumn" prefWidth="414.0" text="DESCRIPCION DE REPORTE" />
         </columns>
       </TableView>
+      <Button fx:id="DescargarButton" layoutX="675.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedDescargarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #CDC63B; -fx-background-radius: 15;" text="Descargar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
     </children>
 </AnchorPane>

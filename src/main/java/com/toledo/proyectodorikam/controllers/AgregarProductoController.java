@@ -55,7 +55,7 @@ public class AgregarProductoController {
         String id = IDProduct.getText();
 
         Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id);
-        Producto.agregarProducto(producto); // Agregar el producto a la lista
+        Producto.agregarProducto(producto);
 
         limpiarCampos();
         mostrarAlertaInformation("Éxito", "Producto agregado correctamente");

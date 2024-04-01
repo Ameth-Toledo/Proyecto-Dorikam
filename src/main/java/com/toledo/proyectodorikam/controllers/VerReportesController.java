@@ -1,12 +1,24 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.models.Reporte;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class VerReportesController {
 
@@ -27,6 +39,53 @@ public class VerReportesController {
 
     @FXML
     private TableColumn<Reporte, String> ContenidoColumn;
+
+    @FXML
+    private Button DescargarButton;
+
+    @FXML
+    void OnMouseClickedDescargarButton(MouseEvent event) {
+        try {
+            descargarReportes();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlertaError("Error", "Error al descargar el archivo.");
+        }
+    }
+
+    private void descargarReportes() throws IOException {
+        List<Reporte> listaReportes = Reporte.getListaReporte();
+        if (listaReportes.isEmpty()) {
+            mostrarAdvertencia("La lista de reportes está vacía.");
+            return;
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar archivo");
+        fileChooser.setInitialFileName("reportes.txt");
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            FileWriter escritor = new FileWriter(archivo);
+            for (Reporte reporte : listaReportes) {
+                escritor.write("\"𝓓𝓞𝓡𝓘𝓚𝓐𝓜\"" + System.lineSeparator());
+                escritor.write(System.lineSeparator());
+                escritor.write("TITULO: " + reporte.getTitulo() + System.lineSeparator());
+                escritor.write("FECHA: " + reporte.getFechaReporte() + System.lineSeparator());
+                escritor.write("DESCRIPCION: " + reporte.getDetalles() + System.lineSeparator());
+                escritor.write(System.lineSeparator());
+                escritor.write("𝑹𝒆𝒑𝒐𝒓𝒕𝒆 𝒈𝒆𝒏𝒆𝒓𝒂𝒅𝒐 𝒑𝒐𝒓 𝑨𝒅𝒎𝒊𝒏𝒊𝒔𝒕𝒓𝒂𝒅𝒐𝒓, 𝒅𝒆 𝒍𝒂 𝒆𝒎𝒑𝒓𝒆𝒔𝒂 𝑫𝒐𝒓𝒊𝒌𝒂𝒎." + System.lineSeparator());
+                escritor.write(System.lineSeparator());
+                escritor.write("𝑺𝒖𝒄𝒖𝒓𝒔𝒂𝒍𝒆𝒔 𝒖𝒃𝒊𝒄𝒂𝒅𝒂𝒔 𝒆𝒏: \n✅ 12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n📍GoogleMaps: https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA ");
+                escritor.write(System.lineSeparator());
+                escritor.write("\n✅ Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n📍GoogleMaps: https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9" + System.lineSeparator());
+                escritor.write(System.lineSeparator());
+            }
+            escritor.close();
+
+            mostrarAlertaExito("Éxito", "Archivo descargado correctamente como '" + archivo.getName() + "'.");
+        }
+    }
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
@@ -57,6 +116,21 @@ public class VerReportesController {
         alert.setTitle("Información");
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    private void mostrarAlertaExito(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaError(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
         alert.showAndWait();
     }
 
