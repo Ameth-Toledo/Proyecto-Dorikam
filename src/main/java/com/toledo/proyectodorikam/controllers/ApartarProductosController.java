@@ -44,7 +44,7 @@ public class ApartarProductosController {
     private TextField Ubicacion;
 
     @FXML
-    private Button Confirmar;
+    private Button ConfirmarButton;
 
     @FXML
     private TextField NombreProducto;
@@ -68,7 +68,7 @@ public class ApartarProductosController {
                 Ubicacion.setText(producto.getUbicacion());
                 IngresaFecha.setText(producto.getFecha());
                 IdProducto.setText(producto.getId());
-                Confirmar.setText("Confirmar");
+                ConfirmarButton.setText("Confirmar");
             }
         }
     }
@@ -83,7 +83,7 @@ public class ApartarProductosController {
     }
 
     @FXML
-    void onMouseClickedConfirmar(MouseEvent event) {
+    void onMouseClickedConfirmarButton(MouseEvent event) {
         if (productoEncontrado) {
             validarDatos();
         } else {
@@ -136,7 +136,7 @@ public class ApartarProductosController {
                 handleLastTextFieldEnterKeyPressed(event);
             }
         });
-        Confirmar.setOnKeyPressed(event -> {
+        ConfirmarButton.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 validarDatos();
             }
@@ -177,7 +177,7 @@ public class ApartarProductosController {
         for (Producto producto : Producto.getListaProductos()) {
             if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
                 productoEncontrado = true;
-                Confirmar.setText("Confirmar");
+                ConfirmarButton.setText("Confirmar");
                 mostrarAlertaExito("Éxito", "Producto encontrado.");
                 return;
             }

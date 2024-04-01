@@ -111,7 +111,7 @@ public class MenuGerenteController {
     Stage callContar = new Stage();
 
     private void abrirContarButton() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("gerente-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-apartados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callContar.setTitle("Inicio de Sesion: \"Gerente\"");
         callContar.setScene(scene);
