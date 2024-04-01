@@ -43,18 +43,22 @@ public class AgregarProductoController {
     @FXML
     private Button ConfirmarButton;
 
+    @FXML
+    private TextField stockProducto;
+
     Stage callRegresar = new Stage();
 
     @FXML
-    void OnMouseClickedConfirmarButton(MouseEvent event) {
+    void OnMouseClickConfirmarButton(MouseEvent event) {
         String nombre = NameProduct.getText();
         double precio = Double.parseDouble(PriceProduct.getText());
         String categoria = CategoryProduct.getText();
         String ubicacion = UbicationProduct.getText();
         String fecha = DateProduct.getText();
         String id = IDProduct.getText();
+        int stock = Integer.parseInt(stockProducto.getText());
 
-        Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id);
+        Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id, stock);
         Producto.agregarProducto(producto);
 
         limpiarCampos();
