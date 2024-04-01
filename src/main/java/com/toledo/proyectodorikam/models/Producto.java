@@ -14,7 +14,7 @@ public class Producto {
     private final StringProperty id;
 
     private static List<Producto> listaProductos = new ArrayList<>();
-
+    private static List<Producto> copiaListaProductos = new ArrayList<>();
     public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id) {
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleDoubleProperty(precio);
@@ -26,14 +26,20 @@ public class Producto {
 
     public static void agregarProducto(Producto producto) {
         listaProductos.add(producto);
+        copiaListaProductos = new ArrayList<>(listaProductos);
     }
 
     public static void eliminarProducto(Producto producto) {
         listaProductos.remove(producto);
+        copiaListaProductos = new ArrayList<>(listaProductos);
     }
 
     public static List<Producto> getListaProductos() {
         return listaProductos;
+    }
+
+    public static List<Producto> getCopiaListaProductos() {
+        return new ArrayList<>(copiaListaProductos);
     }
 
     public StringProperty nombreProperty() {

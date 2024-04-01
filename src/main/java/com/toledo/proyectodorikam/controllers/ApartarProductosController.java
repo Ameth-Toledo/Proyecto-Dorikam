@@ -1,5 +1,7 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Apartar;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -48,6 +50,30 @@ public class ApartarProductosController {
     private TextField NombreProducto;
 
     @FXML
+    private Button BuscarProductoButton;
+
+    @FXML
+    void OnMouseClickedBuscarProductoButton(MouseEvent event) {
+        buscarProducto();
+        if (productoEncontrado) {
+            Producto producto = Producto.getListaProductos().stream()
+                    .filter(p -> p.getNombre().equalsIgnoreCase(NombreProducto.getText()))
+                    .findFirst()
+                    .orElse(null);
+            if (producto != null) {
+                Categoria.setText(producto.getCategoria());
+                Ubicacion.setText(producto.getUbicacion());
+                IngresaFecha.setText(producto.getFecha());
+                IdProducto.setText(producto.getId());
+                Confirmar.setText("Confirmar");
+            }
+        }
+    }
+
+    private Apartar apartar;
+    private boolean productoEncontrado = false;
+
+    @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
@@ -55,13 +81,20 @@ public class ApartarProductosController {
 
     @FXML
     void onMouseClickedConfirmar(MouseEvent event) {
-        validarDatos();
+        if (productoEncontrado) {
+            validarDatos();
+        } else {
+            buscarProducto();
+        }
     }
 
     @FXML
     void initialize() {
         setTextFieldEnterListener();
         IngresaFecha.setText(LocalDate.now().toString());
+        apartar = new Apartar();
+        System.out.println("Lista de Productos Apartados:");
+        System.out.println(apartar.toString());
     }
 
     private void setTextFieldEnterListener() {
@@ -126,6 +159,25 @@ public class ApartarProductosController {
         }
     }
 
+    private void buscarProducto() {
+        String nombreProducto = NombreProducto.getText();
+        if (nombreProducto.isEmpty()) {
+            mostrarAlertaError("Error", "Ingrese un nombre de producto válido.");
+            return;
+        }
+
+        for (Producto producto : Producto.getListaProductos()) {
+            if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
+                productoEncontrado = true;
+                Confirmar.setText("Confirmar");
+                mostrarAlertaExito("Éxito", "Producto encontrado.");
+                return;
+            }
+        }
+
+        mostrarAlertaError("Error", "El producto no se encuentra en la lista.");
+    }
+
     private void validarDatos() {
         String nombreProducto = NombreProducto.getText();
         String idProducto = IdProducto.getText();
@@ -139,7 +191,9 @@ public class ApartarProductosController {
             try {
                 double precioProducto = Double.parseDouble(precioProductoStr);
                 double montoRestante = Double.parseDouble(montoRestanteStr);
-                mostrarAlertaError("Error", "El producto no está disponible en la lista.");
+                Producto producto = new Producto(nombreProducto, precioProducto, categoria, Ubicacion.getText(), fechaCompra, idProducto);
+                apartar.agregarProducto(producto);
+                mostrarAlertaExito("Éxito", "Producto apartado con éxito.");
             } catch (NumberFormatException e) {
                 mostrarAlertaError("Error", "Ingrese valores numéricos válidos para el precio y el monto restante.");
             }
@@ -157,6 +211,14 @@ public class ApartarProductosController {
 
     private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    private void mostrarAlertaExito(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

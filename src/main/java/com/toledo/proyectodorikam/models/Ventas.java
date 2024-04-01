@@ -1,4 +1,4 @@
 package com.toledo.proyectodorikam.models;
 
-public class Articulo {
+public class Ventas {
 }

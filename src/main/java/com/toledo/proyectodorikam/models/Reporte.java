@@ -1,21 +1,24 @@
 package com.toledo.proyectodorikam.models;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Reporte {
-    private final String titulo;
-    private final String fechaReporte;
-    private final String detalles;
+    private final StringProperty titulo;
+    private final StringProperty fechaReporte;
+    private final StringProperty detalles;
     private static List<Reporte> listaReporte = new ArrayList<>();
 
     public Reporte(String titulo, String fechaReporte, String detalles) {
-        this.titulo = titulo;
-        this.fechaReporte = fechaReporte;
-        this.detalles = detalles;
+        this.titulo = new SimpleStringProperty(titulo);
+        this.fechaReporte = new SimpleStringProperty(fechaReporte);
+        this.detalles = new SimpleStringProperty(detalles);
     }
-    public static void generarReporte (Reporte reporte){
+
+    public static void generarReporte(Reporte reporte) {
         listaReporte.add(reporte);
     }
 
@@ -23,27 +26,27 @@ public class Reporte {
         return listaReporte;
     }
 
-    public static void setListaReporte(List<Reporte> listaReporte) {
-        Reporte.listaReporte = listaReporte;
+    public String getTitulo() {
+        return titulo.get();
     }
 
-    public String getTitulo() {
+    public StringProperty tituloProperty() {
         return titulo;
     }
 
     public String getFechaReporte() {
+        return fechaReporte.get();
+    }
+
+    public StringProperty fechaReporteProperty() {
         return fechaReporte;
     }
 
     public String getDetalles() {
-        return detalles;
+        return detalles.get();
     }
 
-    @Override
-    public String toString() {
-        return "Reporte: " +
-                "Titulo: " + titulo + '\'' +
-                ", Fecha del Reporte: " + fechaReporte + '\'' +
-                ", Detalles: " + detalles + '\'';
+    public StringProperty detallesProperty() {
+        return detalles;
     }
 }
