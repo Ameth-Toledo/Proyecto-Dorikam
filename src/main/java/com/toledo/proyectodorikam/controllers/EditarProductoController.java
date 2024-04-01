@@ -48,6 +48,9 @@ public class EditarProductoController {
     private TextField IDProduct;
 
     @FXML
+    private TextField cantidadStock;
+
+    @FXML
     private Button ConfirmarButton;
 
     @FXML
@@ -127,6 +130,11 @@ public class EditarProductoController {
 
         UbicationProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
+                cantidadStock.requestFocus();
+            }
+        });
+        cantidadStock.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
                 ConfirmarButton.requestFocus();
             }
         });
@@ -158,6 +166,7 @@ public class EditarProductoController {
         producto.setUbicacion(UbicationProduct.getText());
         producto.setFecha(DateProduct.getText());
         producto.setId(IDProduct.getText());
+        producto.setStock(Integer.parseInt(cantidadStock.getText()));
     }
 
     private void mostrarProductoEncontrado(Producto producto) {
@@ -175,7 +184,8 @@ public class EditarProductoController {
                 PriceProduct.getText().isEmpty() ||
                 DateProduct.getText().isEmpty() ||
                 CategoriaProduct.getText().isEmpty() ||
-                UbicationProduct.getText().isEmpty();
+                UbicationProduct.getText().isEmpty() ||
+                cantidadStock.getText().isEmpty();
     }
 
     private void cerrarVentana() throws IOException {
