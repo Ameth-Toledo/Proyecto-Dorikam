@@ -12,7 +12,7 @@ public class Producto {
     private final StringProperty ubicacion;
     private final StringProperty fecha;
     private final StringProperty id;
-    private final IntegerProperty stock; // Nuevo campo para el stock
+    private final IntegerProperty stock;
 
     private static List<Producto> listaProductos = new ArrayList<>();
     private static List<Producto> copiaListaProductos = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Producto {
         this.ubicacion = new SimpleStringProperty(ubicacion);
         this.fecha = new SimpleStringProperty(fecha);
         this.id = new SimpleStringProperty(id);
-        this.stock = new SimpleIntegerProperty(stock); // Inicializa el stock
+        this.stock = new SimpleIntegerProperty(stock);
     }
 
     public static void agregarProducto(Producto producto) {
@@ -86,7 +86,7 @@ public class Producto {
                 ", Ubicación: " + ubicacion.get() + '\'' +
                 ", Fecha: " + fecha.get() + '\'' +
                 ", ID: " + id.get() + '\'' +
-                ", Stock: " + stock.get(); // Agrega el stock al toString
+                ", Stock: " + stock.get();
     }
 
     public String getNombre() {
