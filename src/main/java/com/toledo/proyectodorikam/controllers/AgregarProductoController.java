@@ -41,15 +41,15 @@ public class AgregarProductoController {
     private TextField IDProduct;
 
     @FXML
-    private TextField stockProducto;
+    private Button ConfirmarButton;
 
     @FXML
-    private Button ConfirmarButton;
+    private TextField stockProducto;
 
     Stage callRegresar = new Stage();
 
     @FXML
-    void OnMouseClickConfirmar(MouseEvent event) {
+    void OnMouseClickConfirmarButton(MouseEvent event) {
         String nombre = NameProduct.getText();
         double precio = Double.parseDouble(PriceProduct.getText());
         String categoria = CategoryProduct.getText();
@@ -66,7 +66,8 @@ public class AgregarProductoController {
 
         System.out.println("lista");
         for (Producto p : Producto.getListaProductos()) {
-            System.out.println(p.toString());
+            System.out.println(p.toString()
+            );
         }
     }
 

@@ -1,19 +1,14 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.models.Reporte;
-import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -82,7 +77,6 @@ public class VerReportesController {
                 escritor.write(System.lineSeparator());
             }
             escritor.close();
-
             mostrarAlertaExito("Éxito", "Archivo descargado correctamente como '" + archivo.getName() + "'.");
         }
     }
