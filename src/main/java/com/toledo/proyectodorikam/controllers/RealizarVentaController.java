@@ -34,7 +34,7 @@ public class RealizarVentaController {
     private TextField PrecioProductoTextField11;
 
     @FXML
-    private TextField PrecioProductoTextField23;
+    private TextField cantidadComprar;
 
     @FXML
     private Button ConfirmarButton;

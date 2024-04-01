@@ -50,6 +50,9 @@ public class ApartarProductosController {
     private TextField NombreProducto;
 
     @FXML
+    private TextField cantidadApartar;
+
+    @FXML
     private Button BuscarProductoButton;
 
     @FXML
@@ -128,6 +131,11 @@ public class ApartarProductosController {
                 handleLastTextFieldEnterKeyPressed(event);
             }
         });
+        cantidadApartar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                handleLastTextFieldEnterKeyPressed(event);
+            }
+        });
         Confirmar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 validarDatos();
@@ -185,13 +193,14 @@ public class ApartarProductosController {
         String montoRestanteStr = MontoRestante.getText();
         String fechaCompra = IngresaFecha.getText();
         String categoria = Categoria.getText();
+        int cantidad = Integer.parseInt(cantidadApartar.getText());
         if (camposVacios(nombreProducto, idProducto, precioProductoStr, montoRestanteStr, fechaCompra, categoria)) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
             try {
                 double precioProducto = Double.parseDouble(precioProductoStr);
                 double montoRestante = Double.parseDouble(montoRestanteStr);
-                Producto producto = new Producto(nombreProducto, precioProducto, categoria, Ubicacion.getText(), fechaCompra, idProducto);
+                Producto producto = new Producto(nombreProducto, precioProducto, categoria, Ubicacion.getText(), fechaCompra, idProducto, cantidad);
                 apartar.agregarProducto(producto);
                 mostrarAlertaExito("Éxito", "Producto apartado con éxito.");
             } catch (NumberFormatException e) {
