@@ -69,6 +69,10 @@ public class VerProductoZapatoController {
     @FXML
     private TableColumn<Producto, String> ID;
 
+    @FXML
+    private TableColumn<Producto, Integer> StockColum;
+
+
     private FlowPane flowPane;
 
     @FXML
@@ -161,5 +165,6 @@ public class VerProductoZapatoController {
         Ubicacion.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
         Fecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
         ID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        StockColum.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
     }
 }

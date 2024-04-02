@@ -11,12 +11,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.UbicarProductosController">
     <children>
-      <ImageView fitHeight="58.0" fitWidth="236.0" layoutX="466.0" layoutY="687.0">
+      <ImageView fitHeight="71.0" fitWidth="236.0" layoutX="466.0" layoutY="687.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="226.0" layoutY="687.0">
+      <ImageView fitHeight="71.0" fitWidth="200.0" layoutX="226.0" layoutY="687.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
@@ -41,22 +41,22 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
-      <Button fx:id="EntregasButton" layoutX="226.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedEntregasButton" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Entregar " textFill="WHITE">
+      <Button fx:id="EntregasButton" layoutX="226.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedEntregasButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Entregar " textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="TableUbication" layoutX="40.0" layoutY="157.0" prefHeight="482.0" prefWidth="1211.0">
+      <TableView fx:id="TableUbication" layoutX="44.0" layoutY="164.0" prefHeight="503.0" prefWidth="1212.0">
         <columns>
-          <TableColumn fx:id="Producto" prefWidth="192.0" text="PRODUCTO" />
-          <TableColumn fx:id="Id" prefWidth="154.0" text="ID" />
-            <TableColumn fx:id="Cantidad" prefWidth="143.0" text="CANTIDAD" />
-            <TableColumn fx:id="Precio" prefWidth="158.0" text="PRECIO" />
-            <TableColumn fx:id="Entrega" prefWidth="393.0" text="ENTREGA" />
-            <TableColumn fx:id="Stock" prefWidth="170.0" text="STOCK" />
+          <TableColumn fx:id="Nombre" prefWidth="200.0" text="PRODUCTO" />
+          <TableColumn fx:id="IdColumn" prefWidth="139.0" text="ID" />
+            <TableColumn fx:id="PrecioColumn" prefWidth="177.0" text="PRECIO" />
+            <TableColumn fx:id="CategoriaColumn" prefWidth="179.0" text="CATEGORIA" />
+            <TableColumn fx:id="StockColumn" prefWidth="136.0" text="STOCK" />
+            <TableColumn fx:id="UbicationColumn" prefWidth="380.0" text="UBICACION" />
         </columns>
       </TableView>
-      <Button fx:id="UbicationsButton" layoutX="466.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUbicationsButton" prefHeight="58.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Ubicaciones" textFill="WHITE">
+      <Button fx:id="UbicationsButton" layoutX="466.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUbicationsButton" prefHeight="71.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Ubicaciones" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -66,7 +66,7 @@
             <Image url="@Imagenes/Ubicar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="643.0" layoutY="694.0">
+      <ImageView fitHeight="55.0" fitWidth="58.0" layoutX="631.0" layoutY="694.0">
          <image>
             <Image url="@Imagenes/Ubicar-1.png" />
          </image>
