@@ -105,7 +105,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="VentasButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVentasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Ventas" textFill="WHITE">
+      <Button fx:id="VentasButton" layoutX="450.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedVentasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Ventas Realizadas" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
@@ -120,7 +120,7 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="682.0" layoutY="427.0">
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="694.0" layoutY="427.0">
          <image>
             <Image url="@Imagenes/Ventas.png" />
          </image>
@@ -166,5 +166,10 @@
          </font>
       </Label>
       <AnchorPane layoutX="13.0" layoutY="15.0" prefHeight="67.0" prefWidth="188.0" style="-fx-border-radius: 20; -fx-border-color: white;" />
+      <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="706.0" layoutY="585.0">
+         <image>
+            <Image url="@Imagenes/apartar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -3,14 +3,13 @@ package com.toledo.proyectodorikam.controllers;
 import com.toledo.proyectodorikam.models.Producto;
 import com.toledo.proyectodorikam.models.Venta;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 
 public class RealizarVentaController {
@@ -50,16 +49,27 @@ public class RealizarVentaController {
     void OnMouseClickedConfirmarButton(MouseEvent event) {
         String idProducto = IDProductoTextField.getText();
         int cantidad = Integer.parseInt(cantidadComprar.getText());
+        String nombreProducto = NombreProductoTextField.getText();
+        String fechaCompra = FechaCompraTextField.getText();
+        String nombreCliente = NombreClienteTextField.getText();
+        String lugarEntrega = LugarEntregaTextField.getText();
+        double precioProducto = Double.parseDouble(PrecioProductoTextField11.getText());
 
         Producto producto = buscarProducto(idProducto);
 
         if (producto != null) {
             if (producto.getStock() >= cantidad) {
-                Venta venta = new Venta(producto, cantidad, pago.getValue());
-                venta.listaVentas.add(venta);
-                producto.setStock(producto.getStock() - cantidad);
+                double totalPagar = producto.getPrecio() * cantidad;
+                String mensaje = "Total a pagar: $" + totalPagar + "\n¿Desea confirmar la venta?";
+                if (confirmarVenta(mensaje)) {
+                    Venta venta = new Venta(producto, cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
+                    venta.listaVentas.add(venta);
+                    producto.setStock(producto.getStock() - cantidad);
 
-                mostrarAlertaInformation("Venta realizada", "La venta se ha realizado correctamente.");
+                    mostrarAlertaInformation("Venta realizada", "La venta se ha realizado correctamente.");
+                } else {
+                    mostrarAlertaInformation("Venta cancelada", "La venta ha sido cancelada.");
+                }
             } else {
                 mostrarAlertaError("Error", "No hay suficiente stock para realizar la venta.");
             }
@@ -71,6 +81,8 @@ public class RealizarVentaController {
             System.out.println(p.toString());
         }
     }
+
+
 
     private Producto buscarProducto(String id) {
         for (Producto producto : Producto.getListaProductos()) {
@@ -140,5 +152,18 @@ public class RealizarVentaController {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
+    }
+    private boolean confirmarVenta(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmar Venta");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        ButtonType buttonTypeConfirmar = new ButtonType("Confirmar");
+        ButtonType buttonTypeCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeConfirmar, buttonTypeCancelar);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == buttonTypeConfirmar;
     }
 }

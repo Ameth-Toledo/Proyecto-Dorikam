@@ -1,19 +1,15 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.toledo.proyectodorikam.models.Venta;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 public class VerVentasController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button ExitButton;
@@ -22,34 +18,43 @@ public class VerVentasController {
     private Button VerVentasButton;
 
     @FXML
-    private TableColumn<?, ?> NameProductoTable;
+    private TableView<Venta> HistorialVentas;
 
     @FXML
-    private TableColumn<?, ?> IDProductoTable;
+    private TableColumn<Venta, String> NameProductoTable;
 
     @FXML
-    private TableColumn<?, ?> DateProductoTable;
+    private TableColumn<Venta, Double> PrecioProductoTable;
 
     @FXML
-    private TableColumn<?, ?> CantidadProductoTable;
+    private TableColumn<Venta, Integer> CantidadProductoTable;
 
     @FXML
-    private TableColumn<?, ?> TotalVendidoProductoTable;
+    private TableColumn<Venta, String> DateProductoTable;
 
     @FXML
-    private TableColumn<?, ?> UbicationProductoTable;
+    private TableColumn<Venta, String> UbicationProductoTable;
+
+    @FXML
+    private TableColumn<Venta, String> MetodoPago;
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
     }
 
     @FXML
     void onMouseClickedVerVentasButton(MouseEvent event) {
-
+        ObservableList<Venta> ventas = FXCollections.observableArrayList(Venta.getListaVentas());
+        HistorialVentas.setItems(ventas);
     }
 
     @FXML
     void initialize() {
+        NameProductoTable.setCellValueFactory(cellData -> cellData.getValue().nombreProductoProperty());
+        PrecioProductoTable.setCellValueFactory(cellData -> cellData.getValue().precioProductoProperty().asObject());
+        CantidadProductoTable.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
+        DateProductoTable.setCellValueFactory(cellData -> cellData.getValue().fechaCompraProperty());
+        UbicationProductoTable.setCellValueFactory(cellData -> cellData.getValue().lugarEntregaProperty());
+        MetodoPago.setCellValueFactory(cellData -> cellData.getValue().metodoPagoProperty());
     }
 }

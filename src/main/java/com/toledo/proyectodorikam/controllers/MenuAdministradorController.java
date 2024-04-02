@@ -112,7 +112,7 @@ public class MenuAdministradorController {
 
     Stage callCancelar = new Stage();
     private void abrirCancelar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("eliminar-venta-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("cancelar-venta-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callCancelar.setTitle("\"Cancelar\"");
         callCancelar.setScene(scene);

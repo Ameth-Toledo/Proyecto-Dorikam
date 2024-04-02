@@ -82,6 +82,7 @@ public class MenuGerenteController {
 
     @FXML
     void OnMouseClickedVentasButton(MouseEvent event) throws IOException {
+        abrirVentasButton();
         cerrarVentana();
     }
 
@@ -150,7 +151,13 @@ public class MenuGerenteController {
         cerrarVentana();
     }
 
+    Stage callVentas = new Stage();
     private void abrirVentasButton() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-ventas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callVentas.setTitle("Menu: \"Ver Ventas\"");
+        callVentas.setScene(scene);
+        callVentas.show();
         cerrarVentana();
     }
 
