@@ -49,6 +49,11 @@ public class RealizarVentaController {
     void OnMouseClickedConfirmarButton(MouseEvent event) {
         String idProducto = IDProductoTextField.getText();
         int cantidad = Integer.parseInt(cantidadComprar.getText());
+        String nombreProducto = NombreProductoTextField.getText();
+        String fechaCompra = FechaCompraTextField.getText();
+        String nombreCliente = NombreClienteTextField.getText();
+        String lugarEntrega = LugarEntregaTextField.getText();
+        double precioProducto = Double.parseDouble(PrecioProductoTextField11.getText());
 
         Producto producto = buscarProducto(idProducto);
 
@@ -57,7 +62,7 @@ public class RealizarVentaController {
                 double totalPagar = producto.getPrecio() * cantidad;
                 String mensaje = "Total a pagar: $" + totalPagar + "\n¿Desea confirmar la venta?";
                 if (confirmarVenta(mensaje)) {
-                    Venta venta = new Venta(producto, cantidad, pago.getValue());
+                    Venta venta = new Venta(producto, cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
                     venta.listaVentas.add(venta);
                     producto.setStock(producto.getStock() - cantidad);
 
@@ -71,7 +76,12 @@ public class RealizarVentaController {
         } else {
             mostrarAlertaError("Error", "El producto no existe.");
         }
+        System.out.println("venta");
+        for (Venta p : Venta.getListaVentas()) {
+            System.out.println(p.toString());
+        }
     }
+
 
 
     private Producto buscarProducto(String id) {
