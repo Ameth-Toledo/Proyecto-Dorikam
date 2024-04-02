@@ -133,7 +133,7 @@ public class MenuAdministradorController {
 
     Stage callEntregas = new Stage();
     private void abrirEntregas() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-intefaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-entregados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callEntregas.setTitle("Entregas de Productos");
         callEntregas.setScene(scene);
@@ -167,7 +167,7 @@ public class MenuAdministradorController {
 
     Stage callUbicar = new Stage();
     private void abrirUbicar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-interfaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callUbicar.setTitle("\"Ubicar Productos\"");
         callUbicar.setScene(scene);

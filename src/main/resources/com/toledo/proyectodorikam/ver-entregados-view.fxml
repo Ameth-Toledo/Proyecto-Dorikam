@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.VerEntregadosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.VerEntregadosController">
    <children>
       <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="444.0" layoutY="705.0">
          <image>
@@ -46,7 +46,7 @@
             <Font name="Tahoma Bold" size="51.0" />
          </font>
       </Label>
-      <Button fx:id="verReportes" layoutX="444.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ver Reportes" textFill="WHITE">
+      <Button fx:id="verReportes" layoutX="444.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ver Entregados" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -56,11 +56,12 @@
             <Image url="@Imagenes/Logo.png" />
          </image>
       </ImageView>
-      <TableView fx:id="TableReportes" layoutX="145.0" layoutY="200.0" prefHeight="465.0" prefWidth="995.0">
+      <TableView fx:id="TableProductosEntregados" layoutX="104.0" layoutY="200.0" prefHeight="465.0" prefWidth="1073.0">
          <columns>
-            <TableColumn fx:id="NombreColumn" prefWidth="282.0000305175781" text="NOMBRE" />
-            <TableColumn fx:id="CantidadColumn" prefWidth="297.0" text="CANTIDAD" />
-            <TableColumn fx:id="UbicacionColumn" prefWidth="414.0" text="UBICACION" />
+            <TableColumn fx:id="NombreColumn" prefWidth="177.0" text="NOMBRE" />
+            <TableColumn fx:id="CantidadColumn" prefWidth="226.0" text="CANTIDAD" />
+            <TableColumn fx:id="UbicacionColumn" prefWidth="426.0" text="LUGAR DE ENTREGA" />
+            <TableColumn fx:id="FechaColumn" prefWidth="243.0" text="FECHA " />
          </columns>
       </TableView>
       <Button fx:id="DescargarButton" layoutX="675.0" layoutY="705.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedDescargarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #CDC63B; -fx-background-radius: 15;" text="Descargar" textFill="WHITE">

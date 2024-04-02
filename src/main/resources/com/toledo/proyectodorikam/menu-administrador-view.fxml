@@ -134,7 +134,7 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="EntregasButton" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntregasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Entregas" textFill="WHITE">
+      <Button fx:id="EntregasButton" layoutX="56.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntregasButton" prefHeight="108.0" prefWidth="360.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: RIGTH;" text="Entregados" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="33.0" />
          </font></Button>
