@@ -48,8 +48,8 @@ public class MenuAdministradorController {
     private Button EntregasButton;
 
     @FXML
-    void OnMouseClickedCancelarButton(MouseEvent event) {
-
+    void OnMouseClickedCancelarButton(MouseEvent event) throws IOException {
+        abrirCancelar();
     }
 
     @FXML
@@ -112,7 +112,7 @@ public class MenuAdministradorController {
 
     Stage callCancelar = new Stage();
     private void abrirCancelar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-interfaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("eliminar-venta-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callCancelar.setTitle("\"Cancelar\"");
         callCancelar.setScene(scene);

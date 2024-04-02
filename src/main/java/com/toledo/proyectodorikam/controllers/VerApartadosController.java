@@ -1,12 +1,16 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.toledo.proyectodorikam.models.Apartar;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class VerApartadosController {
 
@@ -23,40 +27,42 @@ public class VerApartadosController {
     private Button VerApartadosButton;
 
     @FXML
-    private TableView<?> tablaProductosApartados;
+    private TableView<Apartar> tablaProductosApartados;
 
     @FXML
-    private TableColumn<?, ?> NameColumn;
+    private TableColumn<Apartar, String> NameColumn;
 
     @FXML
-    private TableColumn<?, ?> IdColumnColumn;
+    private TableColumn<Apartar, Integer> IdColumnColumn;
 
     @FXML
-    private TableColumn<?, ?> FechaColumn;
+    private TableColumn<Apartar, String> FechaColumn;
 
     @FXML
-    private TableColumn<?, ?> CategoriaColumn;
+    private TableColumn<Apartar, String> CategoriaColumn;
 
     @FXML
-    private TableColumn<?, ?> UbicationColumn;
+    private TableColumn<Apartar, String> UbicationColumn;
 
     @FXML
-    private TableColumn<?, ?> CantidadColumn;
+    private TableColumn<Apartar, Integer> CantidadColumn;
 
     @FXML
-    private TableColumn<?, ?> AbonadoColumn;
+    private TableColumn<Apartar, Double> AbonadoColumn;
 
     @FXML
-    private TableColumn<?, ?> RestanteColumn;
+    private TableColumn<Apartar, Double> RestanteColumn;
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
-
+        // Implementación del botón de salida
     }
 
     @FXML
     void onMouseClickedVerApartadosButton(MouseEvent event) {
-
+        List<Apartar> apartados = Apartar.getListaApartados();
+        ObservableList<Apartar> observableApartados = FXCollections.observableArrayList(apartados);
+        tablaProductosApartados.setItems(observableApartados);
     }
 
     @FXML
@@ -73,5 +79,13 @@ public class VerApartadosController {
         assert AbonadoColumn != null : "fx:id=\"AbonadoColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
         assert RestanteColumn != null : "fx:id=\"RestanteColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
 
+        NameColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        IdColumnColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        FechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        CategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        UbicationColumn.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        CantidadColumn.setCellValueFactory(cellData -> cellData.getValue().cantidadDeProductosProperty().asObject());
+        AbonadoColumn.setCellValueFactory(cellData -> cellData.getValue().montoAbonadoProperty().asObject());
+        RestanteColumn.setCellValueFactory(cellData -> cellData.getValue().montoRestanteProperty().asObject());
     }
 }

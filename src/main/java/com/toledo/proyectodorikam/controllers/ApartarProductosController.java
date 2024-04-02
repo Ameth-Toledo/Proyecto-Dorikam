@@ -11,7 +11,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ApartarProductosController {
@@ -58,19 +57,6 @@ public class ApartarProductosController {
     @FXML
     void OnMouseClickedBuscarProductoButton(MouseEvent event) {
         buscarProducto();
-        if (productoEncontrado) {
-            Producto producto = Producto.getListaProductos().stream()
-                    .filter(p -> p.getNombre().equalsIgnoreCase(NombreProducto.getText()))
-                    .findFirst()
-                    .orElse(null);
-            if (producto != null) {
-                Categoria.setText(producto.getCategoria());
-                Ubicacion.setText(producto.getUbicacion());
-                IngresaFecha.setText(producto.getFecha());
-                IdProducto.setText(producto.getId());
-                ConfirmarButton.setText("Confirmar");
-            }
-        }
     }
 
     private Apartar apartar;
@@ -89,15 +75,6 @@ public class ApartarProductosController {
         } else {
             buscarProducto();
         }
-    }
-
-    @FXML
-    void initialize() {
-        setTextFieldEnterListener();
-        IngresaFecha.setText(LocalDate.now().toString());
-        apartar = new Apartar();
-        System.out.println("Lista de Productos Apartados:");
-        System.out.println(apartar.toString());
     }
 
     private void setTextFieldEnterListener() {
@@ -177,12 +154,15 @@ public class ApartarProductosController {
         for (Producto producto : Producto.getListaProductos()) {
             if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
                 productoEncontrado = true;
+                Categoria.setText(producto.getCategoria());
+                Ubicacion.setText(producto.getUbicacion());
+                IngresaFecha.setText(producto.getFecha());
+                IdProducto.setText(producto.getId());
                 ConfirmarButton.setText("Confirmar");
                 mostrarAlertaExito("Éxito", "Producto encontrado.");
                 return;
             }
         }
-
         mostrarAlertaError("Error", "El producto no se encuentra en la lista.");
     }
 
@@ -198,16 +178,17 @@ public class ApartarProductosController {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
             try {
-                double precioProducto = Double.parseDouble(precioProductoStr);
-                double montoRestante = Double.parseDouble(montoRestanteStr);
-                Producto producto = new Producto(nombreProducto, precioProducto, categoria, Ubicacion.getText(), fechaCompra, idProducto, cantidad);
-                apartar.agregarProducto(producto);
+                Apartar apartado = new Apartar(nombreProducto, nombreProducto, Integer.parseInt(idProducto),
+                        fechaCompra, categoria, Ubicacion.getText(), cantidad, Double.parseDouble(precioProductoStr),
+                        Double.parseDouble(montoRestanteStr));
+                Apartar.agregarApartado(apartado);
                 mostrarAlertaExito("Éxito", "Producto apartado con éxito.");
             } catch (NumberFormatException e) {
                 mostrarAlertaError("Error", "Ingrese valores numéricos válidos para el precio y el monto restante.");
             }
         }
     }
+
 
     private boolean camposVacios(String... campos) {
         for (String campo : campos) {
@@ -233,4 +214,9 @@ public class ApartarProductosController {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
+    @FXML
+    void initialize() {
+        setTextFieldEnterListener();
+    }
+
 }

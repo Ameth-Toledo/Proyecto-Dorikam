@@ -13,9 +13,6 @@ public class Producto {
     private final StringProperty fecha;
     private final StringProperty id;
     private final IntegerProperty stock;
-    // agregue esto para la tabla haber si jala
-    private final DoubleProperty montoRestante;
-    private final IntegerProperty cantidad;
     private static List<Producto> listaProductos = new ArrayList<>();
     private static List<Producto> copiaListaProductos = new ArrayList<>();
 
@@ -27,34 +24,8 @@ public class Producto {
         this.fecha = new SimpleStringProperty(fecha);
         this.id = new SimpleStringProperty(id);
         this.stock = new SimpleIntegerProperty(stock);
-        this.montoRestante = new SimpleDoubleProperty();
-        this.cantidad = new SimpleIntegerProperty();
     }
 
-    // esto tambien agregue
-    public double getMontoRestante() {
-        return montoRestante.get();
-    }
-
-    public DoubleProperty montoRestanteProperty() {
-        return montoRestante;
-    }
-
-    public void setMontoRestante (double montoRestante) {
-        this.montoRestante.set(montoRestante);
-    }
-
-    public int getCantidad() {
-        return cantidad.get();
-    }
-
-    public IntegerProperty cantidadProperty() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad.set(cantidad);
-    }
     public static void agregarProducto(Producto producto) {
         listaProductos.add(producto);
         actualizarCopiaListaProductos();
