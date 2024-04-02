@@ -26,8 +26,6 @@ public class Venta {
         this.precioProducto = new SimpleDoubleProperty(precioProducto);
     }
 
-    // Getters y setters para las propiedades creadas
-
     public StringProperty nombreProductoProperty() {
         return nombreProducto;
     }
@@ -71,5 +69,20 @@ public class Venta {
                 ", Nombre del Cliente: " + nombreCliente + '\'' +
                 ", Lugar de Entrega: " + lugarEntrega + '\'' +
                 ", Precio del Producto=" + precioProducto;
+    }
+    public String getNombreProducto() {
+        return nombreProducto.get();
+    }
+
+    public int getCantidad() {
+        return cantidad.get();
+    }
+
+    public String getLugarEntrega() {
+        return lugarEntrega.get();
+    }
+
+    public String getFechaCompra() {
+        return fechaCompra.get();
     }
 }
