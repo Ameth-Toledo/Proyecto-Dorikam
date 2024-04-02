@@ -1,5 +1,7 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.models.Apartar;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,7 +11,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ApartarProductosController {
@@ -42,10 +43,24 @@ public class ApartarProductosController {
     private TextField Ubicacion;
 
     @FXML
-    private Button Confirmar;
+    private Button ConfirmarButton;
 
     @FXML
     private TextField NombreProducto;
+
+    @FXML
+    private TextField cantidadApartar;
+
+    @FXML
+    private Button BuscarProductoButton;
+
+    @FXML
+    void OnMouseClickedBuscarProductoButton(MouseEvent event) {
+        buscarProducto();
+    }
+
+    private Apartar apartar;
+    private boolean productoEncontrado = false;
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) {
@@ -54,14 +69,12 @@ public class ApartarProductosController {
     }
 
     @FXML
-    void onMouseClickedConfirmar(MouseEvent event) {
-        validarDatos();
-    }
-
-    @FXML
-    void initialize() {
-        setTextFieldEnterListener();
-        IngresaFecha.setText(LocalDate.now().toString());
+    void onMouseClickedConfirmarButton(MouseEvent event) {
+        if (productoEncontrado) {
+            validarDatos();
+        } else {
+            buscarProducto();
+        }
     }
 
     private void setTextFieldEnterListener() {
@@ -95,7 +108,12 @@ public class ApartarProductosController {
                 handleLastTextFieldEnterKeyPressed(event);
             }
         });
-        Confirmar.setOnKeyPressed(event -> {
+        cantidadApartar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                handleLastTextFieldEnterKeyPressed(event);
+            }
+        });
+        ConfirmarButton.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 validarDatos();
             }
@@ -126,6 +144,28 @@ public class ApartarProductosController {
         }
     }
 
+    private void buscarProducto() {
+        String nombreProducto = NombreProducto.getText();
+        if (nombreProducto.isEmpty()) {
+            mostrarAlertaError("Error", "Ingrese un nombre de producto válido.");
+            return;
+        }
+
+        for (Producto producto : Producto.getListaProductos()) {
+            if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
+                productoEncontrado = true;
+                Categoria.setText(producto.getCategoria());
+                Ubicacion.setText(producto.getUbicacion());
+                IngresaFecha.setText(producto.getFecha());
+                IdProducto.setText(producto.getId());
+                ConfirmarButton.setText("Confirmar");
+                mostrarAlertaExito("Éxito", "Producto encontrado.");
+                return;
+            }
+        }
+        mostrarAlertaError("Error", "El producto no se encuentra en la lista.");
+    }
+
     private void validarDatos() {
         String nombreProducto = NombreProducto.getText();
         String idProducto = IdProducto.getText();
@@ -133,18 +173,22 @@ public class ApartarProductosController {
         String montoRestanteStr = MontoRestante.getText();
         String fechaCompra = IngresaFecha.getText();
         String categoria = Categoria.getText();
+        int cantidad = Integer.parseInt(cantidadApartar.getText());
         if (camposVacios(nombreProducto, idProducto, precioProductoStr, montoRestanteStr, fechaCompra, categoria)) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
             try {
-                double precioProducto = Double.parseDouble(precioProductoStr);
-                double montoRestante = Double.parseDouble(montoRestanteStr);
-                mostrarAlertaError("Error", "El producto no está disponible en la lista.");
+                Apartar apartado = new Apartar(nombreProducto, nombreProducto, Integer.parseInt(idProducto),
+                        fechaCompra, categoria, Ubicacion.getText(), cantidad, Double.parseDouble(precioProductoStr),
+                        Double.parseDouble(montoRestanteStr));
+                Apartar.agregarApartado(apartado);
+                mostrarAlertaExito("Éxito", "Producto apartado con éxito.");
             } catch (NumberFormatException e) {
                 mostrarAlertaError("Error", "Ingrese valores numéricos válidos para el precio y el monto restante.");
             }
         }
     }
+
 
     private boolean camposVacios(String... campos) {
         for (String campo : campos) {
@@ -162,4 +206,17 @@ public class ApartarProductosController {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
+
+    private void mostrarAlertaExito(String titulo, String contenido) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+    @FXML
+    void initialize() {
+        setTextFieldEnterListener();
+    }
+
 }

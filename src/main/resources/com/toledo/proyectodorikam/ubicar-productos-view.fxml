@@ -9,14 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.UbicarProductosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.UbicarProductosController">
     <children>
-      <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="707.0" layoutY="687.0">
-         <image>
-            <Image url="@Imagenes/Entrar.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="466.0" layoutY="687.0">
+      <ImageView fitHeight="58.0" fitWidth="236.0" layoutX="466.0" layoutY="687.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
@@ -36,7 +31,7 @@
                 <Image url="@Imagenes/Der-Abajo.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="58.0" fitWidth="174.0" layoutX="942.0" layoutY="687.0">
+        <ImageView fitHeight="71.0" fitWidth="174.0" layoutX="988.0" layoutY="681.0">
             <image>
                 <Image url="@Imagenes/Salir.png" />
             </image>
@@ -46,49 +41,45 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
-      <Button fx:id="verReportes" layoutX="226.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Entregar " textFill="WHITE">
+      <Button fx:id="EntregasButton" layoutX="226.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedEntregasButton" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Entregar " textFill="WHITE">
          <font>
-            <Font name="CoolveticaRg-Regular" size="23.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="Tabla" layoutX="127.0" layoutY="157.0" prefHeight="482.0" prefWidth="1050.0">
+      <TableView fx:id="TableUbication" layoutX="40.0" layoutY="157.0" prefHeight="482.0" prefWidth="1211.0">
         <columns>
-          <TableColumn fx:id="producto" prefWidth="192.0" text="PRODUCTO" />
-          <TableColumn fx:id="id" prefWidth="154.0" text="ID" />
-            <TableColumn fx:id="cantidad" prefWidth="232.0" text="CANTIDAD" />
-            <TableColumn fx:id="precio" prefWidth="169.0" text="PRECIO" />
-            <TableColumn fx:id="entrega" prefWidth="302.0" text="ENTREGA" />
+          <TableColumn fx:id="Producto" prefWidth="192.0" text="PRODUCTO" />
+          <TableColumn fx:id="Id" prefWidth="154.0" text="ID" />
+            <TableColumn fx:id="Cantidad" prefWidth="143.0" text="CANTIDAD" />
+            <TableColumn fx:id="Precio" prefWidth="158.0" text="PRECIO" />
+            <TableColumn fx:id="Entrega" prefWidth="393.0" text="ENTREGA" />
+            <TableColumn fx:id="Stock" prefWidth="170.0" text="STOCK" />
         </columns>
       </TableView>
-      <Button fx:id="verReportes1" layoutX="455.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Ubicar" textFill="WHITE">
+      <Button fx:id="UbicationsButton" layoutX="466.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUbicationsButton" prefHeight="58.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Ubicaciones" textFill="WHITE">
          <font>
-            <Font name="CoolveticaRg-Regular" size="23.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="verReportes3" layoutX="707.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Siguiente" textFill="WHITE">
-         <font>
-            <Font name="CoolveticaRg-Regular" size="23.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="97.0" fitWidth="119.0" layoutX="524.0" layoutY="37.0">
+      <ImageView fitHeight="114.0" fitWidth="119.0" layoutX="524.0" layoutY="20.0">
          <image>
             <Image url="@Imagenes/Ubicar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="620.0" layoutY="694.0">
+      <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="643.0" layoutY="694.0">
          <image>
             <Image url="@Imagenes/Ubicar-1.png" />
          </image>
       </ImageView>
-      <Button fx:id="verReportes31" layoutX="916.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerReportes" prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Salir" textFill="WHITE">
-         <font>
-            <Font name="CoolveticaRg-Regular" size="23.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="91.0" fitWidth="236.0" layoutX="988.0" layoutY="43.0">
          <image>
             <Image url="@Imagenes/DorikamName.png" />
          </image>
       </ImageView>
+      <Button fx:id="ExitButton" layoutX="988.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="5.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

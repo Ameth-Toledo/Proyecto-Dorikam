@@ -82,11 +82,7 @@ public class MenuGerenteController {
 
     @FXML
     void OnMouseClickedVentasButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-ventas-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callAgregar.setTitle("Ver Ventas");
-        callAgregar.setScene(scene);
-        callAgregar.show();
+        abrirVentasButton();
         cerrarVentana();
     }
 
@@ -116,7 +112,7 @@ public class MenuGerenteController {
     Stage callContar = new Stage();
 
     private void abrirContarButton() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("gerente-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-apartados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callContar.setTitle("Inicio de Sesion: \"Gerente\"");
         callContar.setScene(scene);
@@ -155,7 +151,13 @@ public class MenuGerenteController {
         cerrarVentana();
     }
 
+    Stage callVentas = new Stage();
     private void abrirVentasButton() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-ventas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callVentas.setTitle("Menu: \"Ver Ventas\"");
+        callVentas.setScene(scene);
+        callVentas.show();
         cerrarVentana();
     }
 

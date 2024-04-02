@@ -1,37 +1,88 @@
 package com.toledo.proyectodorikam.models;
 
+import javafx.beans.property.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Venta {
     private Producto producto;
-    private int cantidad;
-    private double total;
+    private final StringProperty nombreProducto;
+    private final IntegerProperty cantidad;
+    private final StringProperty metodoPago;
+    private final StringProperty fechaCompra;
+    private final StringProperty nombreCliente;
+    private final StringProperty lugarEntrega;
+    private final DoubleProperty precioProducto;
+    public static List<Venta> listaVentas = new ArrayList<>();
 
-    public Venta(Producto producto, int cantidad, double total) {
+    public Venta(Producto producto, int cantidad, String metodoPago, String nombreProducto, String fechaCompra, String nombreCliente, String lugarEntrega, double precioProducto) {
         this.producto = producto;
-        this.cantidad = cantidad;
-        this.total = total;
+        this.cantidad = new SimpleIntegerProperty(cantidad);
+        this.metodoPago = new SimpleStringProperty(metodoPago);
+        this.nombreProducto = new SimpleStringProperty(nombreProducto);
+        this.fechaCompra = new SimpleStringProperty(fechaCompra);
+        this.nombreCliente = new SimpleStringProperty(nombreCliente);
+        this.lugarEntrega = new SimpleStringProperty(lugarEntrega);
+        this.precioProducto = new SimpleDoubleProperty(precioProducto);
     }
 
-    public Producto getProducto() {
-        return producto;
+    public StringProperty nombreProductoProperty() {
+        return nombreProducto;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public int getCantidad() {
+    public IntegerProperty cantidadProperty() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public StringProperty metodoPagoProperty() {
+        return metodoPago;
     }
 
-    public double getTotal() {
-        return total;
+    public StringProperty fechaCompraProperty() {
+        return fechaCompra;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public StringProperty nombreClienteProperty() {
+        return nombreCliente;
+    }
+
+    public StringProperty lugarEntregaProperty() {
+        return lugarEntrega;
+    }
+
+    public DoubleProperty precioProductoProperty() {
+        return precioProducto;
+    }
+
+    public static List<Venta> getListaVentas() {
+        return listaVentas;
+    }
+
+    @Override
+    public String toString() {
+        return "Venta: " +
+                "Producto: " + producto +
+                ", Cantidad: " + cantidad +
+                ", Método de Pago: " + metodoPago + '\'' +
+                ", Nombre del Producto: " + nombreProducto + '\'' +
+                ", Fecha de Compra: " + fechaCompra + '\'' +
+                ", Nombre del Cliente: " + nombreCliente + '\'' +
+                ", Lugar de Entrega: " + lugarEntrega + '\'' +
+                ", Precio del Producto=" + precioProducto;
+    }
+    public String getNombreProducto() {
+        return nombreProducto.get();
+    }
+
+    public int getCantidad() {
+        return cantidad.get();
+    }
+
+    public String getLugarEntrega() {
+        return lugarEntrega.get();
+    }
+
+    public String getFechaCompra() {
+        return fechaCompra.get();
     }
 }

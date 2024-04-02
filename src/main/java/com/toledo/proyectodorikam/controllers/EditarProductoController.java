@@ -1,14 +1,19 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,6 +48,9 @@ public class EditarProductoController {
     private TextField IDProduct;
 
     @FXML
+    private TextField cantidadStock;
+
+    @FXML
     private Button ConfirmarButton;
 
     @FXML
@@ -71,10 +79,17 @@ public class EditarProductoController {
         }
     }
 
+    Stage callRegresar = new Stage();
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Menu: \"Gerente\"");
+        callRegresar.setScene(scene);
+        callRegresar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callRegresar.show();
+
+        cerrarVentana();
     }
 
     @FXML
@@ -115,6 +130,11 @@ public class EditarProductoController {
 
         UbicationProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
+                cantidadStock.requestFocus();
+            }
+        });
+        cantidadStock.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
                 ConfirmarButton.requestFocus();
             }
         });
@@ -146,6 +166,7 @@ public class EditarProductoController {
         producto.setUbicacion(UbicationProduct.getText());
         producto.setFecha(DateProduct.getText());
         producto.setId(IDProduct.getText());
+        producto.setStock(Integer.parseInt(cantidadStock.getText()));
     }
 
     private void mostrarProductoEncontrado(Producto producto) {
@@ -163,7 +184,13 @@ public class EditarProductoController {
                 PriceProduct.getText().isEmpty() ||
                 DateProduct.getText().isEmpty() ||
                 CategoriaProduct.getText().isEmpty() ||
-                UbicationProduct.getText().isEmpty();
+                UbicationProduct.getText().isEmpty() ||
+                cantidadStock.getText().isEmpty();
+    }
+
+    private void cerrarVentana() throws IOException {
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     private void mostrarAlertaError(String titulo, String mensaje) {

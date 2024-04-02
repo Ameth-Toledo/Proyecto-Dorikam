@@ -30,66 +30,82 @@
             <Font name="Tahoma Bold" size="55.0" />
          </font>
       </Label>
-      <ImageView fitHeight="77.0" fitWidth="199.0" layoutX="1043.0" layoutY="586.0" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="1005.0">
+      <ImageView fitHeight="77.0" fitWidth="199.0" layoutX="1005.0" layoutY="709.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="1005.0">
          <image>
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="1041.0" layoutY="653.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="1041.0">
+      <Button fx:id="ExitButton" layoutX="1005.0" layoutY="709.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="1005.0">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
       <TextField fx:id="NombreProducto" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="MontoAbonado" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="Categoria" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="Ubicacion" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="MontoAbonado" layoutX="83.0" layoutY="476.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="Categoria" layoutX="696.0" layoutY="338.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="Ubicacion" layoutX="697.0" layoutY="476.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <TextField fx:id="IngresaFecha" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="IdProducto" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="IdProducto" layoutX="83.0" layoutY="338.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="90.0" layoutY="332.0" text="ID de producto:" textFill="#fff7f7">
+      <Label layoutX="82.0" layoutY="302.0" text="ID de producto:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="495.0" text="Monto Abonado:" textFill="#fff7f7">
+      <Label layoutX="90.0" layoutY="439.0" text="Monto Abonado:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Label layoutX="696.0" layoutY="178.0" text="Ingrese la Fecha:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="696.0" layoutY="332.0" text="Categoria:" textFill="#fff7f7">
+      <Label layoutX="696.0" layoutY="302.0" text="Categoria:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="696.0" layoutY="495.0" text="Ubicación:" textFill="#fff7f7">
+      <Label layoutX="695.0" layoutY="439.0" text="Ubicación:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="737.0" layoutY="657.0">
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="737.0" layoutY="711.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="Confirmar" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedConfirmar" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
+      <Button fx:id="ConfirmarButton" layoutX="737.0" layoutY="711.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="MontoRestante" layoutX="83.0" layoutY="677.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="86.0" layoutY="640.0" text="Monto Restante:" textFill="#fff7f7">
+      <TextField fx:id="MontoRestante" layoutX="82.0" layoutY="603.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="83.0" layoutY="570.0" text="Monto Restante:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="BuscarProductoButton" layoutX="489.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedBuscarProductoButton" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #00A859; -fx-background-radius: 9;" text="Buscar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="14.0" layoutY="736.0" text="Presione buscar para buscar si existe el producto porfavor." textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cantidadApartar" layoutX="697.0" layoutY="603.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="695.0" layoutY="570.0" text="Cantidad a Apartar:" textFill="#fff7f7">
+         <font>
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
    </children>

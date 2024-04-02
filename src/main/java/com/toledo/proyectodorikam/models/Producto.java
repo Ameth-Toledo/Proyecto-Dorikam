@@ -12,31 +12,41 @@ public class Producto {
     private final StringProperty ubicacion;
     private final StringProperty fecha;
     private final StringProperty id;
-
+    private final IntegerProperty stock;
     private static List<Producto> listaProductos = new ArrayList<>();
+    private static List<Producto> copiaListaProductos = new ArrayList<>();
 
-    public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id) {
+    public Producto(String nombre, double precio, String categoria, String ubicacion, String fecha, String id, int stock) {
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleDoubleProperty(precio);
         this.categoria = new SimpleStringProperty(categoria);
         this.ubicacion = new SimpleStringProperty(ubicacion);
         this.fecha = new SimpleStringProperty(fecha);
         this.id = new SimpleStringProperty(id);
+        this.stock = new SimpleIntegerProperty(stock);
     }
 
     public static void agregarProducto(Producto producto) {
         listaProductos.add(producto);
+        actualizarCopiaListaProductos();
     }
 
     public static void eliminarProducto(Producto producto) {
         listaProductos.remove(producto);
+        actualizarCopiaListaProductos();
+    }
+    private static void actualizarCopiaListaProductos() {
+        copiaListaProductos = new ArrayList<>(listaProductos);
     }
 
     public static List<Producto> getListaProductos() {
         return listaProductos;
     }
 
-    // Getters y setters para cada propiedad observable
+    public static List<Producto> getCopiaListaProductos() {
+        return new ArrayList<>(copiaListaProductos);
+    }
+
     public StringProperty nombreProperty() {
         return nombre;
     }
@@ -65,19 +75,22 @@ public class Producto {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "nombre='" + nombre.get() + '\'' +
-                ", precio=" + precio.get() +
-                ", categoria='" + categoria.get() + '\'' +
-                ", ubicacion='" + ubicacion.get() + '\'' +
-                ", fecha='" + fecha.get() + '\'' +
-                ", id='" + id.get() + '\'' +
-                '}';
+    public IntegerProperty stockProperty() {
+        return stock;
     }
 
-    // Los métodos restantes, como los setters y getters originales, permanecen sin cambios
+    @Override
+    public String toString() {
+        return "Producto: " +
+                "Nombre:" + nombre.get() + '\'' +
+                ", Precio: " + precio.get() +
+                ", Categoria: " + categoria.get() + '\'' +
+                ", Ubicación: " + ubicacion.get() + '\'' +
+                ", Fecha: " + fecha.get() + '\'' +
+                ", ID: " + id.get() + '\'' +
+                ", Stock: " + stock.get();
+    }
+
     public String getNombre() {
         return nombre.get();
     }
@@ -120,5 +133,13 @@ public class Producto {
 
     public void setId(String id) {
         this.id.set(id);
+    }
+
+    public int getStock() {
+        return stock.get();
+    }
+
+    public void setStock(int stock) {
+        this.stock.set(stock);
     }
 }

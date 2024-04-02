@@ -37,6 +37,9 @@ public class EliminarProductoController {
     private TextField IDProduct;
 
     @FXML
+    private TextField cantStock;
+
+    @FXML
     private Button ConfirmarButton;
 
     @FXML
@@ -147,7 +150,8 @@ public class EliminarProductoController {
                 PriceProduct.getText().isEmpty() ||
                 DateProduct.getText().isEmpty() ||
                 CategoryProduct.getText().isEmpty() ||
-                UbicationProduct.getText().isEmpty();
+                UbicationProduct.getText().isEmpty() ||
+                cantStock.getText().isEmpty();
     }
 
     private void mostrarAlertaError(String titulo, String contenido) {

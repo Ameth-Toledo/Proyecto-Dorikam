@@ -17,53 +17,51 @@ public class UbicarProductosController {
     private URL location;
 
     @FXML
-    private TableView<?> Tabla;
+    private Button EntregasButton;
 
     @FXML
-    private TableColumn<?, ?> cantidad;
+    private TableView<?> TableUbication;
 
     @FXML
-    private TableColumn<?, ?> entrega;
+    private TableColumn<?, ?> Producto;
 
     @FXML
-    private TableColumn<?, ?> id;
+    private TableColumn<?, ?> Id;
 
     @FXML
-    private TableColumn<?, ?> precio;
+    private TableColumn<?, ?> Cantidad;
 
     @FXML
-    private TableColumn<?, ?> producto;
+    private TableColumn<?, ?> Precio;
 
     @FXML
-    private Button verReportes;
+    private TableColumn<?, ?> Entrega;
 
     @FXML
-    private Button verReportes1;
+    private TableColumn<?, ?> Stock;
 
     @FXML
-    private Button verReportes3;
+    private Button UbicationsButton;
 
     @FXML
-    private Button verReportes31;
+    private Button ExitButton;
 
     @FXML
-    void onMouseClickedVerReportes(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onMouseClickedEntregasButton(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onMouseClickedUbicationsButton(MouseEvent event) {
 
     }
 
     @FXML
     void initialize() {
-        assert Tabla != null : "fx:id=\"Tabla\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert cantidad != null : "fx:id=\"cantidad\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert entrega != null : "fx:id=\"entrega\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert id != null : "fx:id=\"id\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert precio != null : "fx:id=\"precio\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert producto != null : "fx:id=\"producto\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert verReportes != null : "fx:id=\"verReportes\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert verReportes1 != null : "fx:id=\"verReportes1\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert verReportes3 != null : "fx:id=\"verReportes3\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-        assert verReportes31 != null : "fx:id=\"verReportes31\" was not injected: check your FXML file 'ubicar-productos-view.fxml'.";
-
     }
-
 }

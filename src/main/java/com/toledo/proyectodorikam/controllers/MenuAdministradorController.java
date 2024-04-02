@@ -48,19 +48,14 @@ public class MenuAdministradorController {
     private Button EntregasButton;
 
     @FXML
-    void OnMouseClickedCancelarButton(MouseEvent event) {
-
+    void OnMouseClickedCancelarButton(MouseEvent event) throws IOException {
+        abrirCancelar();
     }
 
     @FXML
     void OnMouseClickedContarButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("reporte-ventas-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callCancelar.setTitle("Menu\"reporte de ventas\"");
-        callCancelar.setScene(scene);
-        callCancelar.show();
+        abrirContar();
         cerrarVentana();
-
     }
 
     @FXML
@@ -88,13 +83,8 @@ public class MenuAdministradorController {
 
     @FXML
     void OnMouseClickedUbicarButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callCancelar.setTitle("Menu\"Ubicar Productos\"");
-        callCancelar.setScene(scene);
-        callCancelar.show();
+        abrirUbicar();
         cerrarVentana();
-
     }
 
     @FXML
@@ -122,7 +112,7 @@ public class MenuAdministradorController {
 
     Stage callCancelar = new Stage();
     private void abrirCancelar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-interfaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("cancelar-venta-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callCancelar.setTitle("\"Cancelar\"");
         callCancelar.setScene(scene);
@@ -143,7 +133,7 @@ public class MenuAdministradorController {
 
     Stage callEntregas = new Stage();
     private void abrirEntregas() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-intefaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-entregados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callEntregas.setTitle("Entregas de Productos");
         callEntregas.setScene(scene);
@@ -177,7 +167,7 @@ public class MenuAdministradorController {
 
     Stage callUbicar = new Stage();
     private void abrirUbicar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("falta-interfaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callUbicar.setTitle("\"Ubicar Productos\"");
         callUbicar.setScene(scene);
