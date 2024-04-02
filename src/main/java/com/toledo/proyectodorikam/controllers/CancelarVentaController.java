@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class CancelarVentaController {
 
     @FXML
@@ -31,15 +33,14 @@ public class CancelarVentaController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        String nombreProducto = NombreProductoTextField.getText();
-        Producto producto = buscarProducto(nombreProducto);
+        String idProducto = IDProductoTextField.getText();
+        Producto producto = buscarProducto(idProducto);
 
         if (producto != null) {
             Venta venta = buscarVentaPorProducto(producto);
             if (venta != null) {
-                Venta.listaVentas.remove(venta);
+                Venta.getListaVentas().remove(venta);
                 producto.setStock(producto.getStock() + venta.getCantidad());
-                limpiarCampos();
                 mostrarAlertaInformation("Venta cancelada", "La venta ha sido cancelada correctamente.");
             } else {
                 mostrarAlertaError("Error", "No se encontró una venta para el producto especificado.");
@@ -47,7 +48,7 @@ public class CancelarVentaController {
         } else {
             mostrarAlertaError("Error", "El producto no existe.");
         }
-        System.out.println("ventas");
+        System.out.println("venta");
         for (Venta p : Venta.getListaVentas()) {
             System.out.println(p.toString());
         }
@@ -64,9 +65,10 @@ public class CancelarVentaController {
 
     }
 
-    private Producto buscarProducto(String nombre) {
-        for (Producto producto : Producto.getListaProductos()) {
-            if (producto.getNombre().equalsIgnoreCase(nombre)) {
+    private Producto buscarProducto(String id) {
+        List<Producto> listaProductos = Producto.getListaProductos();
+        for (Producto producto : listaProductos) {
+            if (producto.getId().equals(id)) {
                 return producto;
             }
         }
@@ -74,7 +76,8 @@ public class CancelarVentaController {
     }
 
     private Venta buscarVentaPorProducto(Producto producto) {
-        for (Venta venta : Venta.getListaVentas()) {
+        List<Venta> listaVentas = Venta.getListaVentas();
+        for (Venta venta : listaVentas) {
             if (venta.getProducto().equals(producto)) {
                 return venta;
             }
@@ -96,11 +99,5 @@ public class CancelarVentaController {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
-    }
-    private void limpiarCampos () {
-        IDProductoTextField.clear();
-        NombreClienteTextField.clear();
-        NombreProductoTextField.clear();
-        PrecioProductoTextField11.clear();
     }
 }
