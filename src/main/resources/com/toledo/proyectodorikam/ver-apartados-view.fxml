@@ -41,7 +41,7 @@
             <Font name="Tahoma Bold" size="55.0" />
          </font>
       </Label>
-      <Button fx:id="VerApartadosButton" layoutX="536.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerApartadosButton" prefHeight="62.0" prefWidth="223.0" style="-fx-background-radius: 20;" text="Ver Apartados" textFill="WHITE">
+      <Button fx:id="VerApartadosButton" layoutX="433.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerApartadosButton" prefHeight="77.0" prefWidth="223.0" style="-fx-background-radius: 20; -fx-background-color: #00A859;" text="Ver Apartados" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -63,5 +63,10 @@
             <TableColumn fx:id="RestanteColumn" prefWidth="117.0" text="RESTANTE" />
         </columns>
       </TableView>
+      <Button fx:id="DescargarReporteButton" layoutX="676.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedDescargarReporteButton" prefHeight="77.0" prefWidth="259.0" style="-fx-background-radius: 20; -fx-background-color: #CDC63B;" text="Descargar Reporte" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

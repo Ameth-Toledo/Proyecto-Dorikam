@@ -31,7 +31,6 @@ public class Apartar {
         this.montoRestante = new SimpleDoubleProperty(montoRestante);
     }
 
-    // Getters y setters para las propiedades observables
     public String getNombre() {
         return nombre.get();
     }
