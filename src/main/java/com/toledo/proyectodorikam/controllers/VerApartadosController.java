@@ -1,13 +1,17 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Apartar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -62,6 +66,26 @@ public class VerApartadosController {
 
     @FXML
     private Button DescargarReporteButton;
+
+    @FXML
+    private Button EntregasButton;
+
+    Stage callEntregar = new Stage();
+    @FXML
+    void onMouseClickedEntregasButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callEntregar.setTitle("Menu: \"Realizar Venta\"");
+        callEntregar.setScene(scene);
+        callEntregar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callEntregar.show();
+        cerrarVentana();
+    }
+
+    private void cerrarVentana() throws IOException {
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     void OnMouseClickedDescargarReporteButton(MouseEvent event) {

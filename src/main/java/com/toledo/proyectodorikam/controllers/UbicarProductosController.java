@@ -25,9 +25,6 @@ public class UbicarProductosController {
     private URL location;
 
     @FXML
-    private Button EntregasButton;
-
-    @FXML
     private TableView<Producto> TableUbication;
 
     @FXML
@@ -57,16 +54,6 @@ public class UbicarProductosController {
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         cerrarVentana();
-    }
-
-    Stage callEntregar = new Stage();
-    @FXML
-    void onMouseClickedEntregasButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        callEntregar.setTitle("Menu: \"Ver Ventas\"");
-        callEntregar.setScene(scene);
-        callEntregar.show();
     }
 
     @FXML

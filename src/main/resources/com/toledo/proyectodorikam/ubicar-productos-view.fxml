@@ -16,11 +16,6 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="71.0" fitWidth="200.0" layoutX="226.0" layoutY="687.0">
-         <image>
-            <Image url="@Imagenes/Entrar.png" />
-         </image>
-      </ImageView>
         <ImageView fitHeight="398.0" fitWidth="326.0">
             <image>
                 <Image url="@Imagenes/Izq-Arriba.png" />
@@ -41,11 +36,6 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
-      <Button fx:id="EntregasButton" layoutX="226.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedEntregasButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Entregar " textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
       <TableView fx:id="TableUbication" layoutX="44.0" layoutY="164.0" prefHeight="503.0" prefWidth="1212.0">
         <columns>
           <TableColumn fx:id="Nombre" prefWidth="200.0" text="PRODUCTO" />

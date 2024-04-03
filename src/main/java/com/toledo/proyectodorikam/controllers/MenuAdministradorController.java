@@ -50,6 +50,7 @@ public class MenuAdministradorController {
     @FXML
     void OnMouseClickedCancelarButton(MouseEvent event) throws IOException {
         abrirCancelar();
+        cerrarVentana();
     }
 
     @FXML
@@ -104,8 +105,9 @@ public class MenuAdministradorController {
     private void abrirRealizar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callRealizar.setTitle("Menu: \"Ver Productos\"");
+        callRealizar.setTitle("Menu: \"Realizar Venta\"");
         callRealizar.setScene(scene);
+        callRealizar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callRealizar.show();
         cerrarVentana();
     }
@@ -114,8 +116,9 @@ public class MenuAdministradorController {
     private void abrirCancelar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("cancelar-venta-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callCancelar.setTitle("\"Cancelar\"");
+        callCancelar.setTitle("Menu: \"Cancelar Venta\"");
         callCancelar.setScene(scene);
+        callCancelar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callCancelar.show();
         cerrarVentana();
     }
@@ -127,6 +130,7 @@ public class MenuAdministradorController {
         Scene scene = new Scene(fxmlLoader.load());
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
+        callVer.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callVer.show();
         cerrarVentana();
     }
@@ -135,8 +139,9 @@ public class MenuAdministradorController {
     private void abrirEntregas() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-entregados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callEntregas.setTitle("Entregas de Productos");
+        callEntregas.setTitle("Menu: \"Productos Entregados\"");
         callEntregas.setScene(scene);
+        callEntregas.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callEntregas.show();
         cerrarVentana();
     }
@@ -146,8 +151,9 @@ public class MenuAdministradorController {
     private void abrirGenerar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("generar-reportes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callGenerar.setTitle("Generar Reportes");
+        callGenerar.setTitle("Menu: \"Generar Reportes\"");
         callGenerar.setScene(scene);
+        callGenerar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callGenerar.show();
 
         cerrarVentana();
@@ -158,8 +164,9 @@ public class MenuAdministradorController {
     private void abrirApartar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("apartar-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callApartar.setTitle("\"Apartar Productos\"");
+        callApartar.setTitle("Menu: \"Apartar Productos\"");
         callApartar.setScene(scene);
+        callApartar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callApartar.show();
 
         cerrarVentana();
@@ -169,18 +176,20 @@ public class MenuAdministradorController {
     private void abrirUbicar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callUbicar.setTitle("\"Ubicar Productos\"");
+        callUbicar.setTitle("Menu: \"Ubicar Productos\"");
         callUbicar.setScene(scene);
+        callUbicar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callUbicar.show();
         cerrarVentana();
     }
 
     Stage callContar = new Stage();
     private void abrirContar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("apartar-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-apartados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callContar.setTitle("Menu: \"Ver Productos\"");
+        callContar.setTitle("Menu: \"Ver Productos Apartados\"");
         callContar.setScene(scene);
+        callContar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callContar.show();
         cerrarVentana();
     }
