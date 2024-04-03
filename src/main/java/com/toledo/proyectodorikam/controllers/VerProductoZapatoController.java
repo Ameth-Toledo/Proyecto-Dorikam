@@ -160,6 +160,9 @@ public class VerProductoZapatoController {
         flowPane.setColumnHalignment(HPos.LEFT);
         CatalogoAretes.setContent(flowPane);
 
+        CatalogoAretes.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        CatalogoAretes.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
         for (File imagen : Imagenes.getListaZapatos()) {
             Image image = new Image(imagen.toURI().toString());
             ImageView imageView = new ImageView(image);
