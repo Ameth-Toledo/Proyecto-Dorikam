@@ -130,6 +130,7 @@ public class AgregarProductoController {
         PriceProduct.clear();
         CategoryProduct.clear();
         UbicationProduct.clear();
+        stockProducto.clear();
     }
 
     private void switchToNextTextField(TextField currentTextField) {
