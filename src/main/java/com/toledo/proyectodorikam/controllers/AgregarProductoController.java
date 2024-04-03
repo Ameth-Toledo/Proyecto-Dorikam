@@ -1,21 +1,23 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.App;
+import com.toledo.proyectodorikam.models.Imagenes;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class AgregarProductoController {
 
@@ -45,6 +47,9 @@ public class AgregarProductoController {
 
     @FXML
     private TextField stockProducto;
+
+    @FXML
+    private Button UpLoadImagenButton;
 
     Stage callRegresar = new Stage();
 
@@ -82,6 +87,36 @@ public class AgregarProductoController {
         callRegresar.show();
         cerrarVentana();
     }
+
+    @FXML
+    void OnMouseClickedUpLoadImagenButton(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar imagen");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Seleccione una opción");
+            alert.setHeaderText(null);
+            alert.setContentText("Seleccione la categoría para la imagen:");
+            ButtonType zapatoButton = new ButtonType("Zapato");
+            ButtonType areteButton = new ButtonType("Arete");
+            ButtonType cancelButton = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(zapatoButton, areteButton, cancelButton);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == zapatoButton) {
+                Imagenes.agregarImagen(selectedFile, "Zapato");
+                mostrarAlertaExito("Éxito", "Imagen de zapato agregada correctamente.");
+            } else if (result.isPresent() && result.get() == areteButton) {
+                Imagenes.agregarImagen(selectedFile, "Arete");
+                mostrarAlertaExito("Éxito", "Imagen de arete agregada correctamente.");
+            }
+        }
+    }
+
 
     @FXML
     void initialize() {

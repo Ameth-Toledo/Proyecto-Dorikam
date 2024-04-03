@@ -40,39 +40,39 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="NameProduct" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="PriceProduct" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="CategoryProduct" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="UbicationProduct" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="DateProduct" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" />
-      <TextField fx:id="IDProduct" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" />
+      <TextField fx:id="NameProduct" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="PriceProduct" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="CategoryProduct" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="UbicationProduct" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="DateProduct" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="IDProduct" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font></Label>
       <Label layoutX="90.0" layoutY="332.0" text="ID de producto:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="495.0" text="Precio:" textFill="#fff7f7">
+      <Label layoutX="90.0" layoutY="495.0" text="Precio:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Label layoutX="696.0" layoutY="178.0" text="Ingrese la Fecha:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Label layoutX="696.0" layoutY="332.0" text="Categoria:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Label layoutX="696.0" layoutY="495.0" text="Ubicación:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="737.0" layoutY="657.0">
@@ -85,11 +85,16 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="stockProducto" layoutX="82.0" layoutY="687.0" prefHeight="74.0" prefWidth="517.0" />
-      <Label layoutX="82.0" layoutY="651.0" text="Stock:" textFill="#fff7f7">
+      <TextField fx:id="stockProducto" layoutX="82.0" layoutY="687.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="90.0" layoutY="655.0" text="Stock:" textFill="#fff7f7">
          <font>
-            <Font name="Sitka Text Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
+      <Button fx:id="UpLoadImagenButton" layoutX="457.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedUpLoadImagenButton" prefHeight="31.0" prefWidth="121.0" style="-fx-background-color: #00A859;" text="subir imagen" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

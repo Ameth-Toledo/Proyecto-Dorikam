@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.toledo.proyectodorikam.models.Imagenes;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -158,6 +159,14 @@ public class VerProductoZapatoController {
         flowPane.setOrientation(Orientation.VERTICAL);
         flowPane.setColumnHalignment(HPos.LEFT);
         CatalogoAretes.setContent(flowPane);
+
+        for (File imagen : Imagenes.getListaZapatos()) {
+            Image image = new Image(imagen.toURI().toString());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(300);
+            imageView.setFitHeight(350);
+            flowPane.getChildren().add(imageView);
+        }
 
         Nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         Precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());

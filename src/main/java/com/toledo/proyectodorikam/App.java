@@ -108,6 +108,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Dorikam - Catálogo de Imágenes");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         stage.show();
     }
     private ScrollPane createScrollPane(HBox content) {
