@@ -62,7 +62,7 @@
             <Font name="Tahoma Bold" size="37.0" />
          </font>
       </Label>
-      <ImageView fitHeight="309.0" fitWidth="269.0" layoutX="1272.0" layoutY="-2.0">
+      <ImageView fitHeight="309.0" fitWidth="269.0" layoutX="1272.0" layoutY="45.0">
          <image>
             <Image url="@Imagenes/Logo.png" />
          </image>
@@ -92,5 +92,9 @@
             <Font name="System Bold Italic" size="38.0" />
          </font>
       </Label>
+      <Label layoutX="1362.0" layoutY="14.0" text="V.0.0.0.0.01" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold Italic" size="24.0" />
+         </font></Label>
    </children>
 </AnchorPane>

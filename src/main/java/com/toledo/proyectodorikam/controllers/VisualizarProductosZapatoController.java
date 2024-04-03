@@ -1,9 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.toledo.proyectodorikam.models.Imagenes;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
@@ -20,8 +16,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class VerProductoZapatoController {
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class VisualizarProductosZapatoController {
     @FXML
     private ResourceBundle resources;
 

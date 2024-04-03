@@ -1,9 +1,5 @@
 package com.toledo.proyectodorikam.controllers;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.toledo.proyectodorikam.models.Imagenes;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
@@ -20,8 +16,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class VerProductoZapatoController {
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class VisualizarProductosController {
     @FXML
     private ResourceBundle resources;
 
@@ -30,6 +29,9 @@ public class VerProductoZapatoController {
 
     @FXML
     private Button ExitButton;
+
+    @FXML
+    private ListView<String> VerInformacionProducto;
 
     @FXML
     private ScrollPane CatalogoAretes;
@@ -146,7 +148,6 @@ public class VerProductoZapatoController {
         }
     }
 
-
     @FXML
     void initialize() {
         flowPane = new FlowPane();
@@ -159,7 +160,7 @@ public class VerProductoZapatoController {
         CatalogoAretes.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         CatalogoAretes.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        for (File imagen : Imagenes.getListaZapatos()) {
+        for (File imagen : Imagenes.getListaAretes()) {
             Image image = new Image(imagen.toURI().toString());
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);

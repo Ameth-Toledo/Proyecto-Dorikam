@@ -1,13 +1,19 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.List;
 
 
@@ -78,12 +84,22 @@ public class EliminarProductoController {
         }
     }
 
+    Stage callRegresar = new Stage();
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callRegresar.setTitle("Menu: \"Gerente\"");
+        callRegresar.setScene(scene);
+        callRegresar.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callRegresar.show();
+        cerrarEliminar();
+    }
+
+    public void cerrarEliminar() {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
-
     @FXML
     void initialize() {
         DateProduct.setText(LocalDate.now().toString());

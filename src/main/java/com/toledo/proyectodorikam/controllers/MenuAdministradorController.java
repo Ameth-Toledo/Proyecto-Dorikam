@@ -126,7 +126,7 @@ public class MenuAdministradorController {
     Stage callVer = new Stage();
 
     private void abrirVerProductos() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("tipo-productos-view-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callVer.setTitle("Menu: \"Ver Productos\"");
         callVer.setScene(scene);
@@ -174,7 +174,7 @@ public class MenuAdministradorController {
 
     Stage callUbicar = new Stage();
     private void abrirUbicar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ubicar-productos-view-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callUbicar.setTitle("Menu: \"Ubicar Productos\"");
         callUbicar.setScene(scene);
@@ -185,7 +185,7 @@ public class MenuAdministradorController {
 
     Stage callContar = new Stage();
     private void abrirContar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-apartados-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-apartados-view-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callContar.setTitle("Menu: \"Ver Productos Apartados\"");
         callContar.setScene(scene);

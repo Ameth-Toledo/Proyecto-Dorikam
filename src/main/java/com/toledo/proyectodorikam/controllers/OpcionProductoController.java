@@ -12,7 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class TipoProductoController {
+public class OpcionProductoController {
+
 
     @FXML
     private ResourceBundle resources;
@@ -32,7 +33,7 @@ public class TipoProductoController {
     Stage callArete = new Stage();
     @FXML
     void OnMouseClickedAreteButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-view-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callArete.setTitle("Menu: \"Ver Productos\"");
         callArete.setScene(scene);
@@ -43,7 +44,7 @@ public class TipoProductoController {
 
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callArete.setTitle("Menu: \"Ver Productos\"");
         callArete.setScene(scene);
@@ -56,7 +57,7 @@ public class TipoProductoController {
 
     @FXML
     void OnMouseClickedZapatosButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-zapatos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("ver-productos-zapatos-view-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callZapato.setTitle("Menu: \"Ver Productos\"");
         callZapato.setScene(scene);
