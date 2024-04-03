@@ -202,7 +202,7 @@ public class EditarProductoController {
     }
 
     private void mostrarAlertaInformation(String titulo, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

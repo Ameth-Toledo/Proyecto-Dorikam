@@ -44,6 +44,38 @@ public class RealizarVentaController {
     @FXML
     private ComboBox<String> pago;
 
+    @FXML
+    private Button BuscarButton;
+
+    @FXML
+    void OnMouseClickedBuscarButton(MouseEvent event) {
+        String nombreProducto = NombreProductoTextField.getText();
+        Producto productoEncontrado = buscarProductoPorNombre(nombreProducto);
+
+        if (productoEncontrado != null) {
+            llenarInformacionProducto(productoEncontrado);
+            mostrarAlertaInformation("Exito", "Producto encontrado: " + productoEncontrado.getNombre());
+        } else {
+            mostrarAlertaError("Error", "El producto no existe.");
+        }
+    }
+
+    private Producto buscarProductoPorNombre(String nombre) {
+        for (Producto producto : Producto.getListaProductos()) {
+            if (producto.getNombre().equalsIgnoreCase(nombre)) {
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    private void llenarInformacionProducto(Producto producto) {
+        IDProductoTextField.setText(producto.getId());
+        PrecioProductoTextField11.setText(String.valueOf(producto.getPrecio()));
+        FechaCompraTextField.setText(String.valueOf(producto.getFecha()));
+        NombreProductoTextField.setText(String.valueOf(producto.getNombre()));
+        LugarEntregaTextField.setText(String.valueOf(producto.getUbicacion()));
+    }
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
