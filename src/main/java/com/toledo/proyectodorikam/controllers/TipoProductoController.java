@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -36,19 +37,21 @@ public class TipoProductoController {
         Scene scene = new Scene(fxmlLoader.load());
         callArete.setTitle("Menu: \"Ver Productos\"");
         callArete.setScene(scene);
+        callArete.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callArete.show();
 
         salirTipoProducto();
     }
 
+    Stage callExit = new Stage();
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callArete.setTitle("Menu: \"Ver Productos\"");
-        callArete.setScene(scene);
-        callArete.show();
-
+        callExit.setTitle("Menu: \"Ver Productos\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
         salirTipoProducto();
     }
 
@@ -60,6 +63,7 @@ public class TipoProductoController {
         Scene scene = new Scene(fxmlLoader.load());
         callZapato.setTitle("Menu: \"Ver Productos\"");
         callZapato.setScene(scene);
+        callZapato.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callZapato.show();
 
         salirTipoProducto();
