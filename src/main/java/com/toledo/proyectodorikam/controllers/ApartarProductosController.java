@@ -1,15 +1,21 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Apartar;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,12 +68,23 @@ public class ApartarProductosController {
     private Apartar apartar;
     private boolean productoEncontrado = false;
 
+    Stage callExit = new Stage();
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
+        cerrarVentana();
+    }
+
+    public void cerrarVentana() {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
-
     @FXML
     void onMouseClickedConfirmarButton(MouseEvent event) {
         if (productoEncontrado) {

@@ -1,11 +1,15 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Reporte;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -81,8 +85,15 @@ public class VerReportesController {
         }
     }
 
+    Stage callExit = new Stage();
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
         cerrarVentana();
     }
 

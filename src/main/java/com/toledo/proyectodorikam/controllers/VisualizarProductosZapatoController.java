@@ -1,13 +1,16 @@
 package com.toledo.proyectodorikam.controllers;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Imagenes;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -106,12 +110,23 @@ public class VisualizarProductosZapatoController {
         }
     }
 
+    Stage callExit = new Stage();
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
+        cerrarVentana();
+    }
+
+    public void cerrarVentana() {
         Stage stage = (Stage) ExitButton.getScene().getWindow();
         stage.close();
     }
-
     @FXML
     void OnMouseClickedSubirImagenButton(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();

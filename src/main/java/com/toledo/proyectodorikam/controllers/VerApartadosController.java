@@ -143,10 +143,17 @@ public class VerApartadosController {
         alert.showAndWait();
     }
 
+    Stage callExit = new Stage();
+
     @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
+        cerrarVentana();
     }
 
     @FXML

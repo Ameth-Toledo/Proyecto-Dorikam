@@ -7,15 +7,20 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Venta;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class VerEntregadosController {
 
@@ -54,9 +59,22 @@ public class VerEntregadosController {
         descargarEntregados();
     }
 
-    @FXML
-    void OnMouseClickedExitButton(MouseEvent event) {
+    Stage callExit = new Stage();
 
+    @FXML
+    void OnMouseClickedExitButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setScene(scene);
+        callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
+        callExit.show();
+        cerrarVentana();
+    }
+
+    private void cerrarVentana() throws IOException {
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
