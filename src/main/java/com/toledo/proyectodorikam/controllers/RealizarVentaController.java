@@ -72,11 +72,9 @@ public class RealizarVentaController {
                 if (confirmarVenta(mensaje)) {
                     Venta venta;
                     if (producto.getCategoria().equalsIgnoreCase("Arete")) {
-                        Arete arete = new Arete(nombreProducto, precioProducto, "Arete", lugarEntrega, fechaCompra, idProducto, cantidad, materialProducto);
-                        venta = new Venta(arete, cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
+                        venta = new Venta(new Arete(nombreProducto, precioProducto, producto.getCategoria(), lugarEntrega, fechaCompra, idProducto, cantidad, materialProducto), cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
                     } else if (producto.getCategoria().equalsIgnoreCase("Zapato")) {
-                        Zapato zapato = new Zapato(nombreProducto, precioProducto, "Zapato", lugarEntrega, fechaCompra, idProducto, cantidad,tallaProducto);
-                        venta = new Venta(zapato, cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
+                        venta = new Venta(new Zapato(nombreProducto, precioProducto, producto.getCategoria(), lugarEntrega, fechaCompra, idProducto, cantidad, tallaProducto), cantidad, pago.getValue(), nombreProducto, fechaCompra, nombreCliente, lugarEntrega, precioProducto);
                     } else {
                         mostrarAlertaError("Error", "Categoría de producto no válida.");
                         return;
@@ -85,19 +83,12 @@ public class RealizarVentaController {
                     venta.listaVentas.add(venta);
                     producto.setStock(producto.getStock() - cantidad);
 
-                    Apartar apartados = new Apartar();
-                    List<Producto> listaApartados = apartados.getListaApartados();
-                    for (Producto productoApartado : listaApartados) {
-                        if (productoApartado.getId().equalsIgnoreCase(idProducto) && productoApartado.getNombre().equalsIgnoreCase(nombreCliente)) {
-                            double montoAbonado = totalPagar;
-                            double precioProductoApartado = productoApartado.getPrecio();
-                            if (montoAbonado <= precioProductoApartado) {
-                                productoApartado.setPrecio(precioProductoApartado - montoAbonado);
-                                mostrarAlertaInformation("Descuento aplicado", "Se ha aplicado un descuento al precio del producto.");
-                            } else {
-                                mostrarAlertaError("Error", "El monto abonado es mayor al precio del producto.");
-                            }
-                        }
+                    Apartar apartado = buscarApartado(idProducto, nombreCliente);
+                    if (apartado != null) {
+                        double montoAbonado = totalPagar;
+                        double montoRestante = apartado.getMontoRestante() - montoAbonado;
+                        apartado.setMontoRestante(montoRestante);
+                        mostrarAlertaInformation("Descuento aplicado", "Se ha aplicado un descuento al monto restante.");
                     }
 
                     mostrarAlertaInformation("Venta realizada", "La venta se ha realizado correctamente.");
@@ -201,4 +192,13 @@ public class RealizarVentaController {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == buttonTypeConfirmar;
     }
+    private Apartar buscarApartado(String idProducto, String nombreCliente) {
+        for (Apartar apartado : Apartar.getListaApartados()) {
+            if (apartado.getId() == Integer.parseInt(idProducto) && apartado.getNombre().equalsIgnoreCase(nombreCliente)) {
+                return apartado;
+            }
+        }
+        return null;
+    }
+
 }
