@@ -1,7 +1,9 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.App;
+import com.toledo.proyectodorikam.models.Arete;
 import com.toledo.proyectodorikam.models.Producto;
+import com.toledo.proyectodorikam.models.Zapato;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,6 +48,12 @@ public class AgregarProductoController {
     @FXML
     private TextField stockProducto;
 
+    @FXML
+    private TextField tallaProducto;
+
+    @FXML
+    private TextField materialProducto;
+
     Stage callRegresar = new Stage();
 
     @FXML
@@ -58,8 +66,15 @@ public class AgregarProductoController {
         String id = IDProduct.getText();
         int stock = Integer.parseInt(stockProducto.getText());
 
-        Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id, stock);
-        Producto.agregarProducto(producto);
+        if (categoria.equalsIgnoreCase("arete")) {
+            String material = materialProducto.getText();
+            Arete arete = new Arete(nombre, precio, categoria, ubicacion, fecha, id, stock, material);
+            Producto.agregarProducto(arete);
+        } else {
+            double talla = Double.parseDouble(tallaProducto.getText());
+            Zapato zapato = new Zapato(nombre, precio, categoria, ubicacion, fecha, id, stock, talla);
+            Producto.agregarProducto(zapato);
+        }
 
         limpiarCampos();
         mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
