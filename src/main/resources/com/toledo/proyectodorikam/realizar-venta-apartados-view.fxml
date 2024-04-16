@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.RealizarVentaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C54FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.proyectodorikam.controllers.RealizarVentaApartadosController">
    <children>
       <ImageView fitHeight="91.0" fitWidth="236.0" layoutX="978.0" layoutY="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="33.0">
          <image>
@@ -26,7 +26,7 @@
             <Image url="@Imagenes/Izq-Arriba.png" />
          </image>
       </ImageView>
-      <Label layoutX="63.0" layoutY="36.0" prefHeight="85.0" prefWidth="555.0" text="Realizar Venta" textFill="WHITE">
+      <Label layoutX="63.0" layoutY="36.0" prefHeight="85.0" prefWidth="555.0" text="Entregar Apartados" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="55.0" />
          </font>
@@ -43,7 +43,7 @@
       </Button>
       <TextField fx:id="nombreProductoTextField" layoutX="82.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <TextField fx:id="fechaCompraTextField" layoutX="696.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="nombreClienteTextField" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="cantidadApartadaTextField" layoutX="696.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" style="-fx-background-radius: 20;" />
       <TextField fx:id="lugarEntregaTextField" layoutX="696.0" layoutY="215.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <TextField fx:id="idProductoTextField" layoutX="82.0" layoutY="365.0" prefHeight="74.0" prefWidth="517.0" style="-fx-background-radius: 20;" />
       <Label layoutX="90.0" layoutY="178.0" text="Nombre del Producto:" textFill="#fff7f7">
@@ -55,7 +55,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="495.0" text="Precio:" textFill="#fff7f7">
+      <Label layoutX="82.0" layoutY="495.0" text="Abonado:" textFill="#fff7f7">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -70,7 +70,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="696.0" layoutY="495.0" text="Nombre del Cliente:" textFill="#fff7f7">
+      <Label layoutX="696.0" layoutY="495.0" text="Cantidad apartada:" textFill="#fff7f7">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -85,24 +85,24 @@
             <Font name="Tahoma Bold" size="24.0" />
          </font>
       </Button>
-      <ComboBox fx:id="pago" layoutX="82.0" layoutY="673.0" prefHeight="59.0" prefWidth="517.0" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="673.0" />
+      <ComboBox fx:id="pago" layoutX="82.0" layoutY="673.0" prefHeight="59.0" prefWidth="517.0" promptText="Seleccione un metodo de pago" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="673.0" />
       <Label layoutX="88.0" layoutY="637.0" text="Metodo de Pago:" textFill="#fff7f7">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="114.0" fitWidth="125.0" layoutX="515.0" layoutY="33.0">
+      <ImageView fitHeight="114.0" fitWidth="125.0" layoutX="634.0" layoutY="22.0">
          <image>
             <Image url="@Imagenes/Ventas.png" />
          </image>
       </ImageView>
-      <TextField fx:id="cantidadComprar" layoutX="387.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="387.0" layoutY="495.0" text="Cantidad:" textFill="#fff7f7">
+      <TextField fx:id="restanteProducto" layoutX="387.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" promptText="\$" style="-fx-background-radius: 20;" />
+      <Label layoutX="387.0" layoutY="495.0" text="Restante:" textFill="#fff7f7">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="precioProductoTextField11" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="montoAbonadoProducto" layoutX="82.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" promptText="\$" style="-fx-background-radius: 20;" />
       <Button fx:id="buscarButton" layoutX="470.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedBuscarButton" prefHeight="14.0" prefWidth="90.0" style="-fx-background-radius: 10; -fx-background-color: #00A859;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -111,6 +111,12 @@
       <Label layoutX="30.0" layoutY="751.0" text="Presiona buscar para verificar que exista el producto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="categoriaProductoTextField" layoutX="1009.0" layoutY="533.0" prefHeight="74.0" prefWidth="204.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="1011.0" layoutY="495.0" text="Categoria:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
    </children>

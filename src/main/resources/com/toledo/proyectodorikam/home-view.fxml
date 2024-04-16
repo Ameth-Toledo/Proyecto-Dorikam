@@ -29,7 +29,7 @@
             <Image url="@Imagenes/boton.png" />
          </image>
       </ImageView>
-      <Button fx:id="GerenteButton" layoutX="186.0" layoutY="624.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedGerenteButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Gerente" textFill="WHITE">
+      <Button fx:id="gerenteButton" layoutX="186.0" layoutY="624.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedGerenteButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Gerente" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="50.0" />
          </font></Button>
@@ -38,7 +38,7 @@
             <Image url="@Imagenes/boton.png" />
          </image>
       </ImageView>
-      <Button fx:id="AdministradorButton" layoutX="650.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAdministradorButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Administrador" textFill="WHITE">
+      <Button fx:id="administradorButton" layoutX="650.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAdministradorButton" prefHeight="195.0" prefWidth="404.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Administrador" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="34.0" />
          </font></Button>
@@ -72,7 +72,7 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="37.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="37.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="39.0" />
          </font>

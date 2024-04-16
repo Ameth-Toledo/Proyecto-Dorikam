@@ -31,13 +31,13 @@ public class HomeController {
     private URL location;
 
     @FXML
-    private Button GerenteButton;
+    private Button gerenteButton;
 
     @FXML
-    private Button AdministradorButton;
+    private Button administradorButton;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
     private Label clockLabel;
@@ -92,7 +92,7 @@ public class HomeController {
     }
 
     private void salirHome() {
-        ((Stage) ExitButton.getScene().getWindow()).close();
+        ((Stage) exitButton.getScene().getWindow()).close();
     }
 
     private void abrirGerenteView() throws IOException {

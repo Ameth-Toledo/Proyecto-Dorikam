@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.toledo.proyectodorikam.App;
-import com.toledo.proyectodorikam.models.Imagenes;
+import com.toledo.proyectodorikam.models.Imagen;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,46 +33,46 @@ public class VerProductoZapatoController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private ScrollPane CatalogoAretes;
+    private ScrollPane catalogoAretes;
 
     @FXML
-    private Button SubirImagenButton;
+    private Button subirImagenButton;
 
     @FXML
-    private Button EliminarImagenButton;
+    private Button eliminarImagenButton;
 
     @FXML
-    private TextField NombreProducto;
+    private TextField nombreProduct;
 
     @FXML
-    private Button BuscarButton;
+    private Button buscarButton;
 
     @FXML
-    private TableView<Producto> ProductosTable;
+    private TableView<Producto> productosTable;
 
     @FXML
-    private TableColumn<Producto, String> Nombre;
+    private TableColumn<Producto, String> nombre;
 
     @FXML
-    private TableColumn<Producto, Double> Precio;
+    private TableColumn<Producto, Double> precio;
 
     @FXML
-    private TableColumn<Producto, String> Categoria;
+    private TableColumn<Producto, String> categoria;
 
     @FXML
-    private TableColumn<Producto, String> Ubicacion;
+    private TableColumn<Producto, String> ubicacion;
 
     @FXML
-    private TableColumn<Producto, String> Fecha;
+    private TableColumn<Producto, String> fecha;
 
     @FXML
-    private TableColumn<Producto, String> ID;
+    private TableColumn<Producto, String> id;
 
     @FXML
-    private TableColumn<Producto, Integer> StockColum;
+    private TableColumn<Producto, Integer> stockColum;
 
     private FlowPane flowPane;
 
@@ -124,7 +124,7 @@ public class VerProductoZapatoController {
     }
 
     public void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
@@ -135,7 +135,7 @@ public class VerProductoZapatoController {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
         );
-        File selectedFile = fileChooser.showOpenDialog(SubirImagenButton.getScene().getWindow());
+        File selectedFile = fileChooser.showOpenDialog(subirImagenButton.getScene().getWindow());
         if (selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
             ImageView imageView = new ImageView(image);
@@ -147,17 +147,17 @@ public class VerProductoZapatoController {
     }
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
-        String nombreProducto = NombreProducto.getText();
+        String nombreProducto = nombreProduct.getText();
         if (!nombreProducto.isEmpty()) {
             ObservableList<Producto> productosData = FXCollections.observableArrayList();
             for (Producto producto : Producto.getListaProductos()) {
-                if (producto.getNombre().equals(nombreProducto)) {
+                if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
                     productosData.add(producto);
                 }
             }
-            ProductosTable.setItems(productosData);
+            productosTable.setItems(productosData);
         } else {
-            ProductosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
+            productosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
         }
     }
 
@@ -169,12 +169,12 @@ public class VerProductoZapatoController {
         flowPane.setVgap(0);
         flowPane.setOrientation(Orientation.VERTICAL);
         flowPane.setColumnHalignment(HPos.LEFT);
-        CatalogoAretes.setContent(flowPane);
+        catalogoAretes.setContent(flowPane);
 
-        CatalogoAretes.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        CatalogoAretes.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        catalogoAretes.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        catalogoAretes.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        for (File imagen : Imagenes.getListaZapatos()) {
+        for (File imagen : Imagen.getListaZapatos()) {
             Image image = new Image(imagen.toURI().toString());
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);
@@ -182,12 +182,12 @@ public class VerProductoZapatoController {
             flowPane.getChildren().add(imageView);
         }
 
-        Nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        Precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
-        Categoria.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
-        Ubicacion.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
-        Fecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
-        ID.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        StockColum.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
+        nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        categoria.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        ubicacion.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        fecha.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        id.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        stockColum.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
     }
 }

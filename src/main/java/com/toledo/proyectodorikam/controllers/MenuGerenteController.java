@@ -24,28 +24,28 @@ public class MenuGerenteController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private Button AgregarButton;
+    private Button agregarButton;
 
     @FXML
-    private Button VerProductos;
+    private Button verProductos;
 
     @FXML
-    private Button UbicarButton;
+    private Button ubicarButton;
 
     @FXML
-    private Button EditarButton;
+    private Button editarButton;
 
     @FXML
-    private Button VentasButton;
+    private Button ventasButton;
 
     @FXML
-    private Button ContarButton;
+    private Button contarButton;
 
     @FXML
-    private Button EliminarButton;
+    private Button eliminarButton;
 
     @FXML
     void OnMouseClickedAgregarButton(MouseEvent event) throws IOException {
@@ -201,13 +201,13 @@ public class MenuGerenteController {
         cerrarVentana();
     }
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
     @FXML
     void initialize() {
         Platform.runLater(() -> {
-            Scene scene = ExitButton.getScene();
+            Scene scene = exitButton.getScene();
             if (scene != null) {
                 scene.setOnKeyPressed(event -> {
                     switch (event.getCode()) {

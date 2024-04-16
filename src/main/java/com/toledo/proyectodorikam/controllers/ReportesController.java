@@ -19,10 +19,10 @@ import java.io.IOException;
 public class ReportesController {
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
     private TextArea detallesReport;
@@ -79,11 +79,11 @@ public class ReportesController {
 
         detallesReport.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                ConfirmarButton.requestFocus();
+                confirmarButton.requestFocus();
             }
         });
 
-        ConfirmarButton.setOnKeyPressed(event -> {
+        confirmarButton.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
@@ -101,7 +101,7 @@ public class ReportesController {
     }
 
     private void salirReporte() {
-        ((Stage) ExitButton.getScene().getWindow()).close();
+        ((Stage) exitButton.getScene().getWindow()).close();
     }
 
     private void mostrarAlertaError(String titulo, String contenido) {

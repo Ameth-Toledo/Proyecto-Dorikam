@@ -35,8 +35,8 @@
          <font>
             <Font name="Tahoma Bold" size="41.0" />
          </font></Label>
-      <TextField fx:id="UsuarioText" layoutX="728.0" layoutY="332.0" prefHeight="66.0" prefWidth="543.0" style="-fx-background-radius: 20;" />
-      <PasswordField fx:id="ContraseñaText" layoutX="728.0" layoutY="526.0" prefHeight="66.0" prefWidth="543.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="usuarioText" layoutX="728.0" layoutY="332.0" prefHeight="66.0" prefWidth="543.0" style="-fx-background-radius: 20;" />
+      <PasswordField fx:id="contrasenaText" layoutX="728.0" layoutY="526.0" prefHeight="66.0" prefWidth="543.0" style="-fx-background-radius: 20;" />
       <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="686.0" layoutY="672.0">
          <image>
             <Image url="@Imagenes/Entrar.png" />
@@ -47,12 +47,12 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="EntrarButton" layoutX="686.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntrarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Entrar" textFill="WHITE">
+      <Button fx:id="entrarButton" layoutX="686.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEntrarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Entrar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="ExitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Regresar" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="933.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: right;" text="Regresar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>

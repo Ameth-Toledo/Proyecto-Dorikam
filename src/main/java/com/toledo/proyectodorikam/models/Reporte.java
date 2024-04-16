@@ -9,13 +9,13 @@ import java.util.List;
 public class Reporte {
     private final StringProperty titulo;
     private final StringProperty fechaReporte;
-    private final StringProperty detalles;
+    private final StringProperty detallesReporte;
     private static List<Reporte> listaReporte = new ArrayList<>();
 
-    public Reporte(String titulo, String fechaReporte, String detalles) {
+    public Reporte(String titulo, String fechaReporte, String detallesReporte) {
         this.titulo = new SimpleStringProperty(titulo);
         this.fechaReporte = new SimpleStringProperty(fechaReporte);
-        this.detalles = new SimpleStringProperty(detalles);
+        this.detallesReporte = new SimpleStringProperty(detallesReporte);
     }
 
     public static void generarReporte(Reporte reporte) {
@@ -43,10 +43,10 @@ public class Reporte {
     }
 
     public String getDetalles() {
-        return detalles.get();
+        return detallesReporte.get();
     }
 
     public StringProperty detallesProperty() {
-        return detalles;
+        return detallesReporte;
     }
 }

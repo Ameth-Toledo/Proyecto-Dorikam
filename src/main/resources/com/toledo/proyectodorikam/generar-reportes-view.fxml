@@ -36,7 +36,7 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="1043.0" layoutY="586.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="1005.0">
+      <Button fx:id="exitButton" layoutX="1043.0" layoutY="586.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="1005.0">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>
@@ -63,7 +63,7 @@
             <Image url="@Imagenes/Entrar.png" />
          </image>
       </ImageView>
-      <Button fx:id="ConfirmarButton" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
+      <Button fx:id="confirmarButton" layoutX="736.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedConfirmarButton" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT;" text="Confirmar" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="24.0" />
          </font>

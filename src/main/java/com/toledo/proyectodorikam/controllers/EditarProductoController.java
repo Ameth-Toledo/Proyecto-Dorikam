@@ -27,38 +27,38 @@ public class EditarProductoController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private TextField NameProduct;
+    private TextField nameProduct;
 
     @FXML
-    private TextField PriceProduct;
+    private TextField priceProduct;
 
     @FXML
-    private TextField CategoriaProduct;
+    private TextField categoriaProduct;
 
     @FXML
-    private TextField UbicationProduct;
+    private TextField ubicationProduct;
 
     @FXML
-    private TextField DateProduct;
+    private TextField dateProduct;
 
     @FXML
-    private TextField IDProduct;
+    private TextField idProduct;
 
     @FXML
     private TextField cantidadStock;
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
-    private Button BuscarButton;
+    private Button buscarButton;
 
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
-        String nombreProductoBuscado = NameProduct.getText();
+        String nombreProductoBuscado = nameProduct.getText();
         Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
         if (productoEncontrado != null) {
             mostrarProductoEncontrado(productoEncontrado);
@@ -69,7 +69,7 @@ public class EditarProductoController {
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        String nombreProductoBuscado = NameProduct.getText();
+        String nombreProductoBuscado = nameProduct.getText();
         Producto productoEncontrado = buscarProductoPorNombre(nombreProductoBuscado);
         if (productoEncontrado != null) {
             editarProducto(productoEncontrado);
@@ -98,48 +98,48 @@ public class EditarProductoController {
     }
 
     private void configureEnterKey() {
-        NameProduct.setOnKeyPressed(event -> {
+        nameProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                IDProduct.requestFocus();
+                idProduct.requestFocus();
             }
         });
 
-        IDProduct.setOnKeyPressed(event -> {
+        idProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                PriceProduct.requestFocus();
+                priceProduct.requestFocus();
             }
         });
 
-        PriceProduct.setOnKeyPressed(event -> {
+        priceProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                DateProduct.requestFocus();
+                dateProduct.requestFocus();
             }
         });
 
-        DateProduct.setOnKeyPressed(event -> {
+        dateProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                CategoriaProduct.requestFocus();
+                categoriaProduct.requestFocus();
             }
         });
 
-        CategoriaProduct.setOnKeyPressed(event -> {
+        categoriaProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                UbicationProduct.requestFocus();
+                ubicationProduct.requestFocus();
             }
         });
 
-        UbicationProduct.setOnKeyPressed(event -> {
+        ubicationProduct.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 cantidadStock.requestFocus();
             }
         });
         cantidadStock.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
-                ConfirmarButton.requestFocus();
+                confirmarButton.requestFocus();
             }
         });
 
-        ConfirmarButton.setOnKeyPressed(event -> {
+        confirmarButton.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
@@ -161,35 +161,36 @@ public class EditarProductoController {
     }
 
     private void editarProducto(Producto producto) {
-        producto.setPrecio(Double.parseDouble(PriceProduct.getText()));
-        producto.setCategoria(CategoriaProduct.getText());
-        producto.setUbicacion(UbicationProduct.getText());
-        producto.setFecha(DateProduct.getText());
-        producto.setId(IDProduct.getText());
+        producto.setPrecio(Double.parseDouble(priceProduct.getText()));
+        producto.setCategoria(categoriaProduct.getText());
+        producto.setUbicacion(ubicationProduct.getText());
+        producto.setFecha(dateProduct.getText());
+        producto.setId(idProduct.getText());
         producto.setStock(Integer.parseInt(cantidadStock.getText()));
     }
 
     private void mostrarProductoEncontrado(Producto producto) {
-        NameProduct.setText(producto.getNombre());
-        PriceProduct.setText(String.valueOf(producto.getPrecio()));
-        CategoriaProduct.setText(producto.getCategoria());
-        UbicationProduct.setText(producto.getUbicacion());
-        DateProduct.setText(producto.getFecha());
-        IDProduct.setText(producto.getId());
+        nameProduct.setText(producto.getNombre());
+        priceProduct.setText(String.valueOf(producto.getPrecio()));
+        categoriaProduct.setText(producto.getCategoria());
+        ubicationProduct.setText(producto.getUbicacion());
+        dateProduct.setText(producto.getFecha());
+        idProduct.setText(producto.getId());
+        cantidadStock.setText(String.valueOf(producto.getStock()));
     }
 
     private boolean camposVacios() {
-        return NameProduct.getText().isEmpty() ||
-                IDProduct.getText().isEmpty() ||
-                PriceProduct.getText().isEmpty() ||
-                DateProduct.getText().isEmpty() ||
-                CategoriaProduct.getText().isEmpty() ||
-                UbicationProduct.getText().isEmpty() ||
+        return nameProduct.getText().isEmpty() ||
+                idProduct.getText().isEmpty() ||
+                priceProduct.getText().isEmpty() ||
+                dateProduct.getText().isEmpty() ||
+                categoriaProduct.getText().isEmpty() ||
+                ubicationProduct.getText().isEmpty() ||
                 cantidadStock.getText().isEmpty();
     }
 
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 

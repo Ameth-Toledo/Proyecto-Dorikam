@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.toledo.proyectodorikam.App;
-import com.toledo.proyectodorikam.models.Venta;
+import com.toledo.proyectodorikam.models.Entregado;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,28 +31,28 @@ public class VerEntregadosController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
     private Button verReportes;
 
     @FXML
-    private TableView<Venta> TableProductosEntregados;
+    private TableView<Entregado> tableProductosEntregados;
 
     @FXML
-    private TableColumn<Venta, String> NombreColumn;
+    private TableColumn<Entregado, String> nombreColumn;
 
     @FXML
-    private TableColumn<Venta, Integer> CantidadColumn;
+    private TableColumn<Entregado, Integer> cantidadColumn;
 
     @FXML
-    private TableColumn<Venta, String> UbicacionColumn;
+    private TableColumn<Entregado, String> ubicacionColumn;
 
     @FXML
-    private TableColumn<Venta, String> FechaColumn;
+    private TableColumn<Entregado, String> fechaColumn;
 
     @FXML
-    private Button DescargarButton;
+    private Button descargarButton;
 
     @FXML
     void OnMouseClickedDescargarButton(MouseEvent event) {
@@ -73,7 +73,7 @@ public class VerEntregadosController {
     }
 
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
@@ -84,19 +84,19 @@ public class VerEntregadosController {
 
     @FXML
     void initialize() {
-        NombreColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProductoProperty());
-        CantidadColumn.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
-        UbicacionColumn.setCellValueFactory(cellData -> cellData.getValue().lugarEntregaProperty());
-        FechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaCompraProperty());
+        nombreColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProductoProperty());
+        cantidadColumn.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
+        ubicacionColumn.setCellValueFactory(cellData -> cellData.getValue().lugarEntregaProperty());
+        fechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaCompraProperty());
     }
     private void mostrarEntregados() {
-        TableProductosEntregados.setItems(FXCollections.observableList(Venta.getListaVentas()));
+        tableProductosEntregados.setItems(FXCollections.observableList(Entregado.getListaEntregados()));
     }
 
     private void descargarEntregados() {
-        List<Venta> listaVentas = TableProductosEntregados.getItems();
+        List<Entregado> listaEntregado = tableProductosEntregados.getItems();
 
-        if (listaVentas.isEmpty()) {
+        if (listaEntregado.isEmpty()) {
             mostrarAdvertencia("La lista de ventas está vacía.");
             return;
         }
@@ -109,14 +109,14 @@ public class VerEntregadosController {
         if (archivo != null) {
             try {
                 FileWriter escritor = new FileWriter(archivo);
-                for (Venta venta : listaVentas) {
+                for (Entregado entregado : listaEntregado) {
                     escritor.write("\"𝓓𝓞𝓡𝓘𝓚𝓐𝓜\"" + System.lineSeparator());
                     escritor.write(System.lineSeparator());
                     escritor.write("𝑷𝒓𝒐𝒅𝒖𝒄𝒕𝒐𝒔 𝑬𝒏𝒕𝒓𝒆𝒈𝒂𝒅𝒐𝒔:"+System.lineSeparator());
-                    escritor.write("NOMBRE DEL PRODUCTO: " + venta.getNombreProducto() + "\n");
-                    escritor.write("CANTIDAD: " + venta.getCantidad() + "\n");
-                    escritor.write("LUGAR DE ENTREGA: " + venta.getLugarEntrega() + "\n");
-                    escritor.write("FECHA DE COMPRA: " + venta.getFechaCompra() + "\n\n");
+                    escritor.write("NOMBRE DEL PRODUCTO: " + entregado.getNombreProducto() + "\n");
+                    escritor.write("CANTIDAD: " + entregado.getCantidad() + "\n");
+                    escritor.write("LUGAR DE ENTREGA: " + entregado.getLugarEntrega() + "\n");
+                    escritor.write("FECHA DE COMPRA: " + entregado.getFechaCompra() + "\n\n");
                     escritor.write(System.lineSeparator());
                     escritor.write("𝑺𝒖𝒄𝒖𝒓𝒔𝒂𝒍𝒆𝒔 𝒖𝒃𝒊𝒄𝒂𝒅𝒂𝒔 𝒆𝒏: \n✅ 12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n📍GoogleMaps: https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA ");
                     escritor.write(System.lineSeparator());
@@ -154,4 +154,3 @@ public class VerEntregadosController {
         alert.showAndWait();
     }
 }
-

@@ -33,28 +33,28 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="39.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="39.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="37.0" />
          </font>
       </Button>
-      <ScrollPane fx:id="CatalogoAretes" layoutX="39.0" layoutY="179.0" prefHeight="351.0" prefWidth="1209.0">
+      <ScrollPane fx:id="catalogoAretes" layoutX="39.0" layoutY="179.0" prefHeight="351.0" prefWidth="1209.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
         </content>
       </ScrollPane>
-      <Button fx:id="SubirImagenButton" layoutX="39.0" layoutY="695.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedSubirImagenButton" prefHeight="46.0" prefWidth="127.0" style="-fx-background-radius: 15; -fx-background-color: #00A859;" text="Subir Imagen" textFill="WHITE">
+      <Button fx:id="subirImagenButton" layoutX="39.0" layoutY="695.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedSubirImagenButton" prefHeight="46.0" prefWidth="127.0" style="-fx-background-radius: 15; -fx-background-color: #00A859;" text="Subir Imagen" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="EliminarImagenButton" layoutX="187.0" layoutY="695.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEliminarImagenButton" prefHeight="46.0" prefWidth="139.0" style="-fx-background-radius: 15; -fx-background-color: #ED3237;" text="Eliminar Imagen" textFill="WHITE">
+      <Button fx:id="eliminarImagenButton" layoutX="187.0" layoutY="695.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedEliminarImagenButton" prefHeight="46.0" prefWidth="139.0" style="-fx-background-radius: 15; -fx-background-color: #ED3237;" text="Eliminar Imagen" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="NombreProducto" layoutX="998.0" layoutY="559.0" prefHeight="46.0" prefWidth="251.0" style="-fx-background-radius: 10;" />
-      <Button fx:id="BuscarButton" layoutX="1047.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedBuscarButton" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #00A859; -fx-background-radius: 15;" text="Buscar en Lista" textFill="WHITE">
+      <TextField fx:id="nombreProduct" layoutX="998.0" layoutY="559.0" prefHeight="46.0" prefWidth="251.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="buscarButton" layoutX="1047.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedBuscarButton" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #00A859; -fx-background-radius: 15;" text="Buscar en Lista" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -64,15 +64,15 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <TableView fx:id="ProductosTable" layoutX="39.0" layoutY="559.0" prefHeight="105.0" prefWidth="919.0">
+      <TableView fx:id="productosTable" layoutX="39.0" layoutY="559.0" prefHeight="105.0" prefWidth="919.0">
         <columns>
-          <TableColumn fx:id="Nombre" prefWidth="137.0" text="NOMBRE" />
-          <TableColumn fx:id="Precio" prefWidth="94.0" text="PRECIO" />
-            <TableColumn fx:id="Categoria" prefWidth="137.0" text="CATEGORIA" />
-            <TableColumn fx:id="Ubicacion" prefWidth="163.0" text="UBICACION" />
-            <TableColumn fx:id="Fecha" prefWidth="145.0" text="FECHA" />
-            <TableColumn fx:id="ID" prefWidth="124.0" text="ID" />
-            <TableColumn fx:id="StockColum" prefWidth="124.0" text="STOCK" />
+          <TableColumn fx:id="nombre" prefWidth="137.0" text="NOMBRE" />
+          <TableColumn fx:id="precio" prefWidth="94.0" text="PRECIO" />
+            <TableColumn fx:id="categoria" prefWidth="137.0" text="CATEGORIA" />
+            <TableColumn fx:id="ubicacion" prefWidth="163.0" text="UBICACION" />
+            <TableColumn fx:id="fecha" prefWidth="145.0" text="FECHA" />
+            <TableColumn fx:id="id" prefWidth="124.0" text="ID" />
+            <TableColumn fx:id="stockColum" prefWidth="124.0" text="STOCK" />
         </columns>
       </TableView>
       <ImageView fitHeight="139.0" fitWidth="139.0" layoutX="1109.0" layoutY="14.0">

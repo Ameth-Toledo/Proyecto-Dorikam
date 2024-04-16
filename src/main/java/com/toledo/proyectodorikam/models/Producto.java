@@ -142,4 +142,6 @@ public class Producto {
     public void setStock(int stock) {
         this.stock.set(stock);
     }
+    Imagen imagen = new Imagen();
+    private Reporte reporte;
 }

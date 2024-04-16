@@ -32,48 +32,48 @@ public class VerApartadosController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private Button VerApartadosButton;
+    private Button verApartadosButton;
 
     @FXML
     private TableView<Apartar> tablaProductosApartados;
 
     @FXML
-    private TableColumn<Apartar, String> NameColumn;
+    private TableColumn<Apartar, String> nameColumn;
 
     @FXML
-    private TableColumn<Apartar, Integer> IdColumnColumn;
+    private TableColumn<Apartar, Integer> idColumnColumn;
 
     @FXML
-    private TableColumn<Apartar, String> FechaColumn;
+    private TableColumn<Apartar, String> fechaColumn;
 
     @FXML
-    private TableColumn<Apartar, String> CategoriaColumn;
+    private TableColumn<Apartar, String> categoriaColumn;
 
     @FXML
-    private TableColumn<Apartar, String> UbicationColumn;
+    private TableColumn<Apartar, String> ubicationColumn;
 
     @FXML
-    private TableColumn<Apartar, Integer> CantidadColumn;
+    private TableColumn<Apartar, Integer> cantidadColumn;
 
     @FXML
-    private TableColumn<Apartar, Double> AbonadoColumn;
+    private TableColumn<Apartar, Double> abonadoColumn;
 
     @FXML
-    private TableColumn<Apartar, Double> RestanteColumn;
+    private TableColumn<Apartar, Double> restanteColumn;
 
     @FXML
-    private Button DescargarReporteButton;
+    private Button descargarReporteButton;
 
     @FXML
-    private Button EntregasButton;
+    private Button entregasButton;
 
     Stage callEntregar = new Stage();
     @FXML
     void onMouseClickedEntregasButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("realizar-venta-apartados-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         callEntregar.setTitle("Menu: \"Realizar Venta\"");
         callEntregar.setScene(scene);
@@ -83,7 +83,7 @@ public class VerApartadosController {
     }
 
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
@@ -185,25 +185,24 @@ public class VerApartadosController {
     }
     @FXML
     void initialize() {
-        assert ExitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert VerApartadosButton != null : "fx:id=\"VerApartadosButton\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert exitButton != null : "fx:id=\"ExitButton\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert verApartadosButton != null : "fx:id=\"VerApartadosButton\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
         assert tablaProductosApartados != null : "fx:id=\"tablaProductosApartados\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert NameColumn != null : "fx:id=\"NameColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert IdColumnColumn != null : "fx:id=\"IdColumnColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert FechaColumn != null : "fx:id=\"FechaColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert CategoriaColumn != null : "fx:id=\"CategoriaColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert UbicationColumn != null : "fx:id=\"UbicationColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert CantidadColumn != null : "fx:id=\"CantidadColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert AbonadoColumn != null : "fx:id=\"AbonadoColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
-        assert RestanteColumn != null : "fx:id=\"RestanteColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert nameColumn != null : "fx:id=\"NameColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert idColumnColumn != null : "fx:id=\"IdColumnColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert fechaColumn != null : "fx:id=\"FechaColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert categoriaColumn != null : "fx:id=\"CategoriaColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert ubicationColumn != null : "fx:id=\"UbicationColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert cantidadColumn != null : "fx:id=\"CantidadColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
+        assert abonadoColumn != null : "fx:id=\"AbonadoColumn\" was not injected: check your FXML file 'ver-apartados-view.fxml'.";
 
-        NameColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        IdColumnColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        FechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
-        CategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
-        UbicationColumn.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
-        CantidadColumn.setCellValueFactory(cellData -> cellData.getValue().cantidadDeProductosProperty().asObject());
-        AbonadoColumn.setCellValueFactory(cellData -> cellData.getValue().montoAbonadoProperty().asObject());
-        RestanteColumn.setCellValueFactory(cellData -> cellData.getValue().montoRestanteProperty().asObject());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        idColumnColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        fechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        categoriaColumn.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        ubicationColumn.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        cantidadColumn.setCellValueFactory(cellData -> cellData.getValue().cantidadDeProductosProperty().asObject());
+        abonadoColumn.setCellValueFactory(cellData -> cellData.getValue().montoAbonadoProperty().asObject());
+        restanteColumn.setCellValueFactory(cellData -> cellData.getValue().montoRestanteProperty().asObject());
     }
 }

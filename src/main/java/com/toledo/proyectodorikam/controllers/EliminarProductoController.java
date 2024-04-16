@@ -22,38 +22,38 @@ import java.time.LocalDate;
 public class EliminarProductoController {
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private TextField NameProduct;
+    private TextField nameProduct;
 
     @FXML
-    private TextField PriceProduct;
+    private TextField priceProduct;
 
     @FXML
-    private TextField CategoryProduct;
+    private TextField categoryProduct;
 
     @FXML
-    private TextField UbicationProduct;
+    private TextField ubicationProduct;
 
     @FXML
-    private TextField DateProduct;
+    private TextField dateProduct;
 
     @FXML
-    private TextField IDProduct;
+    private TextField idProduct;
 
     @FXML
     private TextField cantStock;
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
-    private Button BuscarButton;
+    private Button buscarButton;
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        String nombreProducto = NameProduct.getText();
+        String nombreProducto = nameProduct.getText();
         Producto productoAEliminar = buscarProductoPorNombre(nombreProducto);
         if (productoAEliminar != null) {
             Producto.eliminarProducto(productoAEliminar);
@@ -73,12 +73,23 @@ public class EliminarProductoController {
         return null;
     }
 
+    private void mostrarProductoEncontrado(Producto producto) {
+        nameProduct.setText(producto.getNombre());
+        priceProduct.setText(String.valueOf(producto.getPrecio()));
+        categoryProduct.setText(producto.getCategoria());
+        ubicationProduct.setText(producto.getUbicacion());
+        dateProduct.setText(producto.getFecha());
+        idProduct.setText(producto.getId());
+        cantStock.setText(String.valueOf(producto.getStock()));
+    }
+
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
-        String nombreProducto = NameProduct.getText();
+        String nombreProducto = nameProduct.getText();
         Producto productoEncontrado = buscarProductoPorNombre(nombreProducto);
         if (productoEncontrado != null) {
-            mostrarAlertaInformation("Éxito", "Producto encontrado: " + productoEncontrado.toString());
+            mostrarProductoEncontrado(productoEncontrado);
+            mostrarAlertaInformation("Éxito", "Producto encontrado: ");
         } else {
             mostrarAlertaError("Error", "No se encontró el producto");
         }
@@ -97,61 +108,61 @@ public class EliminarProductoController {
     }
 
     public void cerrarEliminar() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
     @FXML
     void initialize() {
-        DateProduct.setText(LocalDate.now().toString());
+        dateProduct.setText(LocalDate.now().toString());
         configureEnterKey();
     }
 
     private void configureEnterKey() {
-        NameProduct.setOnKeyPressed(event -> {
+        nameProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                IDProduct.requestFocus();
+                idProduct.requestFocus();
             }
         });
 
-        IDProduct.setOnKeyPressed(event -> {
+        idProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                PriceProduct.requestFocus();
+                priceProduct.requestFocus();
             }
         });
 
-        PriceProduct.setOnKeyPressed(event -> {
+        priceProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                CategoryProduct.requestFocus();
+                categoryProduct.requestFocus();
             }
         });
 
-        CategoryProduct.setOnKeyPressed(event -> {
+        categoryProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                UbicationProduct.requestFocus();
+                ubicationProduct.requestFocus();
             }
         });
 
-        UbicationProduct.setOnKeyPressed(event -> {
+        ubicationProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                String userInput = UbicationProduct.getText().toLowerCase().trim();
+                String userInput = ubicationProduct.getText().toLowerCase().trim();
                 switch (userInput) {
                     case "albania alta":
                     case "el carmen":
                     case "albania":
-                        UbicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                        ubicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
                                 "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
                         break;
                     case "las torres":
                     case "fraccionamiento las torres":
                     case "fraccionamiento":
-                        UbicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                        ubicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
                                 "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
                         break;
                 }
             }
         });
 
-        ConfirmarButton.setOnKeyPressed(event -> {
+        confirmarButton.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 if (camposVacios()) {
                     mostrarAlertaError("Error", "Por favor, complete todos los campos.");
@@ -161,12 +172,12 @@ public class EliminarProductoController {
     }
 
     private boolean camposVacios() {
-        return NameProduct.getText().isEmpty() ||
-                IDProduct.getText().isEmpty() ||
-                PriceProduct.getText().isEmpty() ||
-                DateProduct.getText().isEmpty() ||
-                CategoryProduct.getText().isEmpty() ||
-                UbicationProduct.getText().isEmpty() ||
+        return nameProduct.getText().isEmpty() ||
+                idProduct.getText().isEmpty() ||
+                priceProduct.getText().isEmpty() ||
+                dateProduct.getText().isEmpty() ||
+                categoryProduct.getText().isEmpty() ||
+                ubicationProduct.getText().isEmpty() ||
                 cantStock.getText().isEmpty();
     }
 
@@ -179,7 +190,7 @@ public class EliminarProductoController {
     }
 
     private void mostrarAlertaInformation(String titulo, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

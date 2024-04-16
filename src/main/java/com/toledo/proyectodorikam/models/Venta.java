@@ -85,4 +85,5 @@ public class Venta {
     public String getFechaCompra() {
         return fechaCompra.get();
     }
+
 }

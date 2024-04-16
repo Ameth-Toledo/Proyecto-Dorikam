@@ -26,31 +26,31 @@ public class UbicarProductosController {
     private URL location;
 
     @FXML
-    private TableView<Producto> TableUbication;
+    private TableView<Producto> tableUbication;
 
     @FXML
-    private TableColumn<Producto, String> Nombre;
+    private TableColumn<Producto, String> nombre;
 
     @FXML
-    private TableColumn<Producto, String> IdColumn;
+    private TableColumn<Producto, String> idColumn;
 
     @FXML
-    private TableColumn<Producto, Double> PrecioColumn;
+    private TableColumn<Producto, Double> precioColumn;
 
     @FXML
-    private TableColumn<Producto, String> CategoriaColumn;
+    private TableColumn<Producto, String> categoriaColumn;
 
     @FXML
-    private TableColumn<Producto, Integer> StockColumn;
+    private TableColumn<Producto, Integer> stockColumn;
 
     @FXML
-    private TableColumn<Producto, String> UbicationColumn;
+    private TableColumn<Producto, String> ubicationColumn;
 
     @FXML
-    private Button UbicationsButton;
+    private Button ubicationsButton;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     Stage callExit = new Stage();
 
@@ -73,20 +73,20 @@ public class UbicarProductosController {
 
     @FXML
     void initialize() {
-        Nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        IdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        PrecioColumn.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
-        CategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
-        StockColumn.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
-        UbicationColumn.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
+        nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        precioColumn.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        categoriaColumn.setCellValueFactory(cellData -> cellData.getValue().categoriaProperty());
+        stockColumn.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
+        ubicationColumn.setCellValueFactory(cellData -> cellData.getValue().ubicacionProperty());
     }
 
     private void mostrarUbications() {
-        TableUbication.setItems(FXCollections.observableList(Producto.getListaProductos()));
+        tableUbication.setItems(FXCollections.observableList(Producto.getListaProductos()));
     }
 
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 }

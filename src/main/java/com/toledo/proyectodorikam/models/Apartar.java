@@ -146,4 +146,6 @@ public class Apartar {
     public static List<Apartar> getListaApartados() {
         return listaApartados;
     }
+
+    private Producto productos;
 }

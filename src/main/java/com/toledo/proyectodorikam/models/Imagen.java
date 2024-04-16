@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Imagenes {
+public class Imagen {
     private static List<File> listaZapatos = new ArrayList<>();
     private static List<File> listaAretes = new ArrayList<>();
 

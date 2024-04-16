@@ -24,7 +24,7 @@
             <Image url="@Imagenes/Salir.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="899.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="899.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="77.0" prefWidth="199.0" style="-fx-background-color: TRANSPARENT; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="37.0" />
          </font>
@@ -44,12 +44,12 @@
             <Font name="Tahoma Bold" size="60.0" />
          </font>
       </Label>
-      <Button fx:id="AreteButton" layoutX="172.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAreteButton" prefHeight="165.0" prefWidth="326.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Arete" textFill="WHITE">
+      <Button fx:id="areteButton" layoutX="172.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedAreteButton" prefHeight="165.0" prefWidth="326.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Arete" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="35.0" />
          </font>
       </Button>
-      <Button fx:id="ZapatosButton" layoutX="608.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedZapatosButton" prefHeight="165.0" prefWidth="326.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Zapatos" textFill="WHITE">
+      <Button fx:id="zapatosButton" layoutX="608.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedZapatosButton" prefHeight="165.0" prefWidth="326.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Zapatos" textFill="WHITE">
          <font>
             <Font name="Tahoma Bold" size="35.0" />
          </font>

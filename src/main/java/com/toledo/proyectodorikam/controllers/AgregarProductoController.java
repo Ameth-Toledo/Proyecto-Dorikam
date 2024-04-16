@@ -1,7 +1,7 @@
 package com.toledo.proyectodorikam.controllers;
 
 import com.toledo.proyectodorikam.App;
-import com.toledo.proyectodorikam.models.Imagenes;
+import com.toledo.proyectodorikam.models.Imagen;
 import com.toledo.proyectodorikam.models.Producto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,64 +19,80 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import com.toledo.proyectodorikam.models.Zapato;
+import com.toledo.proyectodorikam.models.Arete;
+
 public class AgregarProductoController {
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private TextField NameProduct;
+    private TextField nameProduct;
 
     @FXML
-    private TextField PriceProduct;
+    private TextField priceProduct;
 
     @FXML
-    private TextField CategoryProduct;
+    private TextField categoryProduct;
 
     @FXML
-    private TextField UbicationProduct;
+    private TextField ubicationProduct;
 
     @FXML
-    private TextField DateProduct;
+    private TextField dateProduct;
 
     @FXML
-    private TextField IDProduct;
+    private TextField idProduct;
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
     private TextField stockProducto;
 
     @FXML
-    private Button UpLoadImagenButton;
+    private Button upLoadImagenButton;
 
     Stage callRegresar = new Stage();
 
     @FXML
     void OnMouseClickConfirmarButton(MouseEvent event) {
-        String nombre = NameProduct.getText();
-        double precio = Double.parseDouble(PriceProduct.getText());
-        String categoria = CategoryProduct.getText();
-        String ubicacion = UbicationProduct.getText();
-        String fecha = DateProduct.getText();
-        String id = IDProduct.getText();
-        int stock = Integer.parseInt(stockProducto.getText());
+        String nombre = nameProduct.getText();
+        String precioStr = priceProduct.getText();
+        String categoria = categoryProduct.getText();
+        String ubicacion = ubicationProduct.getText();
+        String fecha = dateProduct.getText();
+        String id = idProduct.getText();
+        String stockStr = stockProducto.getText();
 
-        Producto producto = new Producto(nombre, precio, categoria, ubicacion, fecha, id, stock);
-        Producto.agregarProducto(producto);
+        if (camposVacios(nombre, precioStr, categoria, ubicacion, fecha, id, stockStr)) {
+            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
+        } else {
+            try {
+                double precio = Double.parseDouble(precioStr);
+                int stock = Integer.parseInt(stockStr);
 
-        limpiarCampos();
-        mostrarAlertaInformation("Éxito", "Producto agregado correctamente");
+                if (categoria.equalsIgnoreCase("arete")) {
+                    Arete arete = new Arete(nombre, precio, categoria, ubicacion, fecha, id, stock);
+                    Producto.agregarProducto(arete);
+                } else {
+                    Zapato zapato = new Zapato(nombre, precio, categoria, ubicacion, fecha, id, stock);
+                    Producto.agregarProducto(zapato);
+                }
 
-        System.out.println("lista");
-        for (Producto p : Producto.getListaProductos()) {
-            System.out.println(p.toString()
-            );
+                limpiarCampos();
+                mostrarAlertaExito("Éxito", "Producto agregado correctamente");
+
+                System.out.println("lista");
+                for (Producto p : Producto.getListaProductos()) {
+                    System.out.println(p.toString());
+                }
+            } catch (NumberFormatException e) {
+                mostrarAlertaError("Error", "Ingrese valores numéricos válidos para el precio y el stock.");
+            }
         }
     }
-
-
     @FXML
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-gerente-view.fxml"));
@@ -108,10 +124,10 @@ public class AgregarProductoController {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == zapatoButton) {
-                Imagenes.agregarImagen(selectedFile, "Zapato");
+                Imagen.agregarImagen(selectedFile, "Zapato");
                 mostrarAlertaExito("Éxito", "Imagen de zapato agregada correctamente.");
             } else if (result.isPresent() && result.get() == areteButton) {
-                Imagenes.agregarImagen(selectedFile, "Arete");
+                Imagen.agregarImagen(selectedFile, "Arete");
                 mostrarAlertaExito("Éxito", "Imagen de arete agregada correctamente.");
             }
         }
@@ -122,30 +138,45 @@ public class AgregarProductoController {
     void initialize() {
         configurarEventosTextField();
         configurarEventoEnterBotonConfirmar();
-        ExitButton.setOnKeyPressed(this::handleKeyPressed);
-        ConfirmarButton.setOnKeyPressed(this::handleKeyPressed);
-        DateProduct.setText(LocalDate.now().toString());
+        exitButton.setOnKeyPressed(this::handleKeyPressed);
+        confirmarButton.setOnKeyPressed(this::handleKeyPressed);
+        dateProduct.setText(LocalDate.now().toString());
     }
 
     private void configurarEventosTextField() {
-        NameProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
-        IDProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
-        PriceProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
-        DateProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
-        CategoryProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
-        UbicationProduct.setOnKeyPressed(this::handleLastTextFieldEnterKeyPressed);
+        nameProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
+        idProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
+        priceProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
+        dateProduct.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
+        categoryProduct.setOnKeyPressed(this::OnKeyPressedCategoryProduct);
+        ubicationProduct.setOnKeyPressed(this::handleLastTextFieldEnterKeyPressed);
         stockProducto.setOnKeyPressed(this::handleTextFieldEnterKeyPressed);
     }
 
+    @FXML
+    void OnKeyPressedCategoryProduct(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.TAB) {
+            String userInput = categoryProduct.getText().toLowerCase().trim();
+            if (!userInput.equals("arete") && !userInput.equals("zapato")) {
+                mostrarAlertaError("Error", "No es posible guardar este campo, verifique que se trate de un arete o un zapato.");
+                categoryProduct.clear();
+            } else {
+                ubicationProduct.requestFocus();
+            }
+        }
+    }
+
     private void configurarEventoEnterBotonConfirmar() {
-        ConfirmarButton.setDefaultButton(true);
+        confirmarButton.setDefaultButton(true);
     }
 
     private void handleTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             TextField textField = (TextField) event.getSource();
-            if (textField == PriceProduct) {
-                CategoryProduct.requestFocus();
+            if (textField == priceProduct) {
+                categoryProduct.requestFocus();
+            } else if (textField == stockProducto){
+                OnMouseClickConfirmarButton(null);
             } else {
                 switchToNextTextField(textField);
             }
@@ -155,50 +186,26 @@ public class AgregarProductoController {
     @FXML
     public void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            String userInput = UbicationProduct.getText().toLowerCase().trim();
+            String userInput = ubicationProduct.getText().toLowerCase().trim();
             switch (userInput) {
                 case "albania alta":
                 case "el carmen":
                 case "albania":
-                    UbicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                    ubicationProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
                             "GoogleMaps: https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
                     break;
                 case "las torres":
                 case "fraccionamiento las torres":
                 case "fraccionamiento":
-                    UbicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                    ubicationProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
                             "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
                     break;
                 default:
                     break;
             }
-            validarDatos();
+            stockProducto.requestFocus();
         }
     }
-
-    private void validarDatos() {
-        String nombreProducto = NameProduct.getText();
-        String idProducto = IDProduct.getText();
-        String fechaCompra = DateProduct.getText();
-        String categoria = CategoryProduct.getText();
-        String precioProductoStr = PriceProduct.getText();
-        String ubication = UbicationProduct.getText();
-        String stock = stockProducto.getText();
-
-        if (camposVacios(nombreProducto, idProducto, precioProductoStr, fechaCompra, categoria, ubication)) {
-            mostrarAlertaError("Error", "Por favor, complete todos los campos.");
-        } else {
-            try {
-                double precioProducto = Double.parseDouble(precioProductoStr);
-                Producto agregar = new Producto(nombreProducto, precioProducto, categoria, ubication, fechaCompra, idProducto, Integer.parseInt(stock));
-                Producto.agregarProducto(agregar);
-                mostrarAlertaExito("Éxito", "Producto agregado con éxito.");
-            } catch (NumberFormatException e) {
-                mostrarAlertaError("Error", "Ingrese un valor numérico válido para el precio o stock porfavor.");
-            }
-        }
-    }
-
 
     private boolean camposVacios(String... campos) {
         for (String campo : campos) {
@@ -210,30 +217,30 @@ public class AgregarProductoController {
     }
 
     private void limpiarCampos(){
-        NameProduct.clear();
-        IDProduct.clear();
-        PriceProduct.clear();
-        CategoryProduct.clear();
-        UbicationProduct.clear();
+        nameProduct.clear();
+        idProduct.clear();
+        priceProduct.clear();
+        categoryProduct.clear();
+        ubicationProduct.clear();
         stockProducto.clear();
     }
 
     private void switchToNextTextField(TextField currentTextField) {
         switch (currentTextField.getId()) {
             case "NameProduct":
-                IDProduct.requestFocus();
+                idProduct.requestFocus();
                 break;
             case "IDProduct":
-                PriceProduct.requestFocus();
+                priceProduct.requestFocus();
                 break;
             case "PriceProduct":
-                DateProduct.requestFocus();
+                dateProduct.requestFocus();
                 break;
             case "DateProduct":
-                CategoryProduct.requestFocus();
+                categoryProduct.requestFocus();
                 break;
             case "CategoryProduct":
-                UbicationProduct.requestFocus();
+                ubicationProduct.requestFocus();
                 break;
             case "UbicationProduct":
                 stockProducto.requestFocus();
@@ -252,21 +259,10 @@ public class AgregarProductoController {
     }
 
     private void cerrarVentana() throws IOException {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
-    private void mostrarAlertaInformation(String title, String contenido) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(contenido);
-        alert.setOnShown(event ->{
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
-        });
-        alert.showAndWait();
-    }
     private void mostrarAlertaError(String titulo, String contenido) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);

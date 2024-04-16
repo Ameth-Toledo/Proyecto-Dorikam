@@ -33,24 +33,24 @@ public class GerenteController {
     private URL location;
 
     @FXML
-    private TextField UsuarioText;
+    private TextField usuarioText;
 
     @FXML
-    private PasswordField ContraseñaText;
+    private PasswordField contrasenaText;
     private boolean capsLockActivated = false;
 
     @FXML
-    private Button EntrarButton;
+    private Button entrarButton;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
     void initialize() {
-        UsuarioText.setOnKeyPressed(this::handleKeyPressed);
-        ContraseñaText.setOnKeyPressed(this::handleKeyPressed);
+        usuarioText.setOnKeyPressed(this::handleKeyPressed);
+        contrasenaText.setOnKeyPressed(this::handleKeyPressed);
 
-        ContraseñaText.setOnKeyReleased(event -> {
+        contrasenaText.setOnKeyReleased(event -> {
             if (event.getCode().toString().equals("CAPS")) {
                 capsLockActivated = !capsLockActivated;
                 if (capsLockActivated) {
@@ -72,8 +72,8 @@ public class GerenteController {
 
     private void handleKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            if (event.getSource() == UsuarioText) {
-                ContraseñaText.requestFocus();
+            if (event.getSource() == usuarioText) {
+                contrasenaText.requestFocus();
             } else {
                 iniciarSesion();
             }
@@ -83,8 +83,8 @@ public class GerenteController {
     }
 
     private void iniciarSesion() {
-        String Brenda = UsuarioText.getText();
-        String Brenda2024 = ContraseñaText.getText();
+        String Brenda = usuarioText.getText();
+        String Brenda2024 = contrasenaText.getText();
 
         if (Brenda.equals(admin.getUsser()) && Brenda2024.equals(admin.getPassword())) {
             try {
@@ -106,13 +106,13 @@ public class GerenteController {
                 mostrarAlerta("Error", "Verifica tus datos.\nIntento " + intentos + " de 3.");
             } else {
                 mostrarAlerta("Error", "Has excedido el máximo de intentos permitidos.");
-                EntrarButton.setDisable(true);
+                entrarButton.setDisable(true);
             }
         }
     }
 
     private void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 

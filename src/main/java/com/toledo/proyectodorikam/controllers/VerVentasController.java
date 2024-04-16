@@ -19,31 +19,31 @@ import java.io.IOException;
 public class VerVentasController {
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private Button VerVentasButton;
+    private Button verVentasButton;
 
     @FXML
-    private TableView<Venta> HistorialVentas;
+    private TableView<Venta> historialVentas;
 
     @FXML
-    private TableColumn<Venta, String> NameProductoTable;
+    private TableColumn<Venta, String> nameProductoTable;
 
     @FXML
-    private TableColumn<Venta, Double> PrecioProductoTable;
+    private TableColumn<Venta, Double> precioProductoTable;
 
     @FXML
-    private TableColumn<Venta, Integer> CantidadProductoTable;
+    private TableColumn<Venta, Integer> cantidadProductoTable;
 
     @FXML
-    private TableColumn<Venta, String> DateProductoTable;
+    private TableColumn<Venta, String> dateProductoTable;
 
     @FXML
-    private TableColumn<Venta, String> UbicationProductoTable;
+    private TableColumn<Venta, String> ubicationProductoTable;
 
     @FXML
-    private TableColumn<Venta, String> MetodoPago;
+    private TableColumn<Venta, String> metodoPago;
 
     Stage callExit = new Stage();
     @FXML
@@ -58,23 +58,23 @@ public class VerVentasController {
     }
 
     public void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     void onMouseClickedVerVentasButton(MouseEvent event) {
         ObservableList<Venta> ventas = FXCollections.observableArrayList(Venta.getListaVentas());
-        HistorialVentas.setItems(ventas);
+        historialVentas.setItems(ventas);
     }
 
     @FXML
     void initialize() {
-        NameProductoTable.setCellValueFactory(cellData -> cellData.getValue().nombreProductoProperty());
-        PrecioProductoTable.setCellValueFactory(cellData -> cellData.getValue().precioProductoProperty().asObject());
-        CantidadProductoTable.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
-        DateProductoTable.setCellValueFactory(cellData -> cellData.getValue().fechaCompraProperty());
-        UbicationProductoTable.setCellValueFactory(cellData -> cellData.getValue().lugarEntregaProperty());
-        MetodoPago.setCellValueFactory(cellData -> cellData.getValue().metodoPagoProperty());
+        nameProductoTable.setCellValueFactory(cellData -> cellData.getValue().nombreProductoProperty());
+        precioProductoTable.setCellValueFactory(cellData -> cellData.getValue().precioProductoProperty().asObject());
+        cantidadProductoTable.setCellValueFactory(cellData -> cellData.getValue().cantidadProperty().asObject());
+        dateProductoTable.setCellValueFactory(cellData -> cellData.getValue().fechaCompraProperty());
+        ubicationProductoTable.setCellValueFactory(cellData -> cellData.getValue().lugarEntregaProperty());
+        metodoPago.setCellValueFactory(cellData -> cellData.getValue().metodoPagoProperty());
     }
 }

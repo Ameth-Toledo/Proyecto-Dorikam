@@ -36,17 +36,17 @@
                 <Font name="Tahoma Bold" size="55.0" />
             </font>
         </Label>
-      <TableView fx:id="TableUbication" layoutX="44.0" layoutY="164.0" prefHeight="503.0" prefWidth="1212.0">
+      <TableView fx:id="tableUbication" layoutX="44.0" layoutY="164.0" prefHeight="503.0" prefWidth="1212.0">
         <columns>
-          <TableColumn fx:id="Nombre" prefWidth="200.0" text="PRODUCTO" />
-          <TableColumn fx:id="IdColumn" prefWidth="139.0" text="ID" />
-            <TableColumn fx:id="PrecioColumn" prefWidth="177.0" text="PRECIO" />
-            <TableColumn fx:id="CategoriaColumn" prefWidth="179.0" text="CATEGORIA" />
-            <TableColumn fx:id="StockColumn" prefWidth="136.0" text="STOCK" />
-            <TableColumn fx:id="UbicationColumn" prefWidth="380.0" text="UBICACION" />
+          <TableColumn fx:id="nombre" prefWidth="200.0" text="PRODUCTO" />
+          <TableColumn fx:id="idColumn" prefWidth="139.0" text="ID" />
+            <TableColumn fx:id="precioColumn" prefWidth="177.0" text="PRECIO" />
+            <TableColumn fx:id="categoriaColumn" prefWidth="179.0" text="CATEGORIA" />
+            <TableColumn fx:id="stockColumn" prefWidth="136.0" text="STOCK" />
+            <TableColumn fx:id="ubicationColumn" prefWidth="380.0" text="UBICACION" />
         </columns>
       </TableView>
-      <Button fx:id="UbicationsButton" layoutX="466.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUbicationsButton" prefHeight="71.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Ubicaciones" textFill="WHITE">
+      <Button fx:id="ubicationsButton" layoutX="466.0" layoutY="687.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedUbicationsButton" prefHeight="71.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Ubicaciones" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -66,7 +66,7 @@
             <Image url="@Imagenes/DorikamName.png" />
          </image>
       </ImageView>
-      <Button fx:id="ExitButton" layoutX="988.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="5.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
+      <Button fx:id="exitButton" layoutX="988.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#OnMouseClickedExitButton" prefHeight="5.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-alignment: rigth;" text="Salir" textFill="WHITE">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>

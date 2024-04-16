@@ -23,13 +23,13 @@ public class OpcionProductoController {
     private URL location;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private Button AreteButton;
+    private Button areteButton;
 
     @FXML
-    private Button ZapatosButton;
+    private Button zapatosButton;
 
     Stage callArete = new Stage();
     @FXML
@@ -71,7 +71,7 @@ public class OpcionProductoController {
         salirTipoProducto();
     }
     private void salirTipoProducto(){
-        ((Stage) ExitButton.getScene().getWindow()).close();
+        ((Stage) exitButton.getScene().getWindow()).close();
     }
 
     @FXML

@@ -28,37 +28,37 @@ public class ApartarProductosController {
     private URL location;
 
     @FXML
-    private TextField Categoria;
+    private TextField categoriaProducto;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private TextField IdProducto;
+    private TextField idProduct;
 
     @FXML
-    private TextField IngresaFecha;
+    private TextField ingresaFecha;
 
     @FXML
-    private TextField MontoAbonado;
+    private TextField montoAbonado;
 
     @FXML
-    private TextField MontoRestante;
+    private TextField montoRestante;
 
     @FXML
-    private TextField Ubicacion;
+    private TextField ubicacionProduct;
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
-    private TextField NombreProducto;
+    private TextField nombreProduct;
 
     @FXML
     private TextField cantidadApartar;
 
     @FXML
-    private Button BuscarProductoButton;
+    private Button buscarProductoButton;
 
     @FXML
     void OnMouseClickedBuscarProductoButton(MouseEvent event) {
@@ -82,7 +82,7 @@ public class ApartarProductosController {
     }
 
     public void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
     @FXML
@@ -95,32 +95,32 @@ public class ApartarProductosController {
     }
 
     private void setTextFieldEnterListener() {
-        NombreProducto.setOnKeyPressed(event -> {
+        nombreProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                IdProducto.requestFocus();
+                idProduct.requestFocus();
             }
         });
-        IdProducto.setOnKeyPressed(event -> {
+        idProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                MontoAbonado.requestFocus();
+                montoAbonado.requestFocus();
             }
         });
-        MontoAbonado.setOnKeyPressed(event -> {
+        montoAbonado.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                MontoRestante.requestFocus();
+                montoRestante.requestFocus();
             }
         });
-        MontoRestante.setOnKeyPressed(event -> {
+        montoRestante.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                Categoria.requestFocus();
+                categoriaProducto.requestFocus();
             }
         });
-        Categoria.setOnKeyPressed(event -> {
+        categoriaProducto.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                Ubicacion.requestFocus();
+                ubicacionProduct.requestFocus();
             }
         });
-        Ubicacion.setOnKeyPressed(event -> {
+        ubicacionProduct.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 handleLastTextFieldEnterKeyPressed(event);
             }
@@ -130,7 +130,7 @@ public class ApartarProductosController {
                 handleLastTextFieldEnterKeyPressed(event);
             }
         });
-        ConfirmarButton.setOnKeyPressed(event -> {
+        confirmarButton.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 validarDatos();
             }
@@ -140,18 +140,18 @@ public class ApartarProductosController {
     @FXML
     public void handleLastTextFieldEnterKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            String userInput = Ubicacion.getText().toLowerCase().trim();
+            String userInput = ubicacionProduct.getText().toLowerCase().trim();
             switch (userInput) {
                 case "albania alta":
                 case "el carmen":
                 case "albania":
-                    Ubicacion.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
+                    ubicacionProduct.setText("12 de Noviembre, 29016 Tuxtla Gutiérrez, Chis. \n " +
                             "GoogleMaps: " + "https://maps.app.goo.gl/G1T5vDY56ZJkVoqCA");
                     break;
                 case "las torres":
                 case "fraccionamiento las torres":
                 case "fraccionamiento":
-                    Ubicacion.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
+                    ubicacionProduct.setText("Chiapa de Corzo 2 9, Las Torres, 29045 Tuxtla Gutiérrez, Chis. \n " +
                             "GoogleMaps: "+"https://maps.app.goo.gl/D3m1aZAk4fR3WJpR9");
                     break;
                 default:
@@ -162,7 +162,7 @@ public class ApartarProductosController {
     }
 
     private void buscarProducto() {
-        String nombreProducto = NombreProducto.getText();
+        String nombreProducto = nombreProduct.getText();
         if (nombreProducto.isEmpty()) {
             mostrarAlertaError("Error", "Ingrese un nombre de producto válido.");
             return;
@@ -171,12 +171,13 @@ public class ApartarProductosController {
         for (Producto producto : Producto.getListaProductos()) {
             if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
                 productoEncontrado = true;
-                Categoria.setText(producto.getCategoria());
-                Ubicacion.setText(producto.getUbicacion());
-                IngresaFecha.setText(producto.getFecha());
-                IdProducto.setText(producto.getId());
-                ConfirmarButton.setText("Confirmar");
-                mostrarAlertaExito("Éxito", "Producto encontrado.");
+                categoriaProducto.setText(producto.getCategoria());
+                ubicacionProduct.setText(producto.getUbicacion());
+                ingresaFecha.setText(producto.getFecha());
+                idProduct.setText(producto.getId());
+                confirmarButton.setText("Confirmar");
+                double precioProducto = producto.getPrecio();
+                mostrarAlertaExito("Éxito", "Producto encontrado. El costo del producto es de: $" + precioProducto);
                 return;
             }
         }
@@ -184,19 +185,19 @@ public class ApartarProductosController {
     }
 
     private void validarDatos() {
-        String nombreProducto = NombreProducto.getText();
-        String idProducto = IdProducto.getText();
-        String precioProductoStr = MontoAbonado.getText();
-        String montoRestanteStr = MontoRestante.getText();
-        String fechaCompra = IngresaFecha.getText();
-        String categoria = Categoria.getText();
+        String nombreProducto = nombreProduct.getText();
+        String idProducto = idProduct.getText();
+        String precioProductoStr = montoAbonado.getText();
+        String montoRestanteStr = montoRestante.getText();
+        String fechaCompra = ingresaFecha.getText();
+        String categoria = categoriaProducto.getText();
         int cantidad = Integer.parseInt(cantidadApartar.getText());
         if (camposVacios(nombreProducto, idProducto, precioProductoStr, montoRestanteStr, fechaCompra, categoria)) {
             mostrarAlertaError("Error", "Por favor, complete todos los campos.");
         } else {
             try {
                 Apartar apartado = new Apartar(nombreProducto, nombreProducto, Integer.parseInt(idProducto),
-                        fechaCompra, categoria, Ubicacion.getText(), cantidad, Double.parseDouble(precioProductoStr),
+                        fechaCompra, categoria, ubicacionProduct.getText(), cantidad, Double.parseDouble(precioProductoStr),
                         Double.parseDouble(montoRestanteStr));
                 Apartar.agregarApartado(apartado);
                 mostrarAlertaExito("Éxito", "Producto apartado con éxito.");
@@ -205,7 +206,6 @@ public class ApartarProductosController {
             }
         }
     }
-
 
     private boolean camposVacios(String... campos) {
         for (String campo : campos) {

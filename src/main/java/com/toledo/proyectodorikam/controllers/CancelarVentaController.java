@@ -19,26 +19,26 @@ import java.util.List;
 public class CancelarVentaController {
 
     @FXML
-    private Button ConfirmarButton;
+    private Button confirmarButton;
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
-    private TextField IDProductoTextField;
+    private TextField idProductoTextField;
 
     @FXML
-    private TextField NombreClienteTextField;
+    private TextField nombreClienteTextField;
 
     @FXML
-    private TextField NombreProductoTextField;
+    private TextField nombreProductoTextField;
 
     @FXML
-    private TextField PrecioProductoTextField11;
+    private TextField precioProductoTextField11;
 
     @FXML
     void OnMouseClickedConfirmarButton(MouseEvent event) {
-        String idProducto = IDProductoTextField.getText();
+        String idProducto = idProductoTextField.getText();
         Producto producto = buscarProducto(idProducto);
 
         if (producto != null) {
@@ -72,7 +72,7 @@ public class CancelarVentaController {
     }
 
     public void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 

@@ -22,25 +22,25 @@ import java.util.List;
 public class VerReportesController {
 
     @FXML
-    private Button ExitButton;
+    private Button exitButton;
 
     @FXML
     private Button verReportes;
 
     @FXML
-    private TableView<Reporte> TableReportes;
+    private TableView<Reporte> tableReportes;
 
     @FXML
-    private TableColumn<Reporte, String> TituloColumn;
+    private TableColumn<Reporte, String> tituloColumn;
 
     @FXML
-    private TableColumn<Reporte, String> FechaColumn;
+    private TableColumn<Reporte, String> fechaColumn;
 
     @FXML
-    private TableColumn<Reporte, String> ContenidoColumn;
+    private TableColumn<Reporte, String> contenidoColumn;
 
     @FXML
-    private Button DescargarButton;
+    private Button descargarButton;
 
     @FXML
     void OnMouseClickedDescargarButton(MouseEvent event) {
@@ -98,7 +98,7 @@ public class VerReportesController {
     }
 
     private void cerrarVentana() {
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
@@ -113,7 +113,7 @@ public class VerReportesController {
 
     public void mostrarReportes() {
         ObservableList<Reporte> reportes = FXCollections.observableArrayList(Reporte.getListaReporte());
-        TableReportes.setItems(reportes);
+        tableReportes.setItems(reportes);
     }
 
     private void mostrarAdvertencia(String mensaje) {
@@ -141,8 +141,8 @@ public class VerReportesController {
 
     @FXML
     void initialize() {
-        TituloColumn.setCellValueFactory(cellData -> cellData.getValue().tituloProperty());
-        FechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaReporteProperty());
-        ContenidoColumn.setCellValueFactory(cellData -> cellData.getValue().detallesProperty());
+        tituloColumn.setCellValueFactory(cellData -> cellData.getValue().tituloProperty());
+        fechaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaReporteProperty());
+        contenidoColumn.setCellValueFactory(cellData -> cellData.getValue().detallesProperty());
     }
 }
