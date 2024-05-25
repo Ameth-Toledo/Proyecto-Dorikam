@@ -129,16 +129,11 @@ public class HomeController {
                     }
                     break;
                 case ESCAPE:
-                    Platform.exit();
+                    salirHome();
                     break;
                 default:
                     break;
             }
         });
-        //fullScreen(stageRoot);
     }
-    //private void fullScreen(Stage stage) {
-        //stage.setFullScreen(true);
-        //stage.setFullScreenExitHint("");
-    //}
 }

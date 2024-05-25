@@ -34,10 +34,10 @@ public class AdministradorController {
     private URL location;
 
     @FXML
-    private TextField UsuarioText;
+    private TextField usuarioText;
 
     @FXML
-    private PasswordField ContrasenaText;
+    private PasswordField contrasenaText;
     private boolean capsLockActivated = false;
 
     @FXML
@@ -48,10 +48,10 @@ public class AdministradorController {
 
     @FXML
     void initialize() {
-        UsuarioText.setOnKeyPressed(this::handleKeyPressed);
-        ContrasenaText.setOnKeyPressed(this::handleKeyPressed);
+        usuarioText.setOnKeyPressed(this::handleKeyPressed);
+        contrasenaText.setOnKeyPressed(this::handleKeyPressed);
 
-        ContrasenaText.setOnKeyReleased(event -> {
+        contrasenaText.setOnKeyReleased(event -> {
             if (event.getCode().toString().equals("CAPS")) {
                 capsLockActivated = !capsLockActivated;
                 if (capsLockActivated) {
@@ -71,8 +71,8 @@ public class AdministradorController {
     }
     private void handleKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            if (event.getSource() == UsuarioText) {
-                ContrasenaText.requestFocus();
+            if (event.getSource() == usuarioText) {
+                contrasenaText.requestFocus();
             } else {
                 iniciarSesion();
             }
@@ -82,8 +82,8 @@ public class AdministradorController {
     }
 
     private void iniciarSesion() {
-        String adminName = UsuarioText.getText();
-        String adminPassword = ContrasenaText.getText();
+        String adminName = usuarioText.getText();
+        String adminPassword = contrasenaText.getText();
 
         if (adminName.equals(admin.getUsser1()) && adminPassword.equals(admin.getPassword1())) {
             try {

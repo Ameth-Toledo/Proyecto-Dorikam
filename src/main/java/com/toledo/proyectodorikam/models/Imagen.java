@@ -28,4 +28,22 @@ public class Imagen {
     public static List<File> getListaAretes() {
         return listaAretes;
     }
+
+    public static void eliminarImagen(String imagenUrl, String opcion) {
+        List<File> lista = null;
+        switch (opcion) {
+            case "Zapato":
+                lista = listaZapatos;
+                break;
+            case "Arete":
+                lista = listaAretes;
+                break;
+            default:
+                break;
+        }
+
+        if (lista != null) {
+            lista.removeIf(file -> file.toURI().toString().equals(imagenUrl));
+        }
+    }
 }

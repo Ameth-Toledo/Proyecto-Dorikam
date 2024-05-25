@@ -102,6 +102,7 @@ public class VerProductoZapatoController {
                         confirmation.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
                         confirmation.showAndWait().ifPresent(response -> {
                             if (response == ButtonType.OK) {
+                                Imagen.eliminarImagen(imageView.getImage().getUrl(), "Zapato");
                                 flowPane.getChildren().remove(imageView);
                             }
                         });
@@ -143,8 +144,10 @@ public class VerProductoZapatoController {
             imageView.setFitHeight(350);
 
             flowPane.getChildren().add(imageView);
+            Imagen.agregarImagen(selectedFile, "Zapato");
         }
     }
+
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
         String nombreProducto = nombreProduct.getText();
@@ -160,7 +163,6 @@ public class VerProductoZapatoController {
             productosTable.setItems(FXCollections.observableArrayList(Producto.getListaProductos()));
         }
     }
-
 
     @FXML
     void initialize() {

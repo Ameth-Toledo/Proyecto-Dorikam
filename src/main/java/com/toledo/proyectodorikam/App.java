@@ -1,6 +1,9 @@
 package com.toledo.proyectodorikam;
 
 import com.toledo.proyectodorikam.controllers.HomeController;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +15,7 @@ import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,6 +61,7 @@ public class App extends Application {
             imageBox.setSpacing(10);
             imagesContainer.getChildren().add(imageBox);
         }
+        startCarousel();
         Button uploadButton = new Button("Subir Imagen");
         uploadButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Rockwell;");
         uploadButton.setOnAction(event -> {
@@ -110,6 +115,20 @@ public class App extends Application {
         stage.setTitle("Dorikam - Catálogo de Imágenes");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         stage.show();
+    }
+    private void startCarousel() {
+        SequentialTransition carouselTransition = new SequentialTransition();
+        for (int i = 0; i < imagesContainer.getChildren().size(); i++) {
+            TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(7), imagesContainer);
+            translateTransition.setByX(-300);
+            translateTransition.setOnFinished(event -> {
+                imagesContainer.getChildren().add(imagesContainer.getChildren().remove(0));
+                imagesContainer.setTranslateX(0);
+            });
+            carouselTransition.getChildren().add(translateTransition);
+        }
+        carouselTransition.setCycleCount(Timeline.INDEFINITE);
+        carouselTransition.play();
     }
     private ScrollPane createScrollPane(HBox content) {
         ScrollPane scrollPane = new ScrollPane();

@@ -105,6 +105,7 @@ public class VerProductoController {
                         confirmation.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
                         confirmation.showAndWait().ifPresent(response -> {
                             if (response == ButtonType.OK) {
+                                Imagen.eliminarImagen(imageView.getImage().getUrl(), "Arete");
                                 flowPane.getChildren().remove(imageView);
                             }
                         });
@@ -135,8 +136,7 @@ public class VerProductoController {
     void OnMouseClickedSubirImagenButton(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
         );
         File selectedFile = fileChooser.showOpenDialog(subirImagenButton.getScene().getWindow());
         if (selectedFile != null) {
@@ -144,10 +144,11 @@ public class VerProductoController {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);
             imageView.setFitHeight(350);
-
             flowPane.getChildren().add(imageView);
+            Imagen.agregarImagen(selectedFile, "Arete");
         }
     }
+
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
         String nombreProducto = nombreProduct.getText();

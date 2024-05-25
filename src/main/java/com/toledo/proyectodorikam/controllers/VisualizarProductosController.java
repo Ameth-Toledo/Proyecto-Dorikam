@@ -1,8 +1,12 @@
 package com.toledo.proyectodorikam.controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.toledo.proyectodorikam.App;
 import com.toledo.proyectodorikam.models.Imagen;
-import com.toledo.proyectodorikam.models.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,14 +21,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
+import com.toledo.proyectodorikam.models.Producto;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class VisualizarProductosController {
+
     @FXML
     private ResourceBundle resources;
 
@@ -104,6 +105,7 @@ public class VisualizarProductosController {
                         confirmation.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
                         confirmation.showAndWait().ifPresent(response -> {
                             if (response == ButtonType.OK) {
+                                Imagen.eliminarImagen(imageView.getImage().getUrl(), "Arete");
                                 flowPane.getChildren().remove(imageView);
                             }
                         });
@@ -118,7 +120,7 @@ public class VisualizarProductosController {
     void OnMouseClickedExitButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("menu-administrador-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        callExit.setTitle("Menu: \"Realizar Venta\"");
+        callExit.setTitle("Menu: \"Ver Productos\"");
         callExit.setScene(scene);
         callExit.getIcons().add(new Image(getClass().getResourceAsStream("/com/toledo/proyectodorikam/Imagenes/Logo.png")));
         callExit.show();
@@ -134,8 +136,7 @@ public class VisualizarProductosController {
     void OnMouseClickedSubirImagenButton(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.gif")
         );
         File selectedFile = fileChooser.showOpenDialog(subirImagenButton.getScene().getWindow());
         if (selectedFile != null) {
@@ -143,10 +144,11 @@ public class VisualizarProductosController {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(300);
             imageView.setFitHeight(350);
-
             flowPane.getChildren().add(imageView);
+            Imagen.agregarImagen(selectedFile, "Arete");
         }
     }
+
     @FXML
     void OnMouseClickedBuscarButton(MouseEvent event) {
         String nombreProducto = nombreProduct.getText();
